@@ -1,36 +1,62 @@
+<?php
+// source: C:\Users\Vitalij Motrja\Desktop\Web\kct-hlinsko\app/templates/@layout.latte
+
+class Template4b68fc4e074282ec2d59ac44ef18c728 extends Latte\Template {
+function render() {
+foreach ($this->params as $__k => $__v) $$__k = $__v; unset($__k, $__v);
+// prolog Latte\Macros\CoreMacros
+list($_b, $_g, $_l) = $template->initialize('4e9149d8e0', 'html')
+;
+// prolog Nette\Bridges\ApplicationLatte\UIMacros
+
+// snippets support
+if (empty($_l->extends) && !empty($_control->snippetMode)) {
+	return Nette\Bridges\ApplicationLatte\UIRuntime::renderSnippets($_control, $_b, get_defined_vars());
+}
+
+//
+// main template
+//
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-type">
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="{$basePath}/css/style.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/css/style.css">
 		<title>Example page</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 	</head>
 <body>
 	<header id="header" class="header"> 
 		<div id="header_panel">
-			<img class="head" src="{$basePath}/images/layout/logo.png" alt="logo_hlinsko">
+			<img class="head" src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/layout/logo.png" alt="logo_hlinsko">
 		</div>
 		<nav id="menu_list">
 			<ul class="main-menu">
 				<li>
-					<a n:href="Homepage:default" class="active" title="">domů</a>
+					<a class="active" title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Homepage:default"), ENT_COMPAT) ?>
+">domů</a>
 				</li>
 				<li>
-					<a n:href="ActivitiesPlans:default" title="">plán akcí</a>
+					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("ActivitiesPlans:default"), ENT_COMPAT) ?>
+">plán akcí</a>
 				</li>
 				<li>
-					<a n:href="Photogallery:default" title="">fotogalerie</a>
+					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Photogallery:default"), ENT_COMPAT) ?>
+">fotogalerie</a>
 				</li>
 				<li class="large">
-					<a n:href="Painters:default" title="">krajem malířů <span class="vysocina">vysočiny</span></a>
+					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Painters:default"), ENT_COMPAT) ?>
+">krajem malířů <span class="vysocina">vysočiny</span></a>
 				</li>
 				<li>
-					<a n:href="Documents:default" title="">dokumenty</a>
+					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Documents:default"), ENT_COMPAT) ?>
+">dokumenty</a>
 				</li>
 				<li>
-					<a n:href="Links:default" title="">odkazy</a>
+					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Links:default"), ENT_COMPAT) ?>
+">odkazy</a>
 				</li>
 			</ul>
 		</nav>
@@ -41,7 +67,7 @@
 		</div>
 	</header>
 	<main>
-	 {include content}
+<?php Latte\Macros\BlockMacrosRuntime::callBlock($_b, 'content', $template->getParameters()) ?>
 		<!--<article>
 			<div id="welcome_text">
 				<div class="welcome-font"></div>
@@ -88,4 +114,5 @@
 		<div id="created_by"> <p> created by 108.design  </p> </div>
 	</footer>
 </body>
-</html>
+</html><?php
+}}

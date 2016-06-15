@@ -25,7 +25,7 @@ body {
 	margin: 0 auto;
 	background-image: url(../images/layout/background_small.png);
 	background-repeat: repeat;
-	font-size: 1em;
+	font-size: 0.9em;
 
 }
 
@@ -114,7 +114,7 @@ body {
 				color: #38240F;
 				font-weight: 600;
 
-				&:hover {
+				&:hover, &.active {
 					color: #BF452C;
 
 				}
@@ -177,87 +177,91 @@ body {
 	}
 }
 
-article {
+main {
 	background-color: white;
-	margin: 0 auto;
 	width: 100%;
-	min-height: 450px;
+	min-height: 100px;
 	float: left;
 	padding-bottom: 5px;
+	margin: 0 auto;
+
+	article {
+		width: 100%;
+		min-height: 450px;
 
 
-	#welcome_text {
-		text-align: inherit;
-		width: 63%;
-		margin-left: 19%;
-		margin-top: 4%;
+		#welcome_text {
+			text-align: inherit;
+			width: 63%;
+			margin-left: 19%;
+			margin-top: 4%;
 
-		.welcome-font {
-			width: 103px;
-			height: 39px;
-			background-image: url(../images/layout/welcome.png);
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: contain;
-			margin-bottom: 2%;
-
-			.tablet-screen({
-				width: 80px;
-				height: 35px;
-			});
-
-			.mobile-screen({
-				width: 80px;
-				height: 35px;
-			});
-		}
-
-		.welcome-img {
-			margin: 5px 0 0 5px;
-			width: 42%;
-			height: 175px;
-			min-height: 50px;
-			float: right;
-			position: relative;
-
-
-			.house {
-				background-image: url(../images/layout/chatka.png);
-				background-size: cover;
+			.welcome-font {
+				width: 103px;
+				height: 39px;
+				background-image: url(../images/layout/welcome.png);
+				background-repeat: no-repeat;
 				background-position: center;
-				height: 100%;
-				position: relative;
-			}
+				background-size: contain;
+				margin-bottom: 2%;
+
+				.tablet-screen({
+					width: 80px;
+					height: 35px;
+				});
 
 				.mobile-screen({
-					height: 133px;
+					width: 80px;
+					height: 35px;
 				});
+			}
+
+			.welcome-img {
+				margin: 5px 0 0 5px;
+				width: 42%;
+				height: 175px;
+				min-height: 50px;
+				float: right;
+				position: relative;
+
+
+				.house {
+					background-image: url(../images/layout/chatka.png);
+					background-size: cover;
+					background-position: center;
+					height: 100%;
+					position: relative;
+				}
+
+					.mobile-screen({
+						height: 133px;
+					});
+			}
+
+			.tablet-screen({
+				width: 75%;
+				margin-left: 10%;
+			});
+
+
+			.mobile-screen({
+				width: 88%;
+				margin-left: 6%;
+			});
+
+
 		}
 
-		.tablet-screen({
-			width: 75%;
-			margin-left: 10%;
-		});
+		p {
+			text-align: inherit;
+			width: 100%;
 
-
-		.mobile-screen({
-			width: 88%;
-			margin-left: 6%;
-		});
-
-
-	}
-
-	p {
-		text-align: inherit;
-		width: 100%;
-
-		.mobile-screen({
-			margin-bottom: 8px;
-		});
-	}
+			.mobile-screen({
+				margin-bottom: 8px;
+			});
+		}
 }
-
+}
 
 footer {
 	width: 100%;

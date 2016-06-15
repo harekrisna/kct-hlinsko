@@ -7,7 +7,7 @@ body {
   margin: 0 auto;
   background-image: url(../images/layout/background_small.png);
   background-repeat: repeat;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 .header {
   height: 300px;
@@ -104,7 +104,8 @@ body {
   color: #38240F;
   font-weight: 600;
 }
-.header ul.main-menu li a:hover {
+.header ul.main-menu li a:hover,
+.header ul.main-menu li a.active {
   color: #BF452C;
 }
 @media (min-width: 640px) and (max-width: 940px) {
@@ -164,21 +165,25 @@ body {
     width: 87%;
   }
 }
-article {
+main {
   background-color: white;
-  margin: 0 auto;
   width: 100%;
-  min-height: 450px;
+  min-height: 100px;
   float: left;
   padding-bottom: 5px;
+  margin: 0 auto;
 }
-article #welcome_text {
+main article {
+  width: 100%;
+  min-height: 450px;
+}
+main article #welcome_text {
   text-align: inherit;
   width: 63%;
   margin-left: 19%;
   margin-top: 4%;
 }
-article #welcome_text .welcome-font {
+main article #welcome_text .welcome-font {
   width: 103px;
   height: 39px;
   background-image: url(../images/layout/welcome.png);
@@ -188,18 +193,18 @@ article #welcome_text .welcome-font {
   margin-bottom: 2%;
 }
 @media (min-width: 640px) and (max-width: 940px) {
-  article #welcome_text .welcome-font {
+  main article #welcome_text .welcome-font {
     width: 80px;
     height: 35px;
   }
 }
 @media (max-width: 640px) {
-  article #welcome_text .welcome-font {
+  main article #welcome_text .welcome-font {
     width: 80px;
     height: 35px;
   }
 }
-article #welcome_text .welcome-img {
+main article #welcome_text .welcome-img {
   margin: 5px 0 0 5px;
   width: 42%;
   height: 175px;
@@ -207,7 +212,7 @@ article #welcome_text .welcome-img {
   float: right;
   position: relative;
 }
-article #welcome_text .welcome-img .house {
+main article #welcome_text .welcome-img .house {
   background-image: url(../images/layout/chatka.png);
   background-size: cover;
   background-position: center;
@@ -215,28 +220,28 @@ article #welcome_text .welcome-img .house {
   position: relative;
 }
 @media (max-width: 640px) {
-  article #welcome_text .welcome-img {
+  main article #welcome_text .welcome-img {
     height: 133px;
   }
 }
 @media (min-width: 640px) and (max-width: 940px) {
-  article #welcome_text {
+  main article #welcome_text {
     width: 75%;
     margin-left: 10%;
   }
 }
 @media (max-width: 640px) {
-  article #welcome_text {
+  main article #welcome_text {
     width: 88%;
     margin-left: 6%;
   }
 }
-article p {
+main article p {
   text-align: inherit;
   width: 100%;
 }
 @media (max-width: 640px) {
-  article p {
+  main article p {
     margin-bottom: 8px;
   }
 }
