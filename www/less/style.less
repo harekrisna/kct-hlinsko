@@ -1,6 +1,17 @@
+
+// Complete default reset for all browsers
 @import "reboot.css";
 
-// Mixin pro mediaqueris
+// Colors
+@brown: #694F34;
+@brownfont: #D3CDBF;
+@red: #BF452C;
+
+@bold-font: 600;
+
+
+
+// Mixins for mediaqueries
 .tablet-screen(@rules) {
     @media (min-width: 640px) and (max-width: 940px) {
         @rules();
@@ -12,6 +23,7 @@
         @rules();
     }
 }
+
 
 //. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 
@@ -29,14 +41,15 @@ body {
 
 }
 
+// Header
 .header {
-	height: 300px;
+	height: 261px;
 	width: 100%;
 	background-color: white;
 
-	.tablet-screen({height: 283px;});
+	.tablet-screen({height: 236px;});
 
-	.mobile-screen({height: 224px;});
+	.mobile-screen({height: 212px;});
 
 	#header_panel {
 		width: 100%;
@@ -44,17 +57,17 @@ body {
 		background-repeat: no-repeat;
 		background-size: 100% auto;
 		background-position: center;
-		height: 200px;
+		height: 170px;
 		padding-top: 5px;
 
-		.tablet-screen({height: 163px;});
+		.tablet-screen({height: 145px;});
 
 		.mobile-screen({height: 78px;});
 
 
 		img.head {
 			display: block;
-			width: 19%;
+			width: 17%;
 			margin: -11px auto auto auto;
 
 			.tablet-screen({
@@ -112,12 +125,12 @@ body {
 				width: 120px;
 				text-decoration: none;
 				color: #38240F;
-				font-weight: 600;
+				font-weight: @bold-font;
 
 				&:hover, &.active {
-					color: #BF452C;
+					color: @red;
 
-				}
+				};
 
 				.tablet-screen({
 					text-align: left;
@@ -138,7 +151,7 @@ body {
 	}
 
 	#actuality_panel {
-		background-color: #BF452C;
+		background-color: @red;
 		width: 100%;
 		height: 40px;
 		float: left;
@@ -154,16 +167,17 @@ body {
 			color: white;
 			font-size: 1.1em;
 			text-align: center;
-			margin-top: 5px;
+			padding-top: 8px;
 
 			.actual {
-				font-weight: 600;
+				font-weight: @bold-font;
 			}
 
 			.tablet-screen({
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;
+				margin-top: 0;
 			});
 
 			.mobile-screen({text-overflow: ellipsis;
@@ -172,10 +186,13 @@ body {
 				font-size: 1em;
 				margin-top: 8px;
 				width: 87%;
+				margin-top: 0;
 			});
 		}
 	}
 }
+
+// Main section
 
 main {
 	background-color: white;
@@ -261,13 +278,143 @@ main {
 			});
 		}
 }
+
+	.grid {
+	width: 81%;
+	height: 380px;
+	margin: 0 auto;
+	padding-left: 4%;
+
+		.action-archive {
+			width: 133px;
+			height: 39px;
+			background-image: url(../images/layout/action-archive.png);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			margin-top: 3%;
+
+			.tablet-screen({
+					width: 110px;
+					height: 35px;
+				});
+
+			.mobile-screen({
+				width: 105px;
+				height: 35px;
+			});
+		};	
+
+		a.col-1-6 {
+			width: 12%;
+			min-width: 100px;
+			height: 28px;
+			float: left;
+			margin-right: 4%;
+			margin-top: 3%;
+			margin-bottom: 4%;
+			text-align: center;
+			line-height: 30px;
+			text-decoration: none;
+			color: black;
+			font-weight: @bold-font; 
+			border: 1px solid @brown;
+
+			&:hover {
+				background-color: @red;
+				color: white;
+			}
+
+			&:first-child {
+				
+			}
+		};
+
+		.col-1-4 {
+			width: 21%;
+			min-width: 120px;
+			height: 28px;
+			float: left;
+			margin-right: 3%;
+			margin-top: 3%;
+			margin-bottom: 4%;
+			text-align: center;
+			line-height: 30px;
+			text-decoration: none;
+			color: black;
+			font-weight: @bold-font; 
+			border: 1px solid @brown;
+
+			ul {
+				list-style-type: none;
+
+				li {
+					height: 25px;
+
+
+				};
+
+				a {
+					text-decoration: none;
+					color: black;
+					width: 100%;
+					height: 22px;
+					display: block;
+
+					&:hover {
+					color: @red;
+				}
+				};
+				
+			};
+			
+			&:hover {
+				background-color: @red;
+				color: white;
+			}
+
+
+		};
+		.dropdown {
+			    position: relative;
+			    display: inline-block;
+			};
+
+			.dropdown-content {
+			    display: none;
+			    position: absolute;
+			    width: 100%;
+			};
+
+			.dropdown:hover .dropdown-content {
+			    display: block;
+			};
+
+		.tablet-screen({
+				width: 83%;
+				padding-left: 11%;
+			});
+
+		.mobile-screen({
+				width: 66%;
+				padding-left: 7%;
+			});
+
+
+	}
+
+
+
+
 }
 
+
+// Footer 
 footer {
 	width: 100%;
 	min-height: 130px;
 	float: left;
-	background-color: #694F34;
+	background-color: @brown;
 	-webkit-box-shadow: 0px -4px 25px -8px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px -4px 25px -8px rgba(0,0,0,0.75);
 	box-shadow: 0px -4px 25px -8px rgba(0,0,0,0.75);
@@ -314,7 +461,7 @@ footer {
 
    				p {
    					font-size: 0.9em;
-   					color: #D3CDBF;
+   					color: @brownfont;
    					margin-bottom: 11px;
    				}
 
@@ -324,13 +471,13 @@ footer {
 					float: left;
 					width: 34px;
 					height: 34px;
-					background-color: #D3CDBF;
+					background-color: @brownfont;
 					border-radius: 150px;
 					
  
 					a {
 						display: block;
-						color: #694F34;
+						color: @brown;
 						text-decoration: none;
 						font-size: 1.4em;
 						font-weight: 500;
@@ -362,7 +509,7 @@ footer {
 					}
 
 					:hover  {
-						color: #694F34;
+						color: @brown;
 						background-color: #C1AC95; 
 						border-radius: 150px;
 					}
@@ -387,7 +534,7 @@ footer {
 
 			p {
 				font-size: 0.9em;
-				color: #D3CDBF
+				color: @brownfont;
 			}
 
 
@@ -411,7 +558,7 @@ footer {
 
 			p {
 				font-size: 0.9em;
-				color: #D3CDBF;
+				color: @brownfont;
 			};
 
 			.tablet-screen({
@@ -450,7 +597,7 @@ footer {
 		margin: -25px 5% 1% 0;
 
 		p {
-			color: #D3CDBF;
+			color: @brownfont;
 		}
 		
 		.tablet-screen({
