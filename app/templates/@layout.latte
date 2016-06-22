@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="{$basePath}/css/style.css">
 		<title>Example page</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 	</head>
 <body>
@@ -42,17 +43,6 @@
 	</header>
 	<main>
 	 {include content}
-		<!--<article>
-			<div id="welcome_text">
-				<div class="welcome-font"></div>
-				<div class="welcome-img">
-					<div class="house"></div>
-				</div>
-				<p>
-					Jelly beans gingerbread soufflé dragée topping pastry tootsie roll macaroon marzipan. Apple pie gingerbread toffee. Cake lemon drops sugar plum tiramisu jelly. Toffee carrot cake liquorice marzipan bear claw biscuit. Topping liquorice marshmallow fruitcake cookie. Danish fruitcake oat cake cotton candy jujubes. Oat cake tiramisu danish soufflé caramels. Jujubes pie chupa chups gingerbread powder lollipop cake dragée. Candy canes gummi bears sugar plum sweet cake bonbon. Cupcake wafer sweet. Gummies apple pie liquorice powder lemon drops jelly beans cheesecake tiramisu jujubes. Muffin jelly-o donut cake gingerbread marzipan oat cake jelly. Chocolate bar fruitcake brownie jujubes.
-				</p>
-			</div>
-		</article>-->
 	</main>
 	<footer>
 		<div id="footer_items">
@@ -87,5 +77,13 @@
 		</div>
 		<div id="created_by"> <p> created by 108.design  </p> </div>
 	</footer>
+	<script type="text/javascript" src="{$basePath}/js/script.js"></script>
+	<script type="text/javascript">
+
+		$('.myMenu ul li').hover(function() {
+			$(this).children('ul').stop(true, false, true).fadeToggle(300);
+		});
+
+	</script>
 </body>
 </html>

@@ -12,8 +12,8 @@ list($_b, $_g, $_l) = $template->initialize('cd3a71b20b', 'html')
 // block content
 //
 if (!function_exists($_b->blocks['content'][] = '_lb4e0e677987_content')) { function _lb4e0e677987_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-?>	<div class="grid">
-		<div class="action-archive"></div>
+?>	<div class="title-image action-archive"></div>
+	<div class="grid">
 		<a href="" class="col-1-6">2015</a>
 		<a href="" class="col-1-6">2014</a>
 		<a href="" class="col-1-6">2013</a>
