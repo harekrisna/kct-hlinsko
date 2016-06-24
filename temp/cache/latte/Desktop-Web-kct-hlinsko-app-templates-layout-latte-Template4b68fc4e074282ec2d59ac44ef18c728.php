@@ -28,7 +28,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 		<link href='https://fonts.googleapis.com/css?family=Lobster|PT+Sans|Josefin+Sans|Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
-		
+
 	</head>
 <body>
 	<header id="header" class="header"> 
@@ -63,9 +63,11 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 				</li>
 			</ul>
 		</nav>
-		<div id="actuality_panel">
+		<div id="dashboard_panel">
 			<p>
-				<span class="actual">Aktuality:</span> lemon drops sugar plum tiramisu jelly
+				<a class="actual-dashboard" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Dashboard:default"), ENT_COMPAT) ?>
+">Nástěnka:</a> 
+				<a href="" class="direct-link-dashboard">lemon drops sugar plum tiramisu jelly</a>
 			</p>
 		</div>
 	</header>
