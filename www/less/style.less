@@ -29,7 +29,7 @@
 
 
 * {
-	outline: 1px solid black;
+	outline: 0px solid black;
 }
 
 a {
@@ -43,6 +43,13 @@ body {
 	background-repeat: repeat;
 	font-size: 0.9em;
 
+	//font-family: 'Lobster', cursive;
+
+	//font-family: 'PT Sans', sans-serif;
+
+	//font-family: 'Josefin Sans', sans-serif;
+
+	font-family: 'Open Sans', sans-serif;
 }
 
 // Header
@@ -90,7 +97,7 @@ body {
 		list-style-type: none;
 		width: 90%;
 		height: 40px;
-		padding-left: 10%;
+		padding-left: 8%;
 		text-align: center;
 
 
@@ -183,7 +190,8 @@ body {
 				margin-top: 0;
 			});
 
-			.mobile-screen({text-overflow: ellipsis;
+			.mobile-screen({
+				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;
 				font-size: 1em;
@@ -212,9 +220,9 @@ main {
 
 		#welcome_text {
 			text-align: inherit;
-			width: 63%;
-			margin-left: 19%;
-			margin-top: 4%;
+			width: 75%;
+			margin-left: 12%;
+			margin-top: 2%;
 
 			.welcome-font {
 				width: 103px;
@@ -283,29 +291,29 @@ main {
 	}
 
 	.title-image {
-		width: 133px;
+		width: 240px;
 		height: 39px;
 		background-repeat: no-repeat;
 		background-position: left;
 		background-size: contain;
-		margin: 3% 0 0% 11%;
+		margin: 3% 0 2% 11%;
+		font-family: 'Lobster', cursive;
+		font-size: 2.3em;
+		color: @red;
 
-		&.action-archive{
-			background-image: url(../images/layout/action-archive.png);
-		};
-
-		&.photography-archive{
-			background-image: url(../images/layout/photography-archive.png);
-		};
 
 		.tablet-screen({
-			width: 110px;
+			width: 223px;
 			height: 35px;
+			font-size: 2em;
+			margin-left: 9%;
 		});
 
 		.mobile-screen({
-			width: 105px;
+			width: 223px;
 			height: 35px;
+			font-size: 1.6em;
+			margin-left: 5%;
 		});
 	};	
 
@@ -437,16 +445,13 @@ main {
 		.col-1-3 {
 			width: 26%;
 			min-width: 160px;
-			height: 190px;
+			height: 223px;
 			float: left;
-			margin-right: 8%;
-			margin-top: 3%;
-			margin-bottom: 4%;
+			margin: 3% 8% 4% 0;
 			text-align: center;
-			line-height: 30px;
+			line-height: 25px;
 			color: black;
-			font-weight: @bold-font; 
-			border: 1px solid @brown;
+			font-weight: 500;
 
 			&:nth-child(3) {
 				margin-right: 3%;
@@ -458,6 +463,14 @@ main {
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: contain;
+
+				.tablet-screen({
+					height: 80px;
+				});
+
+				.mobile-screen({
+					height: 45px;
+				});
 			}
 
 			#sponsor-1 {
@@ -476,16 +489,43 @@ main {
 				background-image: url(../images/layout/rychtar.png);
 			}
 
+			p.adress {
+				margin-top: 8px;
+			}
+
+			.tablet-screen({
+				height: 205px;
+				line-height: 21px;
+			});
+
+			.mobile-screen({
+				height: 130px;
+				line-height: 19px;
+			});
+
+			 @media (max-width: 390px) {
+				margin-left: 8%;
+    		}
 
 		};
 		
 		.tablet-screen({
-			height: 465px;
+			height: 240px;
+			width: 95%;
 		});
 
 		.mobile-screen({
-			height: 635px;
+			height: 360px;
+			width: 95%;
+			padding-left: 15%;
 		});
+
+		@media (max-width: 390px) {
+			height: 480px;
+			width: 95%;
+			padding-left: 15%;
+    		}
+		
 
 	}
 
@@ -507,6 +547,33 @@ main {
 			color: @red;
 		}
 	};
+
+
+//Section part for Photogalery archiv
+	.photogallery-archiv-list {
+		width: 90%;
+		min-height: 410px;
+		margin: 3% auto;
+
+		padding-left: 12%;
+
+		ul {
+			list-style: none;
+		}
+
+		li {
+			margin-bottom: 13px;
+			
+		}
+		
+		a {
+			color: black;
+
+			.folder-detail {
+				font-size: 0.9em;
+			}
+		}
+	}
 
 }
 

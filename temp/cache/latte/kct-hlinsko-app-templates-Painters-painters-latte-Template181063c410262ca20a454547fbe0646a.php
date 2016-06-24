@@ -18,19 +18,32 @@ if (!function_exists($_b->blocks['content'][] = '_lb18e68a3459_content')) { func
 			<div id="sponsor-1">
 				
 			</div>
-			<p class="adress">Městský úřad Hlinsko Poděbradovo náměstí 1 Hlinsko 539 01</p>
+			<p class="adress">
+				Městský úřad Hlinsko<br> 
+				Poděbradovo náměstí 1 <br>
+				Hlinsko 539 01 <br>
+				tel: 469 315 300</p>
 			<p class"www">hlinsko.cz</p>
 		</div>
 		<div class="col-1-3">
 			<div id="sponsor-2">
 			</div>
-			<p class="adress">Tylovo náměstí 272 539 01 Hlinsko tel: 469 326 212 fax: 469 311 666</p>
+			<p class="adress">
+				Tylovo náměstí 272<br> 
+				539 01 Hlinsko <br> 
+				tel: 469 326 212 <br> 
+				fax: 469 311 666
+			</p>
 			<p class"www">jednotahlinsko.cz</p>
 		</div>
 		<div class="col-1-3">
 			<div id="sponsor-3">
 			</div>
-			<p class="adress">Resslova 260 539 01 Hlinsko v Čechách tel: 469 311 609 fax: 469 311 383</p>
+			<p class="adress">
+			Resslova 260 <br> 
+			539 01 Hlinsko v Čechách <br> 
+			tel: 469 311 609 <br> 
+			fax: 469 311 383</p>
 			<p class"www">rychtar.cz</p>
 		</div>
 	</div>
@@ -39,7 +52,7 @@ if (!function_exists($_b->blocks['content'][] = '_lb18e68a3459_content')) { func
 			<li><a href="">Minibazar</a></li>
 			<li><a href="">Mlékárna Hlinsko</a></li>
 			<li><a href="">Gymnázium Hlinsko</a></li>
-			<li><a href="">Klempířské a pokrývačské práce pan Vosmik te: 606 533 410</a></li>
+			<li><a href="">Klempířské a pokrývačské práce pan Vosmik tel: 606 533 410</a></li>
 			<li><a href="">Jiří Štika, malíř a natěrač tel: 603 581 605</a></li>
 		</ul>
 	</div>

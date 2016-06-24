@@ -13,8 +13,9 @@ list($_b, $_g, $_l) = $template->initialize('087061bb57', 'html')
 //
 if (!function_exists($_b->blocks['content'][] = '_lbc245d67f1c_content')) { function _lbc245d67f1c_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
 ?><article>
+	<div class="title-image">Vítejte</div>
 	<div id="welcome_text">
-		<div class="welcome-font"></div>
+		
 		<div class="welcome-img">
 			<div class="house"></div>
 		</div>
@@ -46,6 +47,8 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 //
 // main template
 //
-if ($_l->extends) { ob_end_clean(); return $template->renderChildTemplate($_l->extends, get_defined_vars()); }
+?>
+
+<?php if ($_l->extends) { ob_end_clean(); return $template->renderChildTemplate($_l->extends, get_defined_vars()); }
 call_user_func(reset($_b->blocks['content']), $_b, get_defined_vars()) ; 
 }}

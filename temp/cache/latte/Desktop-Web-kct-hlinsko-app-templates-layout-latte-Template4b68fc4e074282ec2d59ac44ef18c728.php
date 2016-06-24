@@ -27,6 +27,8 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 		<title>Example page</title>
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+		<link href='https://fonts.googleapis.com/css?family=Lobster|PT+Sans|Josefin+Sans|Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
+		
 	</head>
 <body>
 	<header id="header" class="header"> 

@@ -12,9 +12,10 @@ list($_b, $_g, $_l) = $template->initialize('3ccdfcbbeb', 'html')
 // block content
 //
 if (!function_exists($_b->blocks['content'][] = '_lbac1784d363_content')) { function _lbac1784d363_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-?>	<div class="title-image photography-archive"></div>
+?>	<div class="title-image">Archiv fotografií</div>
 	<div class="grid">
-		<a href="" class="col-1-6">2015</a>
+		<a class="col-1-6" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("PhotogalleryDetailYear:default"), ENT_COMPAT) ?>
+">2015</a>
 		<a href="" class="col-1-6">2014</a>
 		<a href="" class="col-1-6">2013</a>
 		<a href="" class="col-1-6">2012</a>
