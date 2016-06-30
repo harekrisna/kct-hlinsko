@@ -28,7 +28,8 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 		<link href='https://fonts.googleapis.com/css?family=Lobster|PT+Sans|Josefin+Sans|Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
-
+		<link rel="stylesheet" href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/css/photoswipe.css">
+		<link rel="stylesheet" href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/css/default-skin.css"> 
 	</head>
 <body>
 	<header id="header" class="header"> 
@@ -108,6 +109,9 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 		<div id="created_by"> <p> created by 108.design  </p> </div>
 	</footer>
 	<script type="text/javascript" src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/script.js"></script>
+	
+	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/photoswipe.min.js"></script>  <!-- Core JS file -->
+	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/photoswipe-ui-default.min.js"></script>  <!-- UI JS file -->
 	<script type="text/javascript">
 
 		$('.myMenu ul li').hover(function() {

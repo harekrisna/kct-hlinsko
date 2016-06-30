@@ -7,7 +7,7 @@ a {
   text-decoration: none;
 }
 body {
-  max-width: 1024px;
+  max-width: 940px;
   margin: 0 auto;
   background-image: url(../images/layout/background_small.png);
   background-repeat: repeat;
@@ -589,14 +589,22 @@ main .grid-for-painters .col-1-3 p.adress {
     padding-left: 15%;
   }
 }
+main .www-link {
+  color: black;
+}
+main .www-link:hover {
+  color: #bf452c;
+}
 main .sponsor-links {
   width: 100%;
   height: 180px;
   text-align: center;
   list-style: none;
+  padding: 0 10px 0 10px;
 }
 main .sponsor-links ul {
   list-style: none;
+  line-height: 25px;
 }
 main .sponsor-links a {
   color: black;
@@ -690,7 +698,7 @@ footer #footer_items .soc-sites .social-top li a {
   color: #694f34;
   font-size: 1.4em;
   font-weight: 500;
-  line-height: 36px;
+  line-height: 34px;
   text-align: center;
   width: 100%;
   height: 100%;

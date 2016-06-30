@@ -23,7 +23,9 @@ if (!function_exists($_b->blocks['content'][] = '_lb18e68a3459_content')) { func
 				Poděbradovo náměstí 1 <br>
 				Hlinsko 539 01 <br>
 				tel: 469 315 300</p>
-			<p class"www">hlinsko.cz</p>
+			<p class"www">
+				<a href="" class="www-link">hlinsko.cz</a>
+			</p>
 		</div>
 		<div class="col-1-3">
 			<div id="sponsor-2">
@@ -34,7 +36,9 @@ if (!function_exists($_b->blocks['content'][] = '_lb18e68a3459_content')) { func
 				tel: 469 326 212 <br> 
 				fax: 469 311 666
 			</p>
-			<p class"www">jednotahlinsko.cz</p>
+			<p class"www">
+				<a href="" class="www-link">jednotahlinsko.cz</a>
+			</p>
 		</div>
 		<div class="col-1-3">
 			<div id="sponsor-3">
@@ -44,7 +48,9 @@ if (!function_exists($_b->blocks['content'][] = '_lb18e68a3459_content')) { func
 			539 01 Hlinsko v Čechách <br> 
 			tel: 469 311 609 <br> 
 			fax: 469 311 383</p>
-			<p class"www">rychtar.cz</p>
+			<p class"www">
+				<a href="" class="www-link">rychtar.cz</a>
+			</p>
 		</div>
 	</div>
 	<div class="sponsor-links">
