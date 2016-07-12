@@ -1,4 +1,5 @@
 @import "reboot.css";
+@import "backarrow.css";
 @import "photoswipe.css";
 * {
   outline: 0px solid black;
@@ -14,10 +15,12 @@ body {
   font-size: 0.9em;
   font-family: 'Open Sans', sans-serif;
 }
+/* - - - - - - - - - - -  HEADER SECTION  - - - - - - - - - - - */
 .header {
   height: 261px;
   width: 100%;
   background-color: white;
+  /* - - - - - - - - - - -  DASHBOARD SECTION - - - - - - - - - - - */
 }
 @media (min-width: 640px) and (max-width: 940px) {
   .header {
@@ -68,7 +71,7 @@ body {
 .header ul.main-menu {
   list-style-type: none;
   width: 90%;
-  height: 40px;
+  min-height: 40px;
   padding-left: 10%;
   text-align: left;
 }
@@ -296,6 +299,7 @@ body {
     margin: 0 0 0 3%;
   }
 }
+/* - - - - - - - - - - -  MAIN SECTION  - - - - - - - - - - - */
 main {
   background-color: white;
   width: 100%;
@@ -303,6 +307,8 @@ main {
   float: left;
   padding-bottom: 5px;
   margin: 0 auto;
+  /* - - - - - - - - - - -  Special grid section for "PAINTERS"  - - - - - - - - - - - */
+  /* - - - - - - - - - - -  SECTION PART FOR PHOTOGALLERY SECTION  - - - - - - - - - - - */
 }
 main article {
   width: 100%;
@@ -752,6 +758,7 @@ main .archiv-list a {
 main .archiv-list a .folder-detail {
   font-size: 0.9em;
 }
+/* - - - - - - - - - - -  FOOTER SECTION  - - - - - - - - - - - */
 footer {
   width: 100%;
   min-height: 130px;
