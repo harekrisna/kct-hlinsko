@@ -16,29 +16,44 @@
 		<div id="header_panel">
 			<img class="head" src="{$basePath}/images/layout/logo.png" alt="logo_hlinsko">
 		</div>
+
 		<nav id="menu_list">
 			<ul class="main-menu">
-				<li>
-					<a n:href="Homepage:default" class="active" title="">domů</a>
+				<li class="wrapper">
+					<a n:href="Homepage:default" class="active first after" title="">domů</a>
 				</li>
-				<li>
-					<a n:href="ActivitiesPlans:default" title="">plán akcí</a>
+				<li class="wrapper">
+					<a n:href="ActivitiesPlans:default" class="first after" title="">plán akcí</a>
 				</li>
-				<li>
-					<a n:href="Photogallery:default" title="">fotogalerie</a>
+				<li class="wrapper">
+					<a n:href="Photogallery:default" class="first after" title="">fotogalerie</a>
 				</li>
-				<li class="large">
-					<a n:href="Painters:default" title="">krajem malířů <span class="vysocina">vysočiny</span></a>
+				<li class="wrapper">
+					<a n:href="Painters:default" class="first after" title="">krajem malířů <span class="vysocina">vysočiny</span></a>
 				</li>
-				<li>
-					<a n:href="Documents:default" title="">dokumenty</a>
+				<li class="wrapper">
+					<a n:href="Documents:default" class="first after" title="">dokumenty</a>
 				</li>
-				<li>
-					<a n:href="Links:default" title="">odkazy</a>
+				<li class="wrapper">
+					<a n:href="Links:default" class="first after" title="">odkazy</a>
 				</li>
 			</ul>
 		</nav>
 		<div id="dashboard_panel">
+			<div class="box_add_menu">
+				<div class="addMenuList">
+					<ul class="dropMenuList">
+						<li><a href="">Navigace</a>
+							<ul>
+								<li><a href="">Termíny</a></li>
+				    			<li><a href="">Události</a></li>
+				    			<li><a href="">Připomínky</a></li>
+				    			<li><a href="">Kontakt</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
 			<p>
 				<a n:href="Dashboard:default" class="actual-dashboard">Nástěnka:</a> 
 				<a href="" class="direct-link-dashboard">lemon drops sugar plum tiramisu jelly</a>
@@ -74,12 +89,12 @@
 				<p>
 					&copy 1975 - 2016 KČT Hlinsko,<br>
 					design &copy 2016, rasika.sks <br>
-					created by VityMo & Freezy
+					created by <a href="">Break / design</a>
 				</p>
 			</div>
 			<div class="kct-logo"></div>
 		</div>
-		<div id="created_by"> <p> created by 108.design  </p> </div>
+		<div id="created_by"> <p> created by <a href="">break / design</a>  </p> </div>
 	</footer>
 	<script type="text/javascript" src="{$basePath}/js/script.js"></script>
 	
@@ -90,6 +105,13 @@
 		$('.myMenu ul li').hover(function() {
 			$(this).children('ul').stop(true, false, true).fadeToggle(300);
 		});
+
+
+		$('.addMenuList ul li').hover(function() {
+			$(this).children('ul').stop(true, false, true).fadeToggle(300);
+		});
+
+
 
 	</script>
 </body>

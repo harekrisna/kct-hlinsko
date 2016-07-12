@@ -36,35 +36,50 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 		<div id="header_panel">
 			<img class="head" src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/layout/logo.png" alt="logo_hlinsko">
 		</div>
+
 		<nav id="menu_list">
 			<ul class="main-menu">
-				<li>
-					<a class="active" title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Homepage:default"), ENT_COMPAT) ?>
+				<li class="wrapper">
+					<a class="active first after" title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Homepage:default"), ENT_COMPAT) ?>
 ">domů</a>
 				</li>
-				<li>
-					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("ActivitiesPlans:default"), ENT_COMPAT) ?>
+				<li class="wrapper">
+					<a class="first after" title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("ActivitiesPlans:default"), ENT_COMPAT) ?>
 ">plán akcí</a>
 				</li>
-				<li>
-					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Photogallery:default"), ENT_COMPAT) ?>
+				<li class="wrapper">
+					<a class="first after" title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Photogallery:default"), ENT_COMPAT) ?>
 ">fotogalerie</a>
 				</li>
-				<li class="large">
-					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Painters:default"), ENT_COMPAT) ?>
+				<li class="wrapper">
+					<a class="first after" title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Painters:default"), ENT_COMPAT) ?>
 ">krajem malířů <span class="vysocina">vysočiny</span></a>
 				</li>
-				<li>
-					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Documents:default"), ENT_COMPAT) ?>
+				<li class="wrapper">
+					<a class="first after" title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Documents:default"), ENT_COMPAT) ?>
 ">dokumenty</a>
 				</li>
-				<li>
-					<a title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Links:default"), ENT_COMPAT) ?>
+				<li class="wrapper">
+					<a class="first after" title="" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Links:default"), ENT_COMPAT) ?>
 ">odkazy</a>
 				</li>
 			</ul>
 		</nav>
 		<div id="dashboard_panel">
+			<div class="box_add_menu">
+				<div class="addMenuList">
+					<ul class="dropMenuList">
+						<li><a href="">Navigace</a>
+							<ul>
+								<li><a href="">Termíny</a></li>
+				    			<li><a href="">Události</a></li>
+				    			<li><a href="">Připomínky</a></li>
+				    			<li><a href="">Kontakt</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
 			<p>
 				<a class="actual-dashboard" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Dashboard:default"), ENT_COMPAT) ?>
 ">Nástěnka:</a> 
@@ -101,12 +116,12 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 				<p>
 					&copy 1975 - 2016 KČT Hlinsko,<br>
 					design &copy 2016, rasika.sks <br>
-					created by VityMo & Freezy
+					created by <a href="">Break / design</a>
 				</p>
 			</div>
 			<div class="kct-logo"></div>
 		</div>
-		<div id="created_by"> <p> created by 108.design  </p> </div>
+		<div id="created_by"> <p> created by <a href="">break / design</a>  </p> </div>
 	</footer>
 	<script type="text/javascript" src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/script.js"></script>
 	
@@ -117,6 +132,13 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 		$('.myMenu ul li').hover(function() {
 			$(this).children('ul').stop(true, false, true).fadeToggle(300);
 		});
+
+
+		$('.addMenuList ul li').hover(function() {
+			$(this).children('ul').stop(true, false, true).fadeToggle(300);
+		});
+
+
 
 	</script>
 </body>
