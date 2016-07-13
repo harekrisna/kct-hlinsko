@@ -1,7 +1,7 @@
 
 $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
 
-var amountScrolled = 300;
+var amountScrolled = 200;
 
 $(window).scroll(function() {
 	if ( $(window).scrollTop() > amountScrolled ) {
@@ -17,3 +17,4 @@ $('a.back-to-top').click(function() {
 	}, 700);
 	return false;
 });
+

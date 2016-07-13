@@ -37,7 +37,6 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 		<div id="header_panel">
 			<img class="head" src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/layout/logo.png" alt="logo_hlinsko">
 		</div>
-
 		<nav id="menu_list">
 			<ul class="main-menu">
 				<li class="wrapper">
@@ -70,7 +69,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 			<div class="box_add_menu">
 				<div class="addMenuList">
 					<ul class="dropMenuList">
-						<li><a href="">Navigace</a>
+						<li class="wrapper-white"><a href="" class="first after">Navigace</a>
 							<ul>
 								<li><a href="">Termíny</a></li>
 				    			<li><a href="">Události</a></li>
@@ -100,7 +99,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 						sdílet
 					</p>
 				    <ul>
-				        <li class="facebook"><a href="#self">f</a></li>
+				    	<li class="facebook"><a href="#self">f</a></li>
 				        <li class="twitter"><a href="#self">t</a></li>
 				        <li class="google"><a href="#self">g</a></li>
 				    </ul>
@@ -134,12 +133,9 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 			$(this).children('ul').stop(true, false, true).fadeToggle(300);
 		});
 
-
 		$('.addMenuList ul li').hover(function() {
 			$(this).children('ul').stop(true, false, true).fadeToggle(300);
 		});
-
-
 
 	</script>
 </body>

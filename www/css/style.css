@@ -1,6 +1,7 @@
 @import "reboot.css";
 @import "backarrow.css";
 @import "photoswipe.css";
+/* - - - - - - - - - - - DEFINITION  - - - - - - - - - - - */
 * {
   outline: 0px solid black;
 }
@@ -248,7 +249,6 @@ body {
 .header #dashboard_panel .box_add_menu .dropMenuList > li > ul > li > ul {
   text-align: left;
   display: none;
-  background: darkcyan;
   position: absolute;
   left: 100%;
   top: 0;

@@ -1,11 +1,13 @@
 
-// Complete default reset for all browsers
-@import "reboot.css";
 
-@import "backarrow.css";
+/* - - - - - - - - - - - DEFINITION  - - - - - - - - - - - */
+@import "reboot.css"; // Complete default reset for all browsers
 
-// Photoswipe styles
-@import "photoswipe.css";
+@import "backarrow.css"; // External file for fluid backarrow 
+
+@import "photoswipe.css"; // Photoswipe styles
+
+
 // Colors
 @brown: #694F34;
 @brownfont: #D3CDBF;
@@ -219,6 +221,8 @@ body {
 				width:100%;
 			}
 		}
+
+	
 	// Hover effect finish	 
 
 		.tablet-screen({ 
@@ -253,29 +257,18 @@ body {
 
 			.dropMenuList {
 				ul {
-
-						list-style: none;
-						margin: 0;
-						padding: 0;
-						box-shadow: 0px 2px 8px -1px rgba(191,189,191,1);
-						-webkit-box-shadow: 0px 2px 8px -1px rgba(191,189,191,1);
-						-moz-box-shadow: 0px 2px 8px -1px rgba(191,189,191,1);
-
-
-
-					};
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					box-shadow: 0px 2px 8px -1px rgba(191,189,191,1);
+					-webkit-box-shadow: 0px 2px 8px -1px rgba(191,189,191,1);
+					-moz-box-shadow: 0px 2px 8px -1px rgba(191,189,191,1);
+				};
 
 					li {
 						position: relative;
 						width: 100%;
 						padding-bottom: 12px;
-
-						&:first-child {
-
-						}
-
-
-
 					};
 
 					a {
@@ -285,9 +278,7 @@ body {
 
 						&:hover {
 							color: @red;
-
 						};
-
 					};
 
 					> li {
@@ -323,7 +314,6 @@ body {
 							> li > ul {
 								text-align: left;
 								display: none;
-								background: darkcyan;
 								position: absolute;
 								left: 100%;
 								top: 0;
