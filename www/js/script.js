@@ -1,6 +1,3 @@
-
-$('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
-
 var amountScrolled = 200;
 
 $(window).scroll(function() {
@@ -18,3 +15,7 @@ $('a.back-to-top').click(function() {
 	return false;
 });
 
+
+$('a.back-to-history').click(function() {
+	window.history.back();
+});

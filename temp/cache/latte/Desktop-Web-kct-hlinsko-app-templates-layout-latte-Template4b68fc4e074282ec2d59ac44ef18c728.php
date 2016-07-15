@@ -33,6 +33,7 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 	</head>
 <body>
 	<a href="#" class="back-to-top">Back to Top</a>
+	<a href="#" class="back-to-history">Back to Top</a>
 	<header id="header" class="header"> 
 		<div id="header_panel">
 			<img class="head" src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/images/layout/logo.png" alt="logo_hlinsko">

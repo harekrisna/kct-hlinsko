@@ -1,19 +1,41 @@
 a.back-to-top {
-	display: none;
+	display: block;
 	width: 50px;
 	height: 50px;
 	text-indent: -9999px;
 	position: fixed;
 	z-index: 999;
 	left: 20px;
-	bottom: 55px;
-	background: rgba(191, 69, 44, 0.8) url(../images/layout/fluid-arrow.png) no-repeat center 40% / 2.2em;
+	bottom: 75px;
+	background: rgba(191, 69, 44, 0.7) url(../images/layout/fluid-arrow.png) no-repeat center 40% / 2.2em;
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 	border-radius: 4px;
+}
 
-	
-};
+a.back-to-history {
+	display: block;
+	width: 50px;
+	height: 50px;
+	text-indent: -9999px;
+	position: fixed;
+	z-index: 999;
+	left: 20px;
+	bottom: 15px;
+	background: rgba(191, 69, 44, 0.7) url(../images/layout/fluid-arrow.png) no-repeat center 40% / 2.2em;
+	transform: rotate(270deg);
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 4px;
+}
 
+@media (min-width: 640px) and (max-width: 940px) {
+	a.back-to-top { display: none !important}
+	a.back-to-history { display: none}
+}
 
+@media (max-width: 640px) {
+    a.back-to-top { display: none !important}
+    a.back-to-history { display: none}
+}
 	

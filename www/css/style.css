@@ -12,6 +12,7 @@ body {
   max-width: 940px;
   margin: 0 auto;
   background-image: url(../images/layout/background_small.png);
+  background-attachment: fixed;
   background-repeat: repeat;
   font-size: 0.9em;
   font-family: 'Open Sans', sans-serif;
@@ -388,7 +389,7 @@ main .title-image {
   background-repeat: no-repeat;
   background-position: left;
   background-size: contain;
-  margin: 3% 0 2% 11%;
+  margin: 3% 0 2% 10%;
   font-family: 'Lobster', cursive;
   font-size: 2.3em;
   color: #bf452c;
@@ -413,7 +414,7 @@ main .grid {
   width: 81%;
   height: 380px;
   margin: 0 auto;
-  padding-left: 4%;
+  padding-left: 1%;
 }
 main .grid a.col-1-6 {
   width: 12%;
@@ -504,7 +505,7 @@ main .grid-for-painters {
   width: 81%;
   height: 380px;
   margin: 0 auto;
-  padding-left: 4%;
+  padding-left: 1%;
   height: 320px;
 }
 main .grid-for-painters a.col-1-6 {
@@ -853,12 +854,12 @@ footer #footer_items .soc-sites .social-top li :hover {
 }
 @media (min-width: 640px) and (max-width: 940px) {
   footer #footer_items .soc-sites {
-    margin: 0 6% 0 8%;
+    margin: 13px 12% 0 8%;
   }
 }
 @media (max-width: 640px) {
   footer #footer_items .soc-sites {
-    margin: 0 6% 0 10%;
+    margin: 13px 6% 0 10%;
   }
 }
 footer #footer_items .kct-adress {
@@ -875,7 +876,7 @@ footer #footer_items .kct-adress p {
 @media (min-width: 640px) and (max-width: 940px) {
   footer #footer_items .kct-adress {
     width: 45%;
-    margin: 10px 6% 0 0;
+    margin: 13px 0% 0 0;
   }
 }
 @media (max-width: 640px) {
@@ -938,6 +939,12 @@ footer #created_by {
 }
 footer #created_by p {
   color: #d3cdbf;
+}
+footer #created_by p a {
+  color: #d3cdbf;
+}
+footer #created_by p a:hover {
+  color: white;
 }
 @media (min-width: 640px) and (max-width: 940px) {
   footer #created_by {

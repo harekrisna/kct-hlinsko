@@ -45,6 +45,7 @@ body {
 	max-width: 940px;
 	margin: 0 auto;
 	background-image: url(../images/layout/background_small.png);
+	background-attachment: fixed;
 	background-repeat: repeat;
 	font-size: 0.9em;
 
@@ -472,7 +473,7 @@ main {
 		background-repeat: no-repeat;
 		background-position: left;
 		background-size: contain;
-		margin: 3% 0 2% 11%;
+		margin: 3% 0 2% 10%;
 		font-family: 'Lobster', cursive;
 		font-size: 2.3em;
 		color: @red;
@@ -497,7 +498,7 @@ main {
 	width: 81%;
 	height: 380px;
 	margin: 0 auto;
-	padding-left: 4%;
+	padding-left: 1%;
 
 
 		a.col-1-6 {
@@ -876,11 +877,11 @@ footer {
 			}
 
 			.tablet-screen({
-				margin: 0 6% 0 8%;
+				margin: 13px 12% 0 8%;
 			});
 
 			.mobile-screen({
-				margin: 0 6% 0 10%;
+				margin: 13px 6% 0 10%;
 			});
 		}
 
@@ -898,7 +899,7 @@ footer {
 
 			.tablet-screen({
 				width: 45%;
-				margin: 10px 6% 0 0;
+				margin: 13px 0% 0 0;
 
 
 			});
@@ -964,6 +965,14 @@ footer {
 
 		p {
 			color: @brownfont;
+
+			a {
+				color: @brownfont;
+
+				&:hover {
+					color: white;
+				}
+			}
 		}
 		
 		.tablet-screen({
