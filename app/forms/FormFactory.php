@@ -6,15 +6,17 @@ use Nette;
 use Nette\Application\UI\Form;
 
 
-class FormFactory extends Nette\Object
+class FormFactory
 {
+	use Nette\SmartObject;
 
 	/**
 	 * @return Form
 	 */
 	public function create()
 	{
-		return new Form;
+		$form = new Form;
+		return $form;
 	}
 
 }

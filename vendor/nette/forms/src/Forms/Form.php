@@ -8,34 +8,37 @@
 namespace Nette\Forms;
 
 use Nette;
+use Nette\Utils\Html;
 
 
 /**
  * Creates, validates and renders HTML forms.
  *
  * @property-read array $errors
- * @property-read Nette\Utils\Html $elementPrototype
+ * @property-read array $ownErrors
+ * @property-read Html $elementPrototype
+ * @property-read IFormRenderer $renderer
+ * @property string $action
+ * @property string $method
  */
 class Form extends Container implements Nette\Utils\IHtmlString
 {
 	/** validator */
-	const EQUAL = ':equal',
+	const
+		EQUAL = ':equal',
 		IS_IN = self::EQUAL,
 		NOT_EQUAL = ':notEqual',
 		IS_NOT_IN = self::NOT_EQUAL,
 		FILLED = ':filled',
 		BLANK = ':blank',
 		REQUIRED = self::FILLED,
-		VALID = ':valid';
+		VALID = ':valid',
 
-	/** @deprecated CSRF protection */
-	const PROTECTION = Controls\CsrfProtection::PROTECTION;
+		// button
+		SUBMITTED = ':submitted',
 
-	// button
-	const SUBMITTED = ':submitted';
-
-	// text
-	const MIN_LENGTH = ':minLength',
+		// text
+		MIN_LENGTH = ':minLength',
 		MAX_LENGTH = ':maxLength',
 		LENGTH = ':length',
 		EMAIL = ':email',
@@ -46,26 +49,31 @@ class Form extends Container implements Nette\Utils\IHtmlString
 		FLOAT = ':float',
 		MIN = ':min',
 		MAX = ':max',
-		RANGE = ':range';
+		RANGE = ':range',
 
-	// multiselect
-	const COUNT = self::LENGTH;
+		// multiselect
+		COUNT = self::LENGTH,
 
-	// file upload
-	const MAX_FILE_SIZE = ':fileSize',
+		// file upload
+		MAX_FILE_SIZE = ':fileSize',
 		MIME_TYPE = ':mimeType',
 		IMAGE = ':image',
 		MAX_POST_SIZE = ':maxPostSize';
 
+	/** @deprecated CSRF protection */
+	const PROTECTION = Controls\CsrfProtection::PROTECTION;
+
 	/** method */
-	const GET = 'get',
+	const
+		GET = 'get',
 		POST = 'post';
 
 	/** submitted data types */
-	const DATA_TEXT = 1;
-	const DATA_LINE = 2;
-	const DATA_FILE = 3;
-	const DATA_KEYS = 8;
+	const
+		DATA_TEXT = 1,
+		DATA_LINE = 2,
+		DATA_FILE = 3,
+		DATA_KEYS = 8;
 
 	/** @internal tracker ID */
 	const TRACKER_ID = '_form_';
@@ -82,13 +90,16 @@ class Form extends Container implements Nette\Utils\IHtmlString
 	/** @var callable[]  function (Form $sender); Occurs when the form is submitted */
 	public $onSubmit;
 
+	/** @var callable[]  function (Form $sender); Occurs before the form is rendered */
+	public $onRender;
+
 	/** @var mixed or NULL meaning: not detected yet */
 	private $submittedBy;
 
 	/** @var array */
 	private $httpData;
 
-	/** @var Nette\Utils\Html  <form> element */
+	/** @var Html  <form> element */
 	private $element;
 
 	/** @var IFormRenderer */
@@ -98,13 +109,16 @@ class Form extends Container implements Nette\Utils\IHtmlString
 	private $translator;
 
 	/** @var ControlGroup[] */
-	private $groups = array();
+	private $groups = [];
 
 	/** @var array */
-	private $errors = array();
+	private $errors = [];
 
 	/** @var Nette\Http\IRequest  used only by standalone form */
 	public $httpRequest;
+
+	/** @var bool */
+	private $beforeRenderCalled;
 
 
 	/**
@@ -150,9 +164,9 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Returns self.
-	 * @return self
+	 * @return static
 	 */
-	public function getForm($need = TRUE)
+	public function getForm($throw = TRUE)
 	{
 		return $this;
 	}
@@ -160,8 +174,8 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Sets form's action.
-	 * @param  mixed URI
-	 * @return self
+	 * @param  string|object
+	 * @return static
 	 */
 	public function setAction($url)
 	{
@@ -172,7 +186,7 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Returns form's action.
-	 * @return mixed URI
+	 * @return mixed
 	 */
 	public function getAction()
 	{
@@ -181,9 +195,9 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 
 	/**
-	 * Sets form's method.
-	 * @param  string get | post
-	 * @return self
+	 * Sets form's method GET or POST.
+	 * @param  string
+	 * @return static
 	 */
 	public function setMethod($method)
 	{
@@ -197,7 +211,7 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Returns form's method.
-	 * @return string get | post
+	 * @return string
 	 */
 	public function getMethod()
 	{
@@ -206,20 +220,33 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 
 	/**
+	 * Checks if the request method is the given one.
+	 * @param  string
+	 * @return bool
+	 */
+	public function isMethod($method)
+	{
+		return strcasecmp($this->getElementPrototype()->method, $method) === 0;
+	}
+
+
+	/**
 	 * Cross-Site Request Forgery (CSRF) form protection.
 	 * @param  string
 	 * @return Controls\CsrfProtection
 	 */
-	public function addProtection($message = NULL)
+	public function addProtection($errorMessage = NULL)
 	{
-		return $this[self::PROTECTOR_ID] = new Controls\CsrfProtection($message);
+		$control = new Controls\CsrfProtection($errorMessage);
+		$this->addComponent($control, self::PROTECTOR_ID, key($this->getComponents()));
+		return $control;
 	}
 
 
 	/**
 	 * Adds fieldset group to the form.
-	 * @param  string  caption
-	 * @param  bool    set this group as current
+	 * @param  string
+	 * @param  bool
 	 * @return ControlGroup
 	 */
 	public function addGroup($caption = NULL, $setAsCurrent = TRUE)
@@ -242,7 +269,7 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Removes fieldset group from form.
-	 * @param  string|ControlGroup
+	 * @param  string|int|ControlGroup
 	 * @return void
 	 */
 	public function removeGroup($name)
@@ -278,8 +305,8 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Returns the specified group.
-	 * @param  string  name
-	 * @return ControlGroup
+	 * @param  string|int
+	 * @return ControlGroup|NULL
 	 */
 	public function getGroup($name)
 	{
@@ -292,7 +319,7 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Sets translate adapter.
-	 * @return self
+	 * @return static
 	 */
 	public function setTranslator(Nette\Localization\ITranslator $translator = NULL)
 	{
@@ -349,7 +376,8 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Sets the submittor control.
-	 * @return self
+	 * @return static
+	 * @internal
 	 */
 	public function setSubmittedBy(ISubmitterControl $by = NULL)
 	{
@@ -360,6 +388,8 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Returns submitted HTTP data.
+	 * @param  int
+	 * @param  string
 	 * @return mixed
 	 */
 	public function getHttpData($type = NULL, $htmlName = NULL)
@@ -455,6 +485,9 @@ class Form extends Container implements Nette\Utils\IHtmlString
 	/********************* validation ****************d*g**/
 
 
+	/**
+	 * @return void
+	 */
 	public function validate(array $controls = NULL)
 	{
 		$this->cleanErrors();
@@ -469,13 +502,13 @@ class Form extends Container implements Nette\Utils\IHtmlString
 	/** @internal */
 	public function validateMaxPostSize()
 	{
-		if (!$this->submittedBy || strcasecmp($this->getMethod(), 'POST') || empty($_SERVER['CONTENT_LENGTH'])) {
+		if (!$this->submittedBy || !$this->isMethod('post') || empty($_SERVER['CONTENT_LENGTH'])) {
 			return;
 		}
 		$maxSize = ini_get('post_max_size');
-		$units = array('k' => 10, 'm' => 20, 'g' => 30);
+		$units = ['k' => 10, 'm' => 20, 'g' => 30];
 		if (isset($units[$ch = strtolower(substr($maxSize, -1))])) {
-			$maxSize <<= $units[$ch];
+			$maxSize = (int) $maxSize << $units[$ch];
 		}
 		if ($maxSize > 0 && $maxSize < $_SERVER['CONTENT_LENGTH']) {
 			$this->addError(sprintf(Validator::$messages[self::MAX_FILE_SIZE], $maxSize));
@@ -485,7 +518,7 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Adds global error message.
-	 * @param  string  error message
+	 * @param  string|object
 	 * @return void
 	 */
 	public function addError($message)
@@ -518,7 +551,7 @@ class Form extends Container implements Nette\Utils\IHtmlString
 	 */
 	public function cleanErrors()
 	{
-		$this->errors = array();
+		$this->errors = [];
 	}
 
 
@@ -537,12 +570,12 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Returns form's HTML element template.
-	 * @return Nette\Utils\Html
+	 * @return Html
 	 */
 	public function getElementPrototype()
 	{
 		if (!$this->element) {
-			$this->element = Nette\Utils\Html::el('form');
+			$this->element = Html::el('form');
 			$this->element->action = ''; // RFC 1808 -> empty uri means 'this'
 			$this->element->method = self::POST;
 		}
@@ -552,7 +585,7 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 	/**
 	 * Sets form renderer.
-	 * @return self
+	 * @return static
 	 */
 	public function setRenderer(IFormRenderer $renderer = NULL)
 	{
@@ -575,14 +608,38 @@ class Form extends Container implements Nette\Utils\IHtmlString
 
 
 	/**
+	 * @return void
+	 */
+	protected function beforeRender()
+	{
+	}
+
+
+	/**
+	 * Must be called before form is rendered and render() is not used.
+	 * @return void
+	 */
+	public function fireRenderEvents()
+	{
+		if (!$this->beforeRenderCalled) {
+			foreach ($this->getComponents(TRUE, Controls\BaseControl::class) as $control) {
+				$control->getRules()->check();
+			}
+			$this->beforeRenderCalled = TRUE;
+			$this->beforeRender();
+			$this->onRender($this);
+		}
+	}
+
+
+	/**
 	 * Renders form.
 	 * @return void
 	 */
-	public function render()
+	public function render(...$args)
 	{
-		$args = func_get_args();
-		array_unshift($args, $this);
-		echo call_user_func_array(array($this->getRenderer(), 'render'), $args);
+		$this->fireRenderEvents();
+		echo $this->getRenderer()->render($this, ...$args);
 	}
 
 
@@ -594,6 +651,7 @@ class Form extends Container implements Nette\Utils\IHtmlString
 	public function __toString()
 	{
 		try {
+			$this->fireRenderEvents();
 			return $this->getRenderer()->render($this);
 
 		} catch (\Throwable $e) {
@@ -629,8 +687,8 @@ class Form extends Container implements Nette\Utils\IHtmlString
 	 */
 	public function getToggles()
 	{
-		$toggles = array();
-		foreach ($this->getControls() as $control) {
+		$toggles = [];
+		foreach ($this->getComponents(TRUE, Controls\BaseControl::class) as $control) {
 			$toggles = $control->getRules()->getToggleStates($toggles);
 		}
 		return $toggles;

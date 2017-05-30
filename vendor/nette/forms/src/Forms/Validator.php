@@ -15,10 +15,12 @@ use Nette\Utils\Validators;
 /**
  * Common validators.
  */
-class Validator extends Nette\Object
+class Validator
 {
+	use Nette\StaticClass;
+
 	/** @var array */
-	public static $messages = array(
+	public static $messages = [
 		Form::PROTECTION => 'Your session has expired. Please return to the home page and try again.',
 		Form::EQUAL => 'Please enter %s.',
 		Form::NOT_EQUAL => 'This value should not be %s.',
@@ -39,14 +41,15 @@ class Validator extends Nette\Object
 		Form::MIME_TYPE => 'The uploaded file is not in the expected format.',
 		Form::IMAGE => 'The uploaded file must be image in format JPEG, GIF or PNG.',
 		Controls\SelectBox::VALID => 'Please select a valid option.',
-	);
+		Controls\UploadControl::VALID => 'An error occurred during file upload.',
+	];
 
 
 	/** @internal */
 	public static function formatMessage(Rule $rule, $withValue = TRUE)
 	{
 		$message = $rule->message;
-		if ($message instanceof Nette\Utils\Html) {
+		if ($message instanceof Nette\Utils\IHtmlString) {
 			return $message;
 
 		} elseif ($message === NULL && is_string($rule->validator) && isset(static::$messages[$rule->validator])) {
@@ -64,11 +67,11 @@ class Validator extends Nette\Object
 			static $i = -1;
 			switch ($m[1]) {
 				case 'name': return $rule->control->getName();
-				case 'label': return $rule->control->translate($rule->control->caption);
+				case 'label': return $rule->control instanceof Controls\BaseControl ? $rule->control->translate($rule->control->caption) : NULL;
 				case 'value': return $withValue ? $rule->control->getValue() : $m[0];
 				default:
-					$args = is_array($rule->arg) ? $rule->arg : array($rule->arg);
-					$i = (int) $m[1] ? $m[1] - 1 : $i + 1;
+					$args = is_array($rule->arg) ? $rule->arg : [$rule->arg];
+					$i = (int) $m[1] ? (int) $m[1] - 1 : $i + 1;
 					return isset($args[$i]) ? ($args[$i] instanceof IControl ? ($withValue ? $args[$i]->getValue() : "%$i") : $args[$i]) : '';
 			}
 		}, $message);
@@ -86,8 +89,8 @@ class Validator extends Nette\Object
 	public static function validateEqual(IControl $control, $arg)
 	{
 		$value = $control->getValue();
-		foreach ((is_array($value) ? $value : array($value)) as $val) {
-			foreach ((is_array($arg) ? $arg : array($arg)) as $item) {
+		foreach ((is_array($value) ? $value : [$value]) as $val) {
+			foreach ((is_array($arg) ? $arg : [$arg]) as $item) {
 				if ((string) $val === (string) $item) {
 					continue 2;
 				}
@@ -105,6 +108,16 @@ class Validator extends Nette\Object
 	public static function validateNotEqual(IControl $control, $arg)
 	{
 		return !static::validateEqual($control, $arg);
+	}
+
+
+	/**
+	 * Returns argument.
+	 * @return bool
+	 */
+	public static function validateStatic(IControl $control, $arg)
+	{
+		return $arg;
 	}
 
 
@@ -132,7 +145,7 @@ class Validator extends Nette\Object
 	 * Is control valid?
 	 * @return bool
 	 */
-	public static function validateValid(IControl $control)
+	public static function validateValid(Controls\BaseControl $control)
 	{
 		return $control->getRules()->validate();
 	}
@@ -140,65 +153,80 @@ class Validator extends Nette\Object
 
 	/**
 	 * Is a control's value number in specified range?
+	 * @param  IControl
+	 * @param  array
 	 * @return bool
 	 */
 	public static function validateRange(IControl $control, $range)
 	{
+		$range = array_map(function ($v) {
+			return $v === '' ? NULL : $v;
+		}, $range);
 		return Validators::isInRange($control->getValue(), $range);
 	}
 
 
 	/**
 	 * Is a control's value number greater than or equal to the specified minimum?
+	 * @param  IControl
+	 * @param  float
 	 * @return bool
 	 */
 	public static function validateMin(IControl $control, $minimum)
 	{
-		return Validators::isInRange($control->getValue(), array($minimum, NULL));
+		return Validators::isInRange($control->getValue(), [$minimum === '' ? NULL : $minimum, NULL]);
 	}
 
 
 	/**
 	 * Is a control's value number less than or equal to the specified maximum?
+	 * @param  IControl
+	 * @param  float
 	 * @return bool
 	 */
 	public static function validateMax(IControl $control, $maximum)
 	{
-		return Validators::isInRange($control->getValue(), array(NULL, $maximum));
+		return Validators::isInRange($control->getValue(), [NULL, $maximum === '' ? NULL : $maximum]);
 	}
 
 
 	/**
 	 * Count/length validator. Range is array, min and max length pair.
+	 * @param  IControl
+	 * @param  array|int
 	 * @return bool
 	 */
 	public static function validateLength(IControl $control, $range)
 	{
 		if (!is_array($range)) {
-			$range = array($range, $range);
+			$range = [$range, $range];
 		}
 		$value = $control->getValue();
-		return Validators::isInRange(is_array($value) ? count($value) : Strings::length($value), $range);
+		return Validators::isInRange(is_array($value) ? count($value) : Strings::length((string) $value), $range);
 	}
 
 
 	/**
 	 * Has control's value minimal count/length?
+	 * @param  IControl
+	 * @param  int
 	 * @return bool
 	 */
 	public static function validateMinLength(IControl $control, $length)
 	{
-		return static::validateLength($control, array($length, NULL));
+		return static::validateLength($control, [$length, NULL]);
 	}
 
 
 	/**
 	 * Is control's value count/length in limit?
+	 * @param  IControl
+	 * @param  int
 	 * @return bool
 	 */
 	public static function validateMaxLength(IControl $control, $length)
 	{
-		return static::validateLength($control, array(NULL, $length));
+		return static::validateLength($control, [NULL, $length]);
 	}
 
 
@@ -241,6 +269,7 @@ class Validator extends Nette\Object
 
 	/**
 	 * Matches control's value regular expression?
+	 * @param  string
 	 * @return bool
 	 */
 	public static function validatePattern(IControl $control, $pattern)
@@ -271,7 +300,7 @@ class Validator extends Nette\Object
 	 */
 	public static function validateFloat(IControl $control)
 	{
-		$value = str_replace(array(' ', ','), array('', '.'), $control->getValue());
+		$value = str_replace([' ', ','], ['', '.'], $control->getValue());
 		if (Validators::isNumeric($value)) {
 			$control->setValue((float) $value);
 			return TRUE;
@@ -282,6 +311,7 @@ class Validator extends Nette\Object
 
 	/**
 	 * Is file size in limit?
+	 * @param  int
 	 * @return bool
 	 */
 	public static function validateFileSize(Controls\UploadControl $control, $limit)
@@ -297,6 +327,8 @@ class Validator extends Nette\Object
 
 	/**
 	 * Has file specified mime type?
+	 * @param  IControl
+	 * @param  string|string[]
 	 * @return bool
 	 */
 	public static function validateMimeType(Controls\UploadControl $control, $mimeType)
@@ -332,7 +364,7 @@ class Validator extends Nette\Object
 	 */
 	private static function toArray($value)
 	{
-		return $value instanceof Nette\Http\FileUpload ? array($value) : (array) $value;
+		return $value instanceof Nette\Http\FileUpload ? [$value] : (array) $value;
 	}
 
 }

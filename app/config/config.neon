@@ -20,7 +20,22 @@ session:
 
 
 services:
-	- App\Model\UserManager
+	
 	- App\Forms\FormFactory
-	- App\Forms\SignFormFactory
+	- App\AdminModule\Model\UserManager
+	- App\AdminModule\Forms\FormFactory
+	- App\AdminModule\Forms\SignFormFactory
+	- App\AdminModule\Forms\VehicleFormFactory
+	- App\AdminModule\Forms\BrandFormFactory
+	- App\AdminModule\Forms\RentalOrderFormFactory
+	- App\AdminModule\Forms\SlideFormFactory
+	- App\AdminModule\Forms\TextFormFactory
 	router: App\RouterFactory::createRouter
+
+	filters: App\AdminModule\Templates\Filters
+	vehicle: App\Model\Vehicle
+	brand: App\Model\Brand
+	photo: App\Model\Photo
+	rentalOrder: App\Model\RentalOrder
+	slide: App\Model\Slide
+	text: App\Model\Text

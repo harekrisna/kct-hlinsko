@@ -2,8 +2,9 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=127.0.0.1;dbname=test'
-	user:
-	password:
+	dsn: 'mysql:host=innodb.endora.cz;dbname=kcthlinsko'
+	user: allrisk
+	password: basic16
 	options:
 		lazy: yes
+

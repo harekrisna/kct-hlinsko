@@ -13,6 +13,11 @@ namespace Latte;
  */
 interface IMacro
 {
+	const
+		AUTO_EMPTY = 4,
+		AUTO_CLOSE = 64,
+		ALLOWED_IN_HEAD = 128,
+		DEFAULT_FLAGS = 0;
 
 	/**
 	 * Initializes before template parsing.
@@ -22,13 +27,13 @@ interface IMacro
 
 	/**
 	 * Finishes template parsing.
-	 * @return array(prolog, epilog)
+	 * @return array|NULL [prolog, epilog]
 	 */
 	function finalize();
 
 	/**
 	 * New node is found. Returns FALSE to reject.
-	 * @return bool
+	 * @return bool|NULL
 	 */
 	function nodeOpened(MacroNode $node);
 

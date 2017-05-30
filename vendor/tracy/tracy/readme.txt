@@ -2,7 +2,11 @@
 ==============================================
 
 [![Downloads this Month](https://img.shields.io/packagist/dm/tracy/tracy.svg)](https://packagist.org/packages/tracy/tracy)
-[![Build Status](https://travis-ci.org/nette/tracy.svg?branch=v2.3)](https://travis-ci.org/nette/tracy)
+[![Build Status](https://travis-ci.org/nette/tracy.svg?branch=master)](https://travis-ci.org/nette/tracy)
+[![Build Status Windows](https://ci.appveyor.com/api/projects/status/github/nette/tracy?branch=master&svg=true)](https://ci.appveyor.com/project/dg/tracy/branch/master)
+[![Latest Stable Version](https://poser.pugx.org/tracy/tracy/v/stable)](https://github.com/nette/tracy/releases)
+[![License](https://img.shields.io/badge/license-New%20BSD-blue.svg)](https://github.com/nette/tracy/blob/master/license.md)
+[![Join the chat at https://gitter.im/nette/tracy](https://badges.gitter.im/nette/tracy.svg)](https://gitter.im/nette/tracy)
 
 Tracy library is a useful helper for everyday PHP programmers. It helps you to:
 
@@ -24,16 +28,16 @@ Installation and requirements
 The best way how to install Tracy is to [download a latest package](https://github.com/nette/tracy/releases) or use a Composer:
 
 ```
-php composer.phar require tracy/tracy
+composer require tracy/tracy
 ```
 
-Tracy requires PHP version 5.3.0 or newer (master requires PHP 5.6).
+Tracy requires PHP version 5.4.4 or newer (is compatible with PHP 7.0 and 7.1). Older Tracy 2.3 works with PHP 5.3.
 
 
 Usage
 -----
 
-Activating Tracy is easy. Simply add these two lines of code, preferably just after library loading (using `require 'src/tracy.php'` or via Composer):
+Activating Tracy is easy. Simply add these two lines of code, preferably just after library loading (like `require 'vendor/autoload.php'`):
 
 ```php
 use Tracy\Debugger;
@@ -52,6 +56,9 @@ The Debugger Bar is a floating panel. It is displayed in the bottom right corner
 [![Debugger-Bar](https://nette.github.io/tracy/images/tracy-bar.png)](https://nette.github.io/tracy/tracy-debug-bar.html)
 
 You can add other useful panels into the Debugger Bar. You can find interesing ones in [Addons](https://addons.nette.org) or you can create your own.
+
+Implementation of custom bar is easy, just implement interface `Tracy\IBarPanel` with two methods `getTab` and `getContent`, both returning content to be displayed.
+Afterward, registering via `Debugger::getBar()->addPanel(new CustomPanel());` is everything you will need to do.
 
 
 Visualization of errors and exceptions
@@ -98,7 +105,30 @@ Debugger::$strictMode = TRUE;
 
 [![Notice rendered by Tracy](https://nette.github.io/tracy/images/tracy-notice.png)](https://nette.github.io/tracy/tracy-notice.html)
 
-If your site uses Content Security Policy, you'll need to add `'unsafe-inline'` to `style-src`, and `'unsafe-inline'` & `'unsafe-eval'` to `script-src` for Tracy to work properly. Avoid adding these in production mode, if you can.
+If your site uses Content Security Policy, you'll need to add `'unsafe-inline'` to `style-src`, and `'self'` or `'nonce-<value>` to `script-src` for Tracy to work properly. Avoid adding `'unsafe-inline'` in production mode, if you can. Some 3rd plugins may require additional directives.
+
+
+AJAX and redirected requests
+----------------------------
+
+Tracy is able to show Debug bar and Bluescreens for AJAX and redirected requests. You just have to start session before Tracy:
+
+```php
+session_start();
+Debugger::enable();
+```
+
+In case you use non-standard session handler, you can start Tracy immediately (in order to handle any errors), then initialize your session handler
+and then inform Tracy that session is ready to use via `dispatch()`:
+
+```php
+Debugger::enable();
+
+// initialize session handler
+session_start();
+
+Debugger::dispatch();
+```
 
 
 Production mode and error logging
@@ -167,11 +197,11 @@ generates the output:
 
 ![dump](https://nette.github.io/tracy/images/tracy-dump.png)
 
-You can also change the nesting depth by `Debugger::$maxDepth` and displayed strings length by `Debugger::$maxLen`. Naturally, lower values accelerate Tracy rendering.
+You can also change the nesting depth by `Debugger::$maxDepth` and displayed strings length by `Debugger::$maxLength`. Naturally, lower values accelerate Tracy rendering.
 
 ```php
 Debugger::$maxDepth = 2; // default: 3
-Debugger::$maxLen = 50; // default: 150
+Debugger::$maxLength = 50; // default: 150
 ```
 
 The `dump()` function can display other useful information. `Tracy\Dumper::LOCATION_SOURCE` adds tooltip with path to the file, where the function was called. `Tracy\Dumper::LOCATION_LINK` adds a link to the file. `Tracy\Dumper::LOCATION_CLASS` adds a tooltip to every dumped object containing path to the file, in which the object's class is defined. All these constants can be set in `Debugger::$showLocation` variable before calling the `dump()`. You can set multiple values at once using the `|` operator.
