@@ -6,12 +6,13 @@ use Nette;
 use App\Model;
 use Tracy\Debugger;
 use Nette\Application\UI\Form;
-use App\Forms\GaleryFormFactory;
+use Nette\Utils\FileSystem;
+use App\AdminModule\Forms\GaleryFormFactory;
 
 class GaleryPresenter extends BasePresenter {
 	/** @var object */
     private $record;
-	/** @var Artwork */
+	/** @var Galery */
 	private $model;
 	/** @var GaleryFormFactory @inject */
 	public $factory;
@@ -42,7 +43,7 @@ class GaleryPresenter extends BasePresenter {
         $this->template->record = $this->record;
 	}
 
-	public function renderList($category_id) {
+	public function renderList() {
         $this->template->records = $this->model->findAll();
 
         if($this->isAjax()) {
@@ -72,10 +73,18 @@ class GaleryPresenter extends BasePresenter {
 		$record = $this->model->get($id);
 
 		if($record->photos_folder != "") {
-			FileSystem::delete(GALERIES_FOLDER.$record->photos_folder);
+			FileSystem::delete(GALERIES_FOLDER."/".$record->photos_folder);
 		}
 		
 		$this->delete_success = $this->model->delete($id);
 		$this->setView("list");
 	}
+
+    public function actionSetActivity($record_id, $active) {
+    	Debugger::fireLog($record_id);
+        $this->model->findBy(['id' => $record_id])
+                    ->update(['active' => $active == "true" ? 1 : 0]);
+
+        $this->sendPayload();
+    }   	
 }

@@ -28,7 +28,7 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" src="{$basePath}/images/admin/layout/allrisk_logo.jpg" /></span>
+                            <span><img alt="image" class="img-circle" src="{$basePath}/images/admin/logo2.png" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                     <span class="block m-t-xs"><strong class="font-bold">{$user->identity->fullname}</strong></span>
@@ -39,38 +39,14 @@
                                 <li><a n:href="Sign:out">Odhlásit</a></li>
                             </ul>
                         </div>
-                        <div class="logo-element">ADMIN</div>
+                        <div class="logo-element">KČT<div class="small">ADMIN</div></div>
                     </li>
-                    <li n:class="$presenter->isLinkCurrent('Vehicle:*') ? active">
-                        <a n:href="Vehicle:list" title="Vozidla"><i class="fa fa-car"></i><span class="nav-label">Vozidla</span><span class="fa arrow"></span></a>
+                    <li n:class="$presenter->isLinkCurrent(':*') ? active">
+                        <a n:href="Galery:list" title="Galerie"><i class="fa fa-picture-o"></i><span class="nav-label">Galerie</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li n:class="$presenter->isLinkCurrent('Vehicle:add') ? active"><a n:href="Vehicle:add">Přidat</a></li>
-                            <li n:class="$presenter->isLinkCurrent('Vehicle:list') ? active"><a n:href="Vehicle:list">Přehled</a></li>
+                            <li n:class="$presenter->isLinkCurrent('Galery:add') ? active"><a n:href="Galery:add">Přidat</a></li>
+                            <li n:class="$presenter->isLinkCurrent('Galery:list') ? active"><a n:href="Galery:list">Přehled</a></li>
                         </ul>
-                    </li>
-                    <li n:class="$presenter->isLinkCurrent('Brand:*') ? active">
-                        <a n:href="Brand:list" title="Značky"><i class="fa fa-diamond"></i><span class="nav-label">Značky</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li n:class="$presenter->isLinkCurrent('Brand:add') ? active"><a n:href="Brand:add">Přidat</a></li>
-                            <li n:class="$presenter->isLinkCurrent('Brand:list') ? active"><a n:href="Brand:list">Přehled</a></li>
-                        </ul>
-                    </li>
-                    <li n:class="$presenter->isLinkCurrent('RentalOrder:*') ? active">
-                        <a n:href="RentalOrder:list" title="Objednávky"><i class="fa fa-handshake-o"></i><span class="nav-label">Objednávky</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li n:class="$presenter->isLinkCurrent('RentalOrder:add') ? active"><a n:href="RentalOrder:add">Přidat</a></li>
-                            <li n:class="$presenter->isLinkCurrent('RentalOrder:list') ? active"><a n:href="RentalOrder:list">Přehled</a></li>
-                        </ul>
-                    </li>
-                    <li n:class="$presenter->isLinkCurrent('Slide:*') ? active">
-                        <a n:href="Slide:list" title="Slajdy"><i class="fa fa-picture-o"></i><span class="nav-label">Slajdy</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li n:class="$presenter->isLinkCurrent('Slide:add') ? active"><a n:href="Slide:add">Přidat</a></li>
-                            <li n:class="$presenter->isLinkCurrent('Slide:list') ? active"><a n:href="Slide:list">Přehled</a></li>
-                        </ul>
-                    </li>
-                    <li n:class="$presenter->isLinkCurrent('Text:*') ? active">
-                        <a n:href="Text:servicesSection" title="Texty"><i class="fa fa-file-text"></i><span class="nav-label">Texty</span></a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +60,7 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li><span class="m-r-sm text-muted welcome-message">{$user->identity->fullname}</span></li>
                         <li class="dropdown">
-                            <img alt="image" class="logo" src="{$basePath}/images/admin/layout/allrisk_logo.jpg" />
+                            <img alt="image" class="logo" src="{$basePath}/images/admin/logo2.png" />
                         </li>
                         <li class="main-ajax-spinner">
                             <div class="sk-spinner sk-spinner-circle">
@@ -112,7 +88,7 @@
             </div>
             {include main}
             <div class="footer">
-                <div class="pull-right">{$vehicles_count} vozidel</div>
+                <div class="pull-right"></div>
                 <div><strong>Copyright</strong> Allrisk &copy; 2017</div>
             </div>
         </div>

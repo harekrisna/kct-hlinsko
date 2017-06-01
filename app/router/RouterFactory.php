@@ -18,7 +18,7 @@ class RouterFactory
 		$router = new RouteList;
 		$router[] = new Route('admin1896/<presenter>/<action>[/<id>]', array(
         	'module'    => 'Admin',
-            'presenter' => 'Vehicle',
+            'presenter' => 'Galery',
             'action'    => 'list'
         ));
         

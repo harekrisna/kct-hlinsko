@@ -18,8 +18,6 @@ final class PhotoPresenter extends BasePresenter {
      /** @var object */
     private $model;   	    
     
-    private $photos_dir = "./images/photos";
-    
     protected function startup()  {
         parent::startup();
 		$this->model = $this->photo;
@@ -28,78 +26,71 @@ final class PhotoPresenter extends BasePresenter {
             $this->redirect('Sign:in');
         }
     }
-    
-    public function beforeRender() {
-    	parent::beforeRender();
-		$this->template->photos_dir = $this->photos_dir;
-    }
 
-	function renderDetail($vehicle_id) {
-		$vehicle = $this->vehicle
-		   		        ->get($vehicle_id);
+	function renderDetail($galery_id) {
+		Debugger::fireLog($galery_id);
+		$galery = $this->galery
+		   		       ->get($galery_id);
 		
-		$this->template->images_dir_count = Finder::findFiles('*.jpg', '*.jpeg', '*.png', '*.gif')->in("./images/photos/{$vehicle->photos_folder}/photos")->count();
-		$this->template->vehicle_photos_folder = $this->photos_dir."/".$vehicle->photos_folder;
+		$this->template->images_dir_count = Finder::findFiles('*.jpg', '*.jpeg', '*.png', '*.gif')->in(GALERIES_FOLDER."/".$galery->photos_folder."/photos")->count();
+		$this->template->galery_photos_folder = GALERIES_FOLDER."/".$galery->photos_folder;
 		
 		$this->template->photos = $this->photo
 									   ->findAll()
-									   ->where(["vehicle_id" => $vehicle_id])
+									   ->where(["galery_id" => $galery_id])
 									   ->order("position");
 								
-		$this->template->vehicle = $vehicle;
+		$this->template->galery = $galery;
 	}
 
-	function handleUploadFile($vehicle_id) {
+	function handleUploadFile($galery_id) {
 		$fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // Allowed file extensions
-   		
 		$verifyToken = md5('unique_salt' . $_POST['timestamp']);
 		
 		if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
-			
 			$fileParts = pathinfo($_FILES['Filedata']['name']);
 			
 			if (in_array(strtolower($fileParts['extension']), $fileTypes)) {
-				$vehicle = $this->vehicle->get($vehicle_id);
+				$galery = $this->galery->get($galery_id);
 				$tempFile   = $_FILES['Filedata']['tmp_name'];
-				$uploadDir  = $this->photos_dir."/photos";
 				$targetFile = Strings::webalize($fileParts['filename']).".".$fileParts['extension'];
-				$vehicle_photos_folder = $this->photos_dir."/".$vehicle->photos_folder;
+				$galery_photos_folder = GALERIES_FOLDER."/".$galery->photos_folder;
 				
 				$image = Image::fromFile($tempFile);
 				$image->resize(NULL, 1200, Image::SHRINK_ONLY);
-				$image->save($vehicle_photos_folder."/photos/{$targetFile}");
-				chmod($vehicle_photos_folder."/photos/{$targetFile}", 0777);
-                $filesize = filesize($vehicle_photos_folder."/photos/{$targetFile}");
+				$image->save($galery_photos_folder."/photos/{$targetFile}");
+				chmod($galery_photos_folder."/photos/{$targetFile}", 0777);
+                $filesize = filesize($galery_photos_folder."/photos/{$targetFile}");
                 
                 $new_width = $image->width;
                 $new_height = $image->height;
                 
                 $image->resize(NULL, 240);
-				$image->save($vehicle_photos_folder."/previews/{$targetFile}");
-				chmod($vehicle_photos_folder."/previews/{$targetFile}", 0777);
+				$image->save($galery_photos_folder."/previews/{$targetFile}");
+				chmod($galery_photos_folder."/previews/{$targetFile}", 0777);
 
                 unset($image);
                 								
 				$photo = $this->photo->findBy(['file' => $targetFile,
-											   'vehicle_id' => $vehicle_id]);
+											   'galery_id' => $galery_id]);
 											   
 				$max_position = $this->photo->findAll()
-											->where(['vehicle_id' => $vehicle_id])
+											->where(['galery_id' => $galery_id])
                                             ->max('position');
 				
 				if($photo->count() == 0) { // fotka s tímto názvem souboru neexistuje, vloží se nakonec				
     				$new_photo = $this->photo->insert(["file" => $targetFile,
-    												   'vehicle_id' => $vehicle_id,
+    												   'galery_id' => $galery_id,
     						 						   "width" => $new_width,
     												   "height" => $new_height,
     												   "position" => $max_position + 1,
                                                      ]);
 
-                    Debugger::enable(Debugger::PRODUCTION); // háček kvůli tomu, aby se v ajaxové odpovědi neodesílal debug bar
+                    Debugger::enable(Debugger::PRODUCTION); // vypnutí debugbaru, aby se v ajaxové odpovědi neodesílal debug bar
                     $this->setView("photo-box");
                     $this->template->photo = $this->photo->get($new_photo->id);
                     $this->template->new = true;
-                    $this->template->vehicle_photos_folder = $vehicle_photos_folder;
+                    $this->template->galery_photos_folder = $galery_photos_folder;
 				}
 				
 				else { // fotka s tímto názvem souboru existuje, aktualizuje se    				
@@ -107,22 +98,20 @@ final class PhotoPresenter extends BasePresenter {
     				                'height' => $new_height,
                                   ]);
     				                                          
-                    //$this->handleUpdatePosition($new_photo->id, $max_position);
                     $photo = $photo->fetch();
                     $this->payload->photo = $this->photo->get($photo->id)
                                                         ->toArray();
                     
-                    $filesize = \Latte\Runtime\Filters::bytes(filesize($vehicle_photos_folder."/photos/".$targetFile));
+                    $filesize = \Latte\Runtime\Filters::bytes(filesize($galery_photos_folder."/photos/".$targetFile));
                     $this->payload->filesize = $filesize;
-                    $this->payload->file_path = $vehicle_photos_folder."/previews/{$targetFile}";
+                    $this->payload->file_path = $galery_photos_folder."/previews/{$targetFile}";
                     
-            		$this->payload->images_dir_count = Finder::findFiles('*.jpg', '*.jpeg', '*.gif', '*.png')->in($vehicle_photos_folder."/photos")
+            		$this->payload->images_dir_count = Finder::findFiles('*.jpg', '*.jpeg', '*.gif', '*.png')->in($galery_photos_folder."/photos")
             		                                                                                         ->count();
             		$this->payload->images_db_count = $this->photo->findAll()
-            													  ->where(['vehicle_id' => $vehicle_id])
+            													  ->where(['galery_id' => $galery_id])
             		                                              ->count();
                     $this->sendPayload();
-                    
 				}
 			}
 		}
@@ -130,31 +119,31 @@ final class PhotoPresenter extends BasePresenter {
 
 	function handleRemovePhoto($photo_id) {
 		$photo = $this->photo->get($photo_id);
-		$dir = $this->photos_dir."/".$photo->vehicle->photos_folder;
+		$dir = $this->photos_dir."/".$photo->galery->photos_folder;
 		
 		@unlink($dir."/photos/".$photo->file);
 		@unlink($dir."/previews/".$photo->file);
 
 		$this->photo->findAll()
 		            ->where('position > ?', $photo->position)
-					->where(['vehicle_id' => $photo->vehicle_id])
+					->where(['galery_id' => $photo->galery_id])
                     ->update(["position" => new SqlLiteral("position - 1")]);
 
 		$this->photo->delete($photo_id);
 		$this->payload->images_dir_count = Finder::findFiles('*.jpg', '*.jpeg', '*.gif', '*.png')->in($dir."/photos")
 		                                                                                         ->count();
 		$this->payload->images_db_count = $this->photo->findAll()
-													  ->where(['vehicle_id' => $photo->vehicle_id])
+													  ->where(['galery_id' => $photo->galery_id])
 		                                              ->count();
 		$this->payload->success = true;
 		$this->sendPayload();
 		$this->terminate();
 	}
 
-	function actionGeneratePhotos($vehicle_id) {
-		$vehicle = $this->vehicle->get($vehicle_id);
-		$photos_dir = $this->photos_dir."/".$vehicle->photos_folder;
-		$vehicle->related("photo", "vehicle_id")->delete();
+	function actionGeneratePhotos($galery_id) {
+		$galery = $this->galery->get($galery_id);
+		$photos_dir = $this->photos_dir."/".$galery->photos_folder;
+		$galery->related("photo", "galery_id")->delete();
 
 		foreach (Finder::findFiles('*.jpg', '*.jpeg', '*.png', '*.gif')->in($photos_dir."/previews") as $file_path => $file) {
 			unlink($file_path);
@@ -172,11 +161,11 @@ final class PhotoPresenter extends BasePresenter {
 			chmod($photos_dir."/photos/".$webalize_basename, 0777);
 	
 			$max_position = $this->photo->findAll()
-										->where(['vehicle_id' => $vehicle_id])
+										->where(['galery_id' => $galery_id])
                                         ->max('position');
 
 			$this->photo->insert(array("file" => $webalize_basename,
-									   "vehicle_id" => $vehicle_id,
+									   "galery_id" => $galery_id,
 									   "width" => $image->width,
 									   "height" => $image->height,
 									   "position" => $max_position + 1,
@@ -188,13 +177,13 @@ final class PhotoPresenter extends BasePresenter {
 			unset($image);
 		}
 		
-		$this->redirect("detail", $vehicle_id);
+		$this->redirect("detail", $galery_id);
 	}
 	
-	function actionSortPhotos($vehicle_id) {
-		$galery = $this->vehicle->get($vehicle_id);
+	function actionSortPhotos($galery_id) {
+		$galery = $this->galery->get($galery_id);
 		$photos = $this->photo->findAll()
-							  ->where(['vehicle_id' => $vehicle_id])
+							  ->where(['galery_id' => $galery_id])
 							  ->order('CONCAT(REPEAT("0", 18 - LENGTH(file)), file)');
 		
 		$position = 1;
@@ -203,7 +192,7 @@ final class PhotoPresenter extends BasePresenter {
 			$position++;
 		}
 				
-		$this->redirect("detail", $vehicle_id);
+		$this->redirect("detail", $galery_id);
 	}	
 	
 	function handleUpdateDescription($photo_id, $text) {
@@ -211,20 +200,20 @@ final class PhotoPresenter extends BasePresenter {
     	$this->sendPayload();
 	}	
 	
-	function handleUpdatePosition($vehicle_id, $photo_id, $new_position) {    	
+	function handleUpdatePosition($galery_id, $photo_id, $new_position) {    	
         $old_position = $this->photo->get($photo_id)
                                     ->position;
 		
         if($old_position != $new_position) {
             $max_position = $this->photo->findAll()
-            							->where(['vehicle_id' => $vehicle_id])
+            							->where(['galery_id' => $galery_id])
                                         ->max('position');
             
             $this->photo->update($photo_id, ['position' => $new_position]);
             $sign = $old_position < $new_position ? "-" : "+";
             $this->photo->findAll()
                         ->where("id != ? AND position BETWEEN ? AND ?", $photo_id, min($old_position, $new_position), max($old_position, $new_position))
-						->where(['vehicle_id' => $vehicle_id])
+						->where(['galery_id' => $galery_id])
                         ->update(["position" => new SqlLiteral("position {$sign} 1")]);
         }
         

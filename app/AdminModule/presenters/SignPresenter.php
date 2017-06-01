@@ -20,7 +20,7 @@ class SignPresenter extends Nette\Application\UI\Presenter
 	{
 		$form = $this->factory->create();
 		$form->onSuccess[] = function ($form) {
-			$form->getPresenter()->redirect('Vehicle:list');
+			$form->getPresenter()->redirect('Galery:list');
 		};
 		return $form;
 	}
