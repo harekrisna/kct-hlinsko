@@ -4,9 +4,9 @@
 {block main}
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2 n:block="title">Vozidlo: {$vehicle->rz}</h2>
+        <h2 n:block="title">Galerie: {$galery->title}</h2>
         <ol class="breadcrumb">
-            <li><a n:href="Vehicle:list">Zpět</a></li>
+            <li><a n:href="Galery:list">Zpět</a></li>
         </ol>
     </div>
 </div>
@@ -15,7 +15,7 @@
         <ul class="list-group clear-list m-t">
             <li class="list-group-item fist-item">
                 <span class="pull-right">
-                    {$vehicle->photos_folder}
+                    {$galery->photos_folder}
                 </span>
                 <span class="label label-success"><span class="glyphicon glyphicon-folder-open"></span></span> Adresář galerie:
             </li>
@@ -36,10 +36,10 @@
 	<div class="col-md-3" style="height: 125px; margin-top: -5px;">
         <ul class="list-group clear-list m-t">
             <li class="list-group-item fist-item">
-                <a n:href="generatePhotos, $vehicle->id"><span class="label label-error"><span class="glyphicon glyphicon-asterisk"></span></span> Generovat fotky z adresáře</a>
+                <a n:href="generatePhotos, $galery->id"><span class="label label-error"><span class="glyphicon glyphicon-asterisk"></span></span> Generovat fotky z adresáře</a>
             </li>
             <li class="list-group-item fist-item">
-                <a n:href="sortPhotos, $vehicle->id"><span class="label label-error"><span class="glyphicon glyphicon-sort-by-attributes"></span></span> Seřadit fotky podle názvu souboru</a>
+                <a n:href="sortPhotos, $galery->id"><span class="label label-error"><span class="glyphicon glyphicon-sort-by-attributes"></span></span> Seřadit fotky podle názvu souboru</a>
             </li>
         </ul>
 	</div>
@@ -96,7 +96,7 @@
 			                     },
 			'queueID'          : 'queue',
 			'buttonText' : '<span class="glyphicon glyphicon-picture" style="margin-right: 10px !important"></span> VYBRAT FOTKY',
-			'uploadScript'     : {link uploadFile!, $vehicle->id},
+			'uploadScript'     : {link uploadFile!, $galery->id},
 			'onUploadComplete' : function(file, payload) { onUploadComplete(file, payload); }
 		});
 	});

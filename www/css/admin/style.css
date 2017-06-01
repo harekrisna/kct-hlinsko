@@ -425,6 +425,9 @@ fieldset#upload {
   clear: both;
   margin-bottom: 20px;
 }
+fieldset#upload legend {
+  margin-bottom: 0;
+}
 fieldset#upload #queue {
   max-height: 300px;
   overflow-y: auto;

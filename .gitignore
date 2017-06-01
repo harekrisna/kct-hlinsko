@@ -4,3 +4,4 @@ temp/
 temp/cache/
 log/
 app/config/config.local.neon
+www/images/galery/
