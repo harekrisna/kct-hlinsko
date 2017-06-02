@@ -81,7 +81,6 @@ class GaleryPresenter extends BasePresenter {
 	}
 
     public function actionSetActivity($record_id, $active) {
-    	Debugger::fireLog($record_id);
         $this->model->findBy(['id' => $record_id])
                     ->update(['active' => $active == "true" ? 1 : 0]);
 

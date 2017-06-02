@@ -1,5 +1,5 @@
 	<div id="{$photo->id}"{ifset $new} style="width:0; height:0"{/ifset}>
-    	{var $filesize = filesize("./".$galery_photos_folder."/photos/".$photo->file)}
+    	{var @filesize = filesize("./".$galery_photos_folder."/photos/".$photo->file)}
         <a class="remove" onclick="removePhoto(event, this);" n:href="removePhoto!, $photo->id"><span class="glyphicon glyphicon-remove"></span></a>
         <span class="dimensions">{$photo->width}x{$photo->height}</span>
         <div class="box">

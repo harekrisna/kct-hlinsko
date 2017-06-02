@@ -343,24 +343,10 @@ main article #welcome_text .welcome-font {
   }
 }
 main article #welcome_text .welcome-img {
-  margin: 5px 0 0 5px;
-  width: 42%;
-  height: 175px;
-  min-height: 50px;
   float: right;
+  max-width: 250px;
+  width: 50%;
   position: relative;
-}
-main article #welcome_text .welcome-img .house {
-  background-image: url(../images/layout/chatka.png);
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  position: relative;
-}
-@media (max-width: 640px) {
-  main article #welcome_text .welcome-img {
-    height: 133px;
-  }
 }
 @media (min-width: 640px) and (max-width: 940px) {
   main article #welcome_text {

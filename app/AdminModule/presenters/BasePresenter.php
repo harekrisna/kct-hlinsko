@@ -15,6 +15,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 	protected $galery;	
 	/** @var Photo */
 	protected $photo;
+	/** @var Page */
+	protected $page;
 	/** @var User */
 	protected $user;
 	
@@ -27,6 +29,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
         
         $this->galery = $this->context->getService('galery');
         $this->photo = $this->context->getService('photo');
+        $this->page = $this->context->getService('page');
 		$this->user = $this->getUser();
 
 		\Forms\DatePicker\DatePicker::register();

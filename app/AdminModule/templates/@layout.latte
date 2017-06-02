@@ -41,12 +41,15 @@
                         </div>
                         <div class="logo-element">KČT<div class="small">ADMIN</div></div>
                     </li>
-                    <li n:class="$presenter->isLinkCurrent(':*') ? active">
+                    <li n:class="$presenter->isLinkCurrent('Galery:*') ? active">
                         <a n:href="Galery:list" title="Galerie"><i class="fa fa-picture-o"></i><span class="nav-label">Galerie</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li n:class="$presenter->isLinkCurrent('Galery:add') ? active"><a n:href="Galery:add">Přidat</a></li>
                             <li n:class="$presenter->isLinkCurrent('Galery:list') ? active"><a n:href="Galery:list">Přehled</a></li>
                         </ul>
+                    </li>
+                    <li n:class="$presenter->isLinkCurrent('Page:*') ? active">
+                        <a n:href="Page:form, contacts" title="Galerie"><i class="fa fa-picture-o"></i><span class="nav-label">Galerie</span><span class="fa arrow"></span></a>
                     </li>
                 </ul>
             </div>

@@ -6,6 +6,7 @@ use Nette,
 use Tracy\Debugger;
 use Nette\Application\UI\Form;
 use Nette\Utils\Finder;
+use Nette\Utils\FileSystem;
 use Nette\Utils\Image;
 use Nette\Utils\Strings;
 use Nette\Database\SqlLiteral;
@@ -28,7 +29,6 @@ final class PhotoPresenter extends BasePresenter {
     }
 
 	function renderDetail($galery_id) {
-		Debugger::fireLog($galery_id);
 		$galery = $this->galery
 		   		       ->get($galery_id);
 		
@@ -119,10 +119,10 @@ final class PhotoPresenter extends BasePresenter {
 
 	function handleRemovePhoto($photo_id) {
 		$photo = $this->photo->get($photo_id);
-		$dir = $this->photos_dir."/".$photo->galery->photos_folder;
+		$dir = GALERIES_FOLDER."/".$photo->galery->photos_folder;
 		
-		@unlink($dir."/photos/".$photo->file);
-		@unlink($dir."/previews/".$photo->file);
+		FileSystem::delete($dir."/photos/".$photo->file);
+		FileSystem::delete($dir."/previews/".$photo->file);
 
 		$this->photo->findAll()
 		            ->where('position > ?', $photo->position)
