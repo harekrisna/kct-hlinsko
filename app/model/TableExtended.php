@@ -47,6 +47,19 @@ abstract class TableExtended extends Table  {
         }
         
     }    
+
+    public function getTitleById($id)  {
+        $record = $this->get($id);
+        if($record)
+            return $record->url;
+    }
+    
+    public function getIdByTitle($url)  {
+        $record = $this->findBy(array("url" => $url))->fetch();
+        if($record) {
+            return $record->id; 
+        }
+    }    
 }
 
 class DuplicateException extends \Exception {

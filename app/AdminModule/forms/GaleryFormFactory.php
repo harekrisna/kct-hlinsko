@@ -31,6 +31,8 @@ class GaleryFormFactory extends Nette\Object {
 
 		$data->addText('url', 'URL galerie', 40)
       	     ->setRequired('Zadej URL galerie.');
+      	
+      	$data->addTextArea('description', 'Popis:', 40);
 
 		$data->addDatePicker('galery_date', 'Datum')
 			 ->setRequired('Zadej datum galerie.');

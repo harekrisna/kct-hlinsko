@@ -1,0 +1,9 @@
+{block title}{$year} | Fotogalerie{/block}
+{block content}
+	<div class="title-image">Rok {$year}</div>
+	<section class="archiv-list">
+		<ul n:inner-foreach="$galeries as $galery">
+			<li><a n:href="photos, $galery->id">{$galery->galery_date} {$galery->title} - <span class="folder-detail">Lorem ipsum dolor sit amet</span></a></li>
+		</ul>
+	</section>
+{/block}

@@ -4,12 +4,13 @@
 		<meta http-equiv="Content-type">
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="{$basePath}/css/style.css">
-		<title>Example page</title>
+		<title>{ifset title}{include title} | {/ifset}KČT Hlinsko</title>
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 		<link href='https://fonts.googleapis.com/css?family=Lobster|PT+Sans|Josefin+Sans|Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="{$basePath}/css/photoswipe.css">
 		<link rel="stylesheet" href="{$basePath}/css/default-skin.css"> 
+		{block head}{/block}
 	</head>
 <body>
 	<a href="#" class="back-to-top">Back to Top</a>
@@ -21,13 +22,13 @@
 		<nav id="menu_list">
 			<ul class="main-menu">
 				<li class="wrapper">
-					<a n:href="Homepage:default" class="active first after" title="">domů</a>
+					<a n:href="Homepage:default" n:class="first, after, $presenter->linkCurrent ? active" title="">domů</a>
 				</li>
 				<li class="wrapper">
 					<a n:href="ActivitiesPlans:default" class="first after" title="">plán akcí</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Photogallery:default" class="first after" title="">fotogalerie</a>
+					<a n:href="Photogallery:photogallery" n:class="first, after, $presenter->isLinkCurrent('Photogallery:*') ? active" title="">fotogalerie</a>
 				</li>
 				<li class="wrapper">
 					<a n:href="Painters:default" class="first after" title="">krajem malířů <span class="vysocina">vysočiny</span></a>
@@ -98,9 +99,6 @@
 		<div id="created_by"> <p> created by <a href="">break / design</a>  </p> </div>
 	</footer>
 	<script type="text/javascript" src="{$basePath}/js/script.js"></script>
-	
-	<script src="{$basePath}/js/photoswipe.min.js"></script>  <!-- Core JS file -->
-	<script src="{$basePath}/js/photoswipe-ui-default.min.js"></script>  <!-- UI JS file -->
 	<script type="text/javascript">
 
 		$('.myMenu ul li').hover(function() {
@@ -112,5 +110,6 @@
 		});
 
 	</script>
+	{block scripts}{/block}
 </body>
 </html>
