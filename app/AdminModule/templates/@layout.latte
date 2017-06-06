@@ -49,7 +49,10 @@
                         </ul>
                     </li>
                     <li n:class="$presenter->isLinkCurrent('Page:*') ? active">
-                        <a n:href="Page:form, contacts" title="Galerie"><i class="fa fa-picture-o"></i><span class="nav-label">Galerie</span><span class="fa arrow"></span></a>
+                        <a title="Page"><i class="fa fa-file-text-o"></i><span class="nav-label">Stránky</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li{ifCurrent Page:form, 'welcome'} class="active"{/ifCurrent}><a n:href="Page:form, 'welcome'">Vítejte</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

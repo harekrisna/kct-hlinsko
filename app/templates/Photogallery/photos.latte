@@ -5,12 +5,15 @@
 <link rel="stylesheet" href="{$basePath}/css/photoswipe.min.css" type="text/css" />
 <link rel="stylesheet" href="{$basePath}/css/default-skin/default-skin.min.css" type="text/css" />{/block}
 {block content}
-<h1 class="title-image">{$galery->title}</h1>
+<h1 class="main-title">{$galery->title}</h1>
+<article>
+<p class="description">{$galery->description}</p>
 <div id="gallery" n:inner-foreach="$photos as $photo">
 	<a href="{$basePath}/images/galery/{$galery->photos_folder}/photos/{$photo->file}">
 		<img src="{$basePath}/images/galery/{$galery->photos_folder}/previews/{$photo->file}" data-size="{$photo->width}x{$photo->height}" alt="{$photo->description}" />
 	</a>
 </div>
+</article>
 {include photoswipe.latte}
 {/block}
 {block scripts}

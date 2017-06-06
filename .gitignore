@@ -6,3 +6,4 @@ log/
 app/config/config.local.neon
 www/images/galery/
 www/images/kcfinder/images/
+www/images/kcfinder/.thumbs/

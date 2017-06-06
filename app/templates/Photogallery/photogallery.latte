@@ -1,6 +1,6 @@
 {block title}Fotogalerie{/block}
 {block content}
-	<div class="title-image">Archiv fotografií</div>
+	<h1 class="main-title">Archiv fotografií</h1>
 	<div class="grid">
 		<a n:foreach="$first_line as $year" n:href="Photogallery:year, $year" class="col-1-6">{$year}</a>
 		<div n:foreach="$year_groups as $year_title => $group" class="col-1-4">

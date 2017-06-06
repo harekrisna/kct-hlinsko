@@ -111,8 +111,9 @@ body {
 		li {
 			display: inline;
 			float: left;
-			margin-top: 1%;
+			margin-top: 8px;
 			margin-right: 6%;
+			margin-bottom: 10px;
 
 			&:nth-child(1){ 
 			    width: 41px; 
@@ -136,7 +137,6 @@ body {
 				.mobile-screen({
 					width: 100px;
 				});
-
 			} 
 			
 			.vysocina {
@@ -394,38 +394,33 @@ main {
 		width: 100%;
 		min-height: 450px;
 
+		.description {
+			text-align: justify;
+			margin: 0 10% 10px 10%;
 
-		#welcome_text {
+			.mobile-screen({
+				margin: 0 5% 10px 5%;				
+			});
+		}
+
+		#main_content {
 			text-align: inherit;
 			width: 75%;
 			margin-left: 12%;
 			margin-top: 2%;
 
-			.welcome-font {
-				width: 103px;
-				height: 39px;
-				background-image: url(../images/layout/welcome.png);
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: contain;
-				margin-bottom: 2%;
-
-				.tablet-screen({
-					width: 80px;
-					height: 35px;
-				});
-
-				.mobile-screen({
-					width: 80px;
-					height: 35px;
-				});
-			}
-
-			.welcome-img {
-				float: right;
+			img {
 				max-width: 250px;
 				width: 50%;
-				position: relative;
+			}
+
+			p {
+				text-align: justify;
+				width: 100%;
+
+				.mobile-screen({
+					margin-bottom: 8px;
+				});
 			}
 
 			.tablet-screen({
@@ -440,15 +435,6 @@ main {
 			});
 
 
-		}
-
-		p {
-			text-align: inherit;
-			width: 100%;
-
-			.mobile-screen({
-				margin-bottom: 8px;
-			});
 		}
 	}
 
@@ -728,11 +714,17 @@ main {
 /* - - - - - - - - - - -  SECTION PART FOR PHOTOGALLERY SECTION  - - - - - - - - - - - */
 
 	.archiv-list {
-		width: 90%;
+		width: 80%;
 		min-height: 410px;
 		margin: 3% auto;
 
-		padding-left: 12%;
+		padding-left: 6%;
+
+		.mobile-screen({
+			width: 90%;
+			padding-left: 0%;
+			text-align: justify;
+		});
 
 		ul {
 			list-style: none;
@@ -745,11 +737,16 @@ main {
 		
 		a {
 			color: black;
+			display: block;
 
 			.folder-detail {
 				font-size: 0.9em;
 			}
 		}
+	}
+
+	#gallery {
+		margin-bottom: 30px;
 	}
 
 }

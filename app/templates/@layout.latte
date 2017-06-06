@@ -13,8 +13,10 @@
 		{block head}{/block}
 	</head>
 <body>
-	<a href="#" class="back-to-top">Back to Top</a>
-	<a href="#" class="back-to-history">Back to Top</a>
+	<div class="body-navigation">
+		<a href="#" class="back-to-top">Back to Top</a>
+		<a n:if="isset($backlink)" href="" class="back-to-history">Back to History</a>
+	</div>
 	<header id="header" class="header"> 
 		<div id="header_panel">
 			<img class="head" src="{$basePath}/images/layout/logo.png" alt="logo_hlinsko">
