@@ -26,7 +26,8 @@
 {include parent}
     <script src="{$basePath}/js/jquery-ui.min.js"></script>
     <script src="{$basePath}/js/ckeditor/ckeditor.js"></script>
-    <script>						
+    <script>	
+    	var basePath = {$basePath};					
 		CKEDITOR.replace('frm-pageForm-text', {
 		// Define the toolbar: http://docs.ckeditor.com/#!/guide/dev_toolbar
 		// The standard preset from CDN which we used as a base provides more features than we need.
@@ -57,8 +58,9 @@
 		/*********************** File management support ***********************/
 		// Remove the default image plugin because image2, which offers captions for images, was enabled above.
 		// Make the editing area bigger than default.
-		height: 461,
+		height: 650,
 		width: '100%',
+		extraPlugins: 'codemirror',
 		// An array of stylesheets to style the WYSIWYG area.
 		// Note: it is recommended to keep your own styles in a separate file in order to make future updates painless.
 		contentsCss: [ 'https://cdn.ckeditor.com/4.6.1/standard-all/contents.css'],

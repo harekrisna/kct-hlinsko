@@ -315,10 +315,11 @@ main {
 main article {
   width: 100%;
   min-height: 450px;
+  padding-bottom: 30px;
 }
 main article .description {
   text-align: justify;
-  margin: 0 10% 10px 10%;
+  margin: 0 10% 20px 10%;
 }
 @media (max-width: 640px) {
   main article .description {
@@ -330,6 +331,12 @@ main article #main_content {
   width: 75%;
   margin-left: 12%;
   margin-top: 2%;
+}
+main article #main_content a {
+  color: #bf452c;
+}
+main article #main_content a:hover {
+  text-decoration: underline;
 }
 main article #main_content img {
   max-width: 250px;
@@ -737,6 +744,12 @@ main .archiv-list li {
 main .archiv-list a {
   color: black;
   display: block;
+}
+main .archiv-list a:hover .galery-title {
+  text-decoration: underline;
+}
+main .archiv-list a .galery-title {
+  color: #bf452c;
 }
 main .archiv-list a .folder-detail {
   font-size: 0.9em;

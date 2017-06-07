@@ -357,6 +357,9 @@ textarea.form-control.import-source {
 .footable td.bold {
   font-weight: bold;
 }
+.footable thead tr.footable-filtering .form-inline .form-group > select {
+  margin-top: -5px;
+}
 .footable thead th,
 .footable tfood th {
   -webkit-touch-callout: none;

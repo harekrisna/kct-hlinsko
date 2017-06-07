@@ -7,4 +7,16 @@ use Tracy\Debugger;
 class Galery extends TableExtended {
     /** @var string */
 	protected $tableName = 'galery';
+
+   	public function findYears() {
+        $selection_years = $this->findAll()->select('DISTINCT YEAR(galery_date) AS year')
+										   ->order('year DESC');
+
+		$years = [];										   
+		foreach ($selection_years as $year) {
+			$years[] = $year->year;
+		}							     
+
+		return $years;
+    }
 }

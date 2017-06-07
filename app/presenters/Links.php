@@ -6,12 +6,10 @@ use Nette;
 use App\Model;
 
 
-class LinksPresenter extends BasePresenter
-{
+class LinksPresenter extends BasePresenter	{
 
-	public function renderLinks()
-	{
-		$this->setView("links");
-	}
-
+	public function renderLinks() {
+		$this->template->page = $this->page->findBy(['page' => 'links'])
+										   ->fetch();
+	}	
 }

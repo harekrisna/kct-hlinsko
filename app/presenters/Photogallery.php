@@ -10,17 +10,14 @@ use Tracy\Debugger;
 class PhotogalleryPresenter extends BasePresenter {
 	
 	public function renderPhotogallery() {
-		$galery_years = $this->galery->findAll()
-								 	 ->select('DISTINCT YEAR(galery_date) AS year')
-								 	 ->order('year DESC');											 	 
+		$galery_years = $this->galery->findYears();
 		
 		$iterator = 0;
 		$first_line = [];
 		$year_groups = [];
 		
-		foreach ($galery_years as $galery_year) {
+		foreach ($galery_years as $year) {
 			$iterator++;
-			$year = $galery_year->year;
 			if($iterator < 6) {
 				$first_line[] = $year;
 			}

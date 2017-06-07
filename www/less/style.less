@@ -393,10 +393,11 @@ main {
 	article {
 		width: 100%;
 		min-height: 450px;
+		padding-bottom: 30px;
 
 		.description {
 			text-align: justify;
-			margin: 0 10% 10px 10%;
+			margin: 0 10% 20px 10%;
 
 			.mobile-screen({
 				margin: 0 5% 10px 5%;				
@@ -408,6 +409,14 @@ main {
 			width: 75%;
 			margin-left: 12%;
 			margin-top: 2%;
+
+			a {
+				color: @red;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
 
 			img {
 				max-width: 250px;
@@ -738,6 +747,14 @@ main {
 		a {
 			color: black;
 			display: block;
+
+			&:hover .galery-title{
+				text-decoration: underline;
+			}
+
+			.galery-title {
+				color: @red;
+			}
 
 			.folder-detail {
 				font-size: 0.9em;

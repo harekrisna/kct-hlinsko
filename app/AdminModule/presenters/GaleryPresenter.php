@@ -45,6 +45,7 @@ class GaleryPresenter extends BasePresenter {
 
 	public function renderList() {
         $this->template->records = $this->model->findAll();
+        $this->template->years = $this->model->findYears();
 
         if($this->isAjax()) {
         	$this->redrawControl('galeries');

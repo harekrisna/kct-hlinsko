@@ -17,12 +17,6 @@ final class PagePresenter extends BasePresenter {
         if (!$this->getUser()->isLoggedIn()) {
             $this->redirect('Sign:in');
         }
-        
-        $this->template->menu = [];
-    }
-    
-    public function beforeRender() {
-        $this->template->wide_layout = true;
     }
 	
 	public function actionForm($pageName = "") {

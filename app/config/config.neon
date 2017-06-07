@@ -28,9 +28,11 @@ services:
 	- App\AdminModule\Forms\FormFactory
 	- App\AdminModule\Forms\SignFormFactory
 	- App\AdminModule\Forms\GaleryFormFactory
+	- App\AdminModule\Forms\EventsScheduleFormFactory
 	router: App\RouterFactory::createRouter
 
 	filters: App\AdminModule\Templates\Filters
 	galery: App\Model\Galery
 	photo: App\Model\Photo
 	page: App\Model\Page
+	events_schedule: App\Model\EventsSchedule

@@ -6,11 +6,13 @@ $(document).ready(function () {
   }
 });
 
+
+
 function initFooTable(table, success_message = "Záznam byl smazán.", error_message = "Záznam se nepodařilo smazat.") {
     $(table).footable({
         'paging': {
             'enabled': true,
-            'size': 50,
+            'size': 40,
         },
 
         'sorting': {
