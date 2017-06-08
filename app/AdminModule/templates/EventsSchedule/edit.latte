@@ -1,0 +1,50 @@
+{layout '@layout.latte'}
+{block head}
+{include parent}
+    <link href="{$basePath}/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="{$basePath}/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+{/block}
+{block content}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">Upravit obsah</div>
+                <div class="ibox-content">
+                    {form form, class => "form-horizontal"}
+                        <div class="form-group">
+                            {label data-year, class => "col-sm-2 control-label" /}
+                            <div class="col-sm-10">
+                                <input n:name="data-year" n:class="form-control, tiny, $form['data-year']->error ? error" />
+                                {if $form['data-year']->error}{label data-year, class => "error" }{$form['data-year']->error}{/label}{/if}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                {input data-content, class => "form-control large"}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                {input edit, class => "btn btn-primary"}
+                            </div>
+                        </div>
+                    {/form}
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+{block scripts}    
+    <!-- Jquery Validate -->
+    <script src="{$basePath}/js/plugins/validate/jquery.validate.min.js"></script>
+
+    <!-- Forms -->
+    <script src="{$basePath}/js/forms.js"></script>
+    
+    <script src="{$basePath}/js/ckeditor/ckeditor.js"></script>
+    <script>    
+        CKEDITOR.replace('frm-form-data-content');
+    </script>
+{/block}

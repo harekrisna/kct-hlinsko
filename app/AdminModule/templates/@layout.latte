@@ -48,6 +48,14 @@
                             <li n:class="$presenter->isLinkCurrent('Galery:list') ? active"><a n:href="Galery:list">Přehled</a></li>
                         </ul>
                     </li>
+                    <li n:class="$presenter->isLinkCurrent('EventsSchedule:*') ? active">
+                        <a title="Page"><i class="fa fa-map-signs"></i><span class="nav-label">Plán akcí</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li{ifCurrent EventsSchedule:add} class="active"{/ifCurrent}><a n:href="EventsSchedule:add">Přidat</a></li>
+                            <li{ifCurrent EventsSchedule:list, 'actual'} class="active"{/ifCurrent}><a n:href="EventsSchedule:list, 'actual'">Aktuální</a></li>
+                            <li{ifCurrent EventsSchedule:list, 'history'} class="active"{/ifCurrent}><a n:href="EventsSchedule:list, 'history'">Uskutečněné</a></li>
+                        </ul>
+                    </li>
                     <li n:class="$presenter->isLinkCurrent('Page:*') ? active">
                         <a title="Page"><i class="fa fa-file-text-o"></i><span class="nav-label">Stránky</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -107,6 +115,7 @@
     <script src="{$basePath}/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>    
     <script src="{$basePath}/js/inspinia.js"></script>
     <script src="{$basePath}/js/plugins/pace/pace.min.js"></script>
+    <script src="{$basePath}/js/jquery-ui.min.js"></script>
 
     <!-- Toastr script -->
     <script src="{$basePath}/js/plugins/toastr/toastr.min.js"></script>

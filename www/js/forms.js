@@ -1,24 +1,27 @@
 $(document).ready(function(){
-    $.fn.datepicker.dates['cs'] = {
-        days: ["Neděle", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota"],
-        daysShort: ["Ned", "Pon", "Úte", "Stř", "Čtv", "Pát", "Sob"],
-        daysMin: ["Ne", "Po", "Út", "St", "Čt", "Pá", "So"],
-        months: ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"],
-        monthsShort: ["Led", "Úno", "Bře", "Dub", "Kvě", "Čer", "Čnc", "Srp", "Zář", "Říj", "Lis", "Pro"],
-        today: "Dnes",
-        clear: "Vymazat",
-        monthsTitle: "Měsíc",
-        weekStart: 1,
-        format: "dd.mm.yyyy"
-    };
-    $('div.input-group.date').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        forceParse: false,
-        calendarWeeks: true,
-        autoclose: true,
-        language: 'cs',
-    }); 
+    if($.fn.datepicker.dates !== undefined) {
+        $.fn.datepicker.dates['cs'] = {
+            days: ["Neděle", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota"],
+            daysShort: ["Ned", "Pon", "Úte", "Stř", "Čtv", "Pát", "Sob"],
+            daysMin: ["Ne", "Po", "Út", "St", "Čt", "Pá", "So"],
+            months: ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"],
+            monthsShort: ["Led", "Úno", "Bře", "Dub", "Kvě", "Čer", "Čnc", "Srp", "Zář", "Říj", "Lis", "Pro"],
+            today: "Dnes",
+            clear: "Vymazat",
+            monthsTitle: "Měsíc",
+            weekStart: 1,
+            format: "dd.mm.yyyy"
+        };
+        
+        $('div.input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            language: 'cs',
+        }); 
+    }
 
     $('input.datepicker').keydown(function(event) {
         if(event.keyCode == 8) {
@@ -27,11 +30,13 @@ $(document).ready(function(){
         }
     });
 
-    jQuery.extend(jQuery.validator.messages, {
-        required: "Toto pole je povinné.",
-        number: "Prosím zadejte validní číslo.",
-        min: "Prosím zadejte čílo větší než 0.",
-    });
+    if (typeof jQuery.validator !== "undefined") {
+        jQuery.extend(jQuery.validator.messages, {
+            required: "Toto pole je povinné.",
+            number: "Prosím zadejte validní číslo.",
+            min: "Prosím zadejte čílo větší než 0.",
+        });
+    }
 
     $("#frm-form").validate();
 });

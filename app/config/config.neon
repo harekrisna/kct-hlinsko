@@ -36,3 +36,4 @@ services:
 	photo: App\Model\Photo
 	page: App\Model\Page
 	events_schedule: App\Model\EventsSchedule
+	events_schedule_history: App\Model\EventsScheduleHistory

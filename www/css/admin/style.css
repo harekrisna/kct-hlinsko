@@ -328,9 +328,6 @@ textarea.form-control.import-source {
   padding: 0;
   border: 0;
 }
-.footable th.controls {
-  width: 73px;
-}
 .footable td.controls a {
   font-size: 16px;
   margin-bottom: -10px;
@@ -357,6 +354,18 @@ textarea.form-control.import-source {
 .footable td.bold {
   font-weight: bold;
 }
+.footable td.ellipsis {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.footable thead th.controls {
+  width: 73px;
+}
+.footable thead th.controls-2 {
+  width: 55px;
+}
 .footable thead tr.footable-filtering .form-inline .form-group > select {
   margin-top: -5px;
 }
@@ -373,13 +382,17 @@ textarea.form-control.import-source {
 .footable tfood th.wide {
   width: 30% !important;
 }
-.footable thead th.medium,
-.footable tfood th.medium {
-  width: 90px;
+.footable thead th.th-date,
+.footable tfood th.th-date {
+  width: 110px;
 }
-.footable thead th.th-small,
-.footable tfood th.th-small {
-  width: 75px !important;
+.footable thead th.th-year,
+.footable tfood th.th-year {
+  width: 65px;
+}
+.footable thead th.th-on-off-switch,
+.footable tfood th.th-on-off-switch {
+  width: 85px;
 }
 .footable thead th.thin,
 .footable tfood th.thin {

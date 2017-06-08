@@ -1,13 +1,3 @@
-$(document).ready(function () {
-   if (typeof jQuery.validator !== "undefined") {
-      jQuery.extend(jQuery.validator.messages, {
-          required: "Toto pole je povinné.",
-      });
-  }
-});
-
-
-
 function initFooTable(table, success_message = "Záznam byl smazán.", error_message = "Záznam se nepodařilo smazat.") {
     $(table).footable({
         'paging': {

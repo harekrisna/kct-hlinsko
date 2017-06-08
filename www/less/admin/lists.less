@@ -1,8 +1,4 @@
 .footable {
-	th.controls {
-		width: 73px;
-	}
-
 	td.controls {
 		a {
 			font-size: 16px;
@@ -38,7 +34,22 @@
 		font-weight: bold;
 	}
 
+	td.ellipsis {
+		max-width: 100px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+
 	thead {
+		th.controls {
+			width: 73px;
+		}
+
+		th.controls-2 {
+			width: 55px;
+		}
+
 		tr.footable-filtering .form-inline{
 			.form-group > select {
 				margin-top: -5px;
@@ -60,12 +71,16 @@
 			width: 30% !important;
 		}
 
-		th.medium {
-			width: 90px;
+		th.th-date {
+			width: 110px;
 		}
 
-		th.th-small {
-			width: 75px !important;
+		th.th-year {
+			width: 65px;
+		}
+
+		th.th-on-off-switch {
+			width: 85px;
 		}
 
 		th.thin {

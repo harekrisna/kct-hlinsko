@@ -9,6 +9,8 @@ use Nette\Utils\Image;
 use App\AdminModule\Forms\EventsScheduleFormFactory;
 
 final class EventsSchedulePresenter extends BasePresenter {        
+    /** @persistent */
+    public $schedule_type;
     /** @var object */
     private $record;
     /** @var EventsSchedule */
@@ -16,21 +18,14 @@ final class EventsSchedulePresenter extends BasePresenter {
     /** @var EventsScheduleFormFactory @inject */
     public $factory;
 
-    private $delete_success;
-
     protected function startup() {
         parent::startup();
-        $this->model = $this->events_schedule;
-    }
-    
-    public function renderAdd() {
-        $this->setView("form");
-        $this->template->form_title = "Přidat plán";
-    }
-
-    public function renderEdit($record_id) {
-        $this->setView("form");
-        $this->template->form_title = "Upravit plán";
+        if($this->schedule_type == "history") {
+            $this->model = $this->events_schedule_history;
+        }
+        elseif($this->schedule_type == "actual") {
+            $this->model = $this->events_schedule;
+        }
     }
 
     public function actionEdit($record_id) {
@@ -40,27 +35,32 @@ final class EventsSchedulePresenter extends BasePresenter {
             throw new Nette\Application\BadRequestException("Plán nenalezen.");
             
         $this->template->record = $this->record;
+        $this['form']['data']['year']->setAttribute('readonly', 'readonly');
+        $this['form']['schedule_type']->setDisabled();
+        
+
+        $_SESSION['KCFINDER'] = array(
+            'disabled' => false,
+            'uploadURL' => "../../images/kcfinder/events_schedule",
+        );
     }
 
-    public function renderList() {
+    public function renderList($schedule_type) {
+        $this->schedule_type = $schedule_type;
         $this->template->records = $this->model->findAll();
-
-        if($this->isAjax()) {
-            $this->payload->success = $this->delete_success;
-        }
     }
 					
     protected function createComponentForm() {
-        $form = $this->factory->create($this->events_schedule, $this->record);
+        $form = $this->factory->create($this->schedule_type, $this->record);
         
-        $form->onSuccess[] = function ($form) {
-            if($form->isSubmitted()->name == "add") {
+        $form->onSuccess[] = function ($form, $values) {
+            if($form->isSubmitted() !== true && $form->isSubmitted()->name == "add") { 
                 $this->flashMessage("Plán byl vytvořen", 'success');
-                $form->getPresenter()->redirect('EventsSchedule:list');
+                $form->getPresenter()->redirect('EventsSchedule:list', $values->schedule_type);
             }
             else {
                 $this->flashMessage("Plán byl upraven", 'success');
-                $form->getPresenter()->redirect('EventsSchedule:list');
+                $form->getPresenter()->redirect('EventsSchedule:list', $this->schedule_type);
             }
         };
         
@@ -69,8 +69,7 @@ final class EventsSchedulePresenter extends BasePresenter {
 
     public function actionDelete($id) {
         $record = $this->model->get($id);
-        $this->delete_success = $this->model->delete($id);
-        $this->setView("list");
+        $this->payload->success = $this->model->delete($id);
+        $this->sendPayload();
     }    
 }
-
