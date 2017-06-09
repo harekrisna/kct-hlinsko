@@ -418,11 +418,6 @@ main {
 				text-decoration: underline;
 			}
 
-			img {
-				max-width: 250px;
-				width: 50%;
-			}
-
 			p {
 				text-align: justify;
 				width: 100%;
@@ -432,6 +427,10 @@ main {
 				});
 			}
 
+			img {
+				max-width: 100%;
+			}
+			
 			.tablet-screen({
 				width: 75%;
 				margin-left: 10%;
@@ -442,13 +441,10 @@ main {
 				width: 88%;
 				margin-left: 6%;
 			});
-
-
 		}
 	}
 
 	.main-title {
-		width: 240px;
 		height: 39px;
 		background-repeat: no-repeat;
 		background-position: left;
@@ -461,14 +457,12 @@ main {
 
 
 		.tablet-screen({
-			width: 223px;
 			height: 35px;
 			font-size: 2em;
 			margin-left: 9%;
 		});
 
 		.mobile-screen({
-			width: 223px;
 			height: 35px;
 			font-size: 1.6em;
 			margin-left: 5%;
@@ -477,7 +471,7 @@ main {
 
 	.grid {
 	width: 81%;
-	height: 380px;
+	min-height: 150px;
 	margin: 0 auto;
 	padding-left: 1%;
 
@@ -589,12 +583,26 @@ main {
 				}
 			}
 		};
-
-		
-
-
 	};
 
+	table.schedule-table{
+		border-collapse: collapse;
+		
+
+		thead{
+			background-color: #C2B291;
+			height: 20px;
+		}
+
+		tr.dark{
+			background-color: rgba(191, 69, 44, 0.05);
+			border: 1px #FCEFDE solid;
+		}	
+
+		td,th{
+			border: 1px #000000 solid;
+		}
+	}
 
 /* - - - - - - - - - - -  Special grid section for "PAINTERS"  - - - - - - - - - - - */
 

@@ -338,10 +338,6 @@ main article #main_content a {
 main article #main_content a:hover {
   text-decoration: underline;
 }
-main article #main_content img {
-  max-width: 250px;
-  width: 50%;
-}
 main article #main_content p {
   text-align: justify;
   width: 100%;
@@ -350,6 +346,9 @@ main article #main_content p {
   main article #main_content p {
     margin-bottom: 8px;
   }
+}
+main article #main_content img {
+  max-width: 100%;
 }
 @media (min-width: 640px) and (max-width: 940px) {
   main article #main_content {
@@ -364,7 +363,6 @@ main article #main_content p {
   }
 }
 main .main-title {
-  width: 240px;
   height: 39px;
   background-repeat: no-repeat;
   background-position: left;
@@ -377,7 +375,6 @@ main .main-title {
 }
 @media (min-width: 640px) and (max-width: 940px) {
   main .main-title {
-    width: 223px;
     height: 35px;
     font-size: 2em;
     margin-left: 9%;
@@ -385,7 +382,6 @@ main .main-title {
 }
 @media (max-width: 640px) {
   main .main-title {
-    width: 223px;
     height: 35px;
     font-size: 1.6em;
     margin-left: 5%;
@@ -393,7 +389,7 @@ main .main-title {
 }
 main .grid {
   width: 81%;
-  height: 380px;
+  min-height: 150px;
   margin: 0 auto;
   padding-left: 1%;
 }
@@ -482,9 +478,24 @@ main .grid .col-1-4 .dropDownMenu > li > ul > li > ul {
   top: 0;
   z-index: 9999999;
 }
+main table.schedule-table {
+  border-collapse: collapse;
+}
+main table.schedule-table thead {
+  background-color: #C2B291;
+  height: 20px;
+}
+main table.schedule-table tr.dark {
+  background-color: rgba(191, 69, 44, 0.05);
+  border: 1px #FCEFDE solid;
+}
+main table.schedule-table td,
+main table.schedule-table th {
+  border: 1px #000000 solid;
+}
 main .grid-for-painters {
   width: 81%;
-  height: 380px;
+  min-height: 150px;
   margin: 0 auto;
   padding-left: 1%;
   height: 320px;

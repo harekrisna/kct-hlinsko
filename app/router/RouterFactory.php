@@ -23,6 +23,7 @@ class RouterFactory
         ));
         
         $router[] = new Route('fotogalerie', 'Photogallery:photogallery');
+        $router[] = new Route('plan-akci', 'EventsSchedule:schedulesList');
 
         $router[] = new Route('fotogalerie/<galery_id>', array(
 			'presenter' => 'Photogallery',

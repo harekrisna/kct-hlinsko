@@ -47,7 +47,8 @@ final class EventsSchedulePresenter extends BasePresenter {
 
     public function renderList($schedule_type) {
         $this->schedule_type = $schedule_type;
-        $this->template->records = $this->model->findAll();
+        $this->template->records = $this->model->findAll()
+                                               ->order('year DESC');
     }
 					
     protected function createComponentForm() {
