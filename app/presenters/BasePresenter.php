@@ -21,6 +21,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 	protected $galery;
 	/** @var Photo */
 	protected $photo;
+	/** @var Painters */
+	protected $painters;
 
 	protected function startup() {
 		parent::startup();
@@ -30,5 +32,6 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 		$this->events_schedule_history = $this->context->getService('events_schedule_history');
         $this->galery = $this->context->getService('galery');
         $this->photo = $this->context->getService('photo');
+        $this->painters = $this->context->getService('painters');
 	}
 }

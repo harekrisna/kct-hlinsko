@@ -29,6 +29,8 @@ services:
 	- App\AdminModule\Forms\SignFormFactory
 	- App\AdminModule\Forms\GaleryFormFactory
 	- App\AdminModule\Forms\EventsScheduleFormFactory
+	- App\AdminModule\Forms\PaintersFormFactory
+	- App\AdminModule\Forms\NoticeboardFormFactory
 	router: App\RouterFactory::createRouter
 
 	filters: App\AdminModule\Templates\Filters
@@ -37,3 +39,5 @@ services:
 	page: App\Model\Page
 	events_schedule: App\Model\EventsSchedule
 	events_schedule_history: App\Model\EventsScheduleHistory
+	painters: App\Model\Painters
+	noticeboard: App\Model\Noticeboard

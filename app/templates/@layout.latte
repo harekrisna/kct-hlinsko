@@ -27,19 +27,19 @@
 					<a n:href="Homepage:default" n:class="first, after, $presenter->linkCurrent ? active" title="">domů</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="EventsSchedule:schedulesList" n:class="first, after, $presenter->linkCurrent ? active" title="">plán akcí</a>
+					<a n:href="Noticeboard:noticeboard" n:class="first, after, $presenter->linkCurrent ? active" title="nástěnka">nástěnka</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Photogallery:photogallery" n:class="first, after, $presenter->isLinkCurrent('Photogallery:*') ? active" title="">fotogalerie</a>
+					<a n:href="EventsSchedule:schedulesList" n:class="first, after, $presenter->linkCurrent ? active" title="plán akcí">plán akcí</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Painters:default" class="first after" title="">krajem malířů <span class="vysocina">vysočiny</span></a>
+					<a n:href="Photogallery:photogallery" n:class="first, after, $presenter->isLinkCurrent('Photogallery:*') ? active" title="fotogalerie">fotogalerie</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Documents:default" class="first after" title="">dokumenty</a>
+					<a n:href="Painters:list" class="first after" title="">krajem malířů <span class="vysocina">vysočiny</span></a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Links:links" n:class="first, after, $presenter->linkCurrent ? active" title="">odkazy</a>
+					<a n:href="Links:links" n:class="first, after, $presenter->linkCurrent ? active" title="odkazy">odkazy</a>
 				</li>
 			</ul>
 		</nav>

@@ -1,5 +1,9 @@
 {block content}
-	<div class="title-image painters-words"></div>
+	<h1 class="main-title">Krajem malířů vysočiny</h1>
+	<div class="grid">
+		<a n:foreach="$painters as $painter" n:href="detail, $painter->id" class="col-1-6">{$painter->year}</a>
+	</div>
+	<h1 class="main-title">Sponzoři</h1>	
 	<div class="grid-for-painters">
 		<div class="col-1-3">
 			<div id="sponsor-1">

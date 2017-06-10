@@ -21,6 +21,10 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 	protected $events_schedule;
 	/** @var EventsScheduleHistory */
 	protected $events_schedule_history;
+	/** @var Painters */
+	protected $painters;
+	/** @var Noticeboard */
+	protected $noticeboard;
 	/** @var User */
 	protected $user;
 	
@@ -35,6 +39,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
         $this->photo = $this->context->getService('photo');
         $this->events_schedule = $this->context->getService('events_schedule');
         $this->events_schedule_history = $this->context->getService('events_schedule_history');
+        $this->painters = $this->context->getService('painters');
+        $this->noticeboard = $this->context->getService('noticeboard');
         $this->page = $this->context->getService('page');
 		$this->user = $this->getUser();
 

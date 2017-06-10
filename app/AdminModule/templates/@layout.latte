@@ -41,6 +41,16 @@
                         </div>
                         <div class="logo-element">KČT<div class="small">ADMIN</div></div>
                     </li>
+                    {*<li {ifCurrent Page:form, 'welcome'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'welcome'" title="Vítejte"><i class="fa fa-certificate"></i><span class="nav-label">Vítejte</span></a>
+                    </li>*}
+                    <li n:class="$presenter->isLinkCurrent('Noticeboard:*') ? active">
+                        <a title="Nástěnka"><i class="fa fa-calendar-o"></i><span class="nav-label">Nástěnka</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li{ifCurrent Noticeboard:add} class="active"{/ifCurrent}><a n:href="Noticeboard:add">Přidat</a></li>
+                            <li{ifCurrent Noticeboard:list} class="active"{/ifCurrent}><a n:href="Noticeboard:list">Přehled</a></li>
+                        </ul>
+                    </li>
                     <li n:class="$presenter->isLinkCurrent('Galery:*') ? active">
                         <a n:href="Galery:list" title="Galerie"><i class="fa fa-picture-o"></i><span class="nav-label">Galerie</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -49,19 +59,22 @@
                         </ul>
                     </li>
                     <li n:class="$presenter->isLinkCurrent('EventsSchedule:*') ? active">
-                        <a title="Page"><i class="fa fa-map-signs"></i><span class="nav-label">Plán akcí</span><span class="fa arrow"></span></a>
+                        <a title="Plán akcí"><i class="fa fa-map-signs"></i><span class="nav-label">Plán akcí</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li{ifCurrent EventsSchedule:add} class="active"{/ifCurrent}><a n:href="EventsSchedule:add">Přidat</a></li>
                             <li{ifCurrent EventsSchedule:list, 'actual'} class="active"{/ifCurrent}><a n:href="EventsSchedule:list, 'actual'">Aktuální</a></li>
                             <li{ifCurrent EventsSchedule:list, 'history'} class="active"{/ifCurrent}><a n:href="EventsSchedule:list, 'history'">Uskutečněné</a></li>
                         </ul>
                     </li>
-                    <li n:class="$presenter->isLinkCurrent('Page:*') ? active">
-                        <a title="Page"><i class="fa fa-file-text-o"></i><span class="nav-label">Stránky</span><span class="fa arrow"></span></a>
+                    <li n:class="$presenter->isLinkCurrent('Painters:*') ? active">
+                        <a title="Krajem malířů vysočiny"><i class="fa fa-paint-brush"></i><span class="nav-label">Krajem malířů vys.</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li{ifCurrent Page:form, 'welcome'} class="active"{/ifCurrent}><a n:href="Page:form, 'welcome'">Vítejte</a></li>
-                            <li{ifCurrent Page:form, 'links'} class="active"{/ifCurrent}><a n:href="Page:form, 'links'">Odkazy</a></li>
+                            <li{ifCurrent Painters:add} class="active"{/ifCurrent}><a n:href="Painters:add">Přidat</a></li>
+                            <li{ifCurrent Painters:list} class="active"{/ifCurrent}><a n:href="Painters:list">Přehled</a></li>
                         </ul>
+                    </li>
+                    <li {ifCurrent Page:form, 'links'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'links'" title="Odkazy"><i class="fa fa-anchor"></i><span class="nav-label">Odkazy</span></a>
                     </li>
                 </ul>
             </div>

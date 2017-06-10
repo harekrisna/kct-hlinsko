@@ -1,0 +1,15 @@
+{layout '../@layout.latte'}
+{block main}
+	<div class="row wrapper border-bottom white-bg page-heading">
+	    <div class="col-lg-10">
+	        <h2 n:block="title">Krajem malířů vysočiny</h2>
+            <ol class="breadcrumb">
+                <li{ifCurrent Painters:add} class="active"{/ifCurrent}><a n:href="Painters:add">Přidat</a></li>
+                <li{ifCurrent Painters:list} class="active"{/ifCurrent}><a n:href="Painters:list">Přehled</a></li>
+            </ol>
+	    </div>
+	</div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        {include content}            
+    </div>
+{/block}

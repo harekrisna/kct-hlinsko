@@ -1,7 +1,7 @@
+/* - - - - - - - - - - - DEFINITION  - - - - - - - - - - - */
 @import "reboot.css";
 @import "backarrow.css";
 @import "photoswipe.css";
-/* - - - - - - - - - - - DEFINITION  - - - - - - - - - - - */
 * {
   outline: 0px solid black;
 }
@@ -91,18 +91,21 @@ body {
   width: 64px;
 }
 .header ul.main-menu li:nth-child(3) {
-  width: 76px;
+  width: 64px;
 }
 .header ul.main-menu li:nth-child(4) {
+  width: 76px;
+}
+.header ul.main-menu li:nth-child(5) {
   width: 163px;
 }
 @media (min-width: 640px) and (max-width: 940px) {
-  .header ul.main-menu li:nth-child(4) {
+  .header ul.main-menu li:nth-child(5) {
     width: 100px;
   }
 }
 @media (max-width: 640px) {
-  .header ul.main-menu li:nth-child(4) {
+  .header ul.main-menu li:nth-child(5) {
     width: 100px;
   }
 }
@@ -115,9 +118,6 @@ body {
   .header ul.main-menu li .vysocina {
     display: none;
   }
-}
-.header ul.main-menu li:nth-child(5) {
-  width: 80px;
 }
 .header ul.main-menu li:nth-child(6) {
   width: 50px;
@@ -129,7 +129,7 @@ body {
 }
 .header ul.main-menu li a:hover,
 .header ul.main-menu li a.active {
-  color: #bf452c;
+  color: #BF452C;
 }
 .header ul.main-menu .wrapper a,
 .header ul.main-menu .wrapper a:visited,
@@ -142,7 +142,7 @@ body {
   text-decoration: none;
 }
 .header ul.main-menu .wrapper a:hover {
-  color: #bf452c;
+  color: #BF452C;
 }
 .header ul.main-menu .wrapper a.before:before,
 .header ul.main-menu .wrapper a.after:after {
@@ -162,7 +162,7 @@ body {
 .header ul.main-menu .wrapper a.after:after {
   height: 3px;
   width: 0;
-  background: #bf452c;
+  background: #BF452C;
 }
 .header ul.main-menu .wrapper a.first:after {
   left: 0;
@@ -183,7 +183,7 @@ body {
   }
 }
 .header #dashboard_panel {
-  background-color: #bf452c;
+  background-color: #BF452C;
   width: 100%;
   height: 40px;
   float: left;
@@ -217,7 +217,7 @@ body {
   color: black;
 }
 .header #dashboard_panel .box_add_menu .dropMenuList a:hover {
-  color: #bf452c;
+  color: #BF452C;
 }
 .header #dashboard_panel .box_add_menu .dropMenuList > li {
   display: inline-block;
@@ -333,7 +333,7 @@ main article #main_content {
   margin-top: 2%;
 }
 main article #main_content a {
-  color: #bf452c;
+  color: #BF452C;
 }
 main article #main_content a:hover {
   text-decoration: underline;
@@ -371,7 +371,7 @@ main .main-title {
   font-family: 'Lobster', cursive;
   font-size: 2.3em;
   font-weight: normal;
-  color: #bf452c;
+  color: #BF452C;
 }
 @media (min-width: 640px) and (max-width: 940px) {
   main .main-title {
@@ -405,10 +405,10 @@ main .grid a.col-1-6 {
   line-height: 30px;
   color: black;
   font-weight: 600;
-  border: 1px solid #694f34;
+  border: 1px solid #694F34;
 }
 main .grid a.col-1-6:hover {
-  background-color: #bf452c;
+  background-color: #BF452C;
   color: white;
 }
 main .grid .col-1-4 {
@@ -423,7 +423,7 @@ main .grid .col-1-4 {
   line-height: 30px;
   color: black;
   font-weight: 600;
-  border: 1px solid #694f34;
+  border: 1px solid #694F34;
 }
 main .grid .col-1-4 .dropDownMenu ul {
   list-style: none;
@@ -443,7 +443,7 @@ main .grid .col-1-4 .dropDownMenu a {
   color: black;
 }
 main .grid .col-1-4 .dropDownMenu a:hover {
-  color: #bf452c;
+  color: #BF452C;
 }
 main .grid .col-1-4 .dropDownMenu > li {
   display: inline-block;
@@ -455,7 +455,7 @@ main .grid .col-1-4 .dropDownMenu > li:first-child {
   margin-left: 0;
 }
 main .grid .col-1-4 .dropDownMenu > li:first-child > a:hover {
-  background: #bf452c;
+  background: #BF452C;
   color: white;
 }
 main .grid .col-1-4 .dropDownMenu > li > ul {
@@ -512,10 +512,10 @@ main .grid-for-painters a.col-1-6 {
   line-height: 30px;
   color: black;
   font-weight: 600;
-  border: 1px solid #694f34;
+  border: 1px solid #694F34;
 }
 main .grid-for-painters a.col-1-6:hover {
-  background-color: #bf452c;
+  background-color: #BF452C;
   color: white;
 }
 main .grid-for-painters .col-1-4 {
@@ -530,7 +530,7 @@ main .grid-for-painters .col-1-4 {
   line-height: 30px;
   color: black;
   font-weight: 600;
-  border: 1px solid #694f34;
+  border: 1px solid #694F34;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu ul {
   list-style: none;
@@ -550,7 +550,7 @@ main .grid-for-painters .col-1-4 .dropDownMenu a {
   color: black;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu a:hover {
-  color: #bf452c;
+  color: #BF452C;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu > li {
   display: inline-block;
@@ -562,7 +562,7 @@ main .grid-for-painters .col-1-4 .dropDownMenu > li:first-child {
   margin-left: 0;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu > li:first-child > a:hover {
-  background: #bf452c;
+  background: #BF452C;
   color: white;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu > li > ul {
@@ -714,7 +714,7 @@ main .www-link {
   color: black;
 }
 main .www-link:hover {
-  color: #bf452c;
+  color: #BF452C;
 }
 main .sponsor-links {
   width: 100%;
@@ -731,7 +731,7 @@ main .sponsor-links a {
   color: black;
 }
 main .sponsor-links :hover {
-  color: #bf452c;
+  color: #BF452C;
 }
 main .archiv-list {
   width: 80%;
@@ -760,7 +760,7 @@ main .archiv-list a:hover .galery-title {
   text-decoration: underline;
 }
 main .archiv-list a .galery-title {
-  color: #bf452c;
+  color: #BF452C;
 }
 main .archiv-list a .folder-detail {
   font-size: 0.9em;
@@ -773,7 +773,7 @@ footer {
   width: 100%;
   min-height: 130px;
   float: left;
-  background-color: #694f34;
+  background-color: #694F34;
   -webkit-box-shadow: 0px -4px 25px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px -4px 25px -8px rgba(0, 0, 0, 0.75);
   box-shadow: 0px -4px 25px -8px rgba(0, 0, 0, 0.75);
@@ -821,7 +821,7 @@ footer #footer_items .soc-sites .social-top {
 }
 footer #footer_items .soc-sites .social-top p {
   font-size: 0.9em;
-  color: #d3cdbf;
+  color: #D3CDBF;
   margin-bottom: 11px;
 }
 footer #footer_items .soc-sites .social-top li {
@@ -829,12 +829,12 @@ footer #footer_items .soc-sites .social-top li {
   float: left;
   width: 34px;
   height: 34px;
-  background-color: #d3cdbf;
+  background-color: #D3CDBF;
   border-radius: 150px;
 }
 footer #footer_items .soc-sites .social-top li a {
   display: block;
-  color: #694f34;
+  color: #694F34;
   font-size: 1.4em;
   font-weight: 500;
   line-height: 34px;
@@ -857,7 +857,7 @@ footer #footer_items .soc-sites .social-top li.google a {
   line-height: 30px;
 }
 footer #footer_items .soc-sites .social-top li :hover {
-  color: #694f34;
+  color: #694F34;
   background-color: #C1AC95;
   border-radius: 150px;
 }
@@ -880,7 +880,7 @@ footer #footer_items .kct-adress {
 }
 footer #footer_items .kct-adress p {
   font-size: 0.9em;
-  color: #d3cdbf;
+  color: #D3CDBF;
 }
 @media (min-width: 640px) and (max-width: 940px) {
   footer #footer_items .kct-adress {
@@ -902,10 +902,10 @@ footer #footer_items .site-creators {
 }
 footer #footer_items .site-creators p {
   font-size: 0.9em;
-  color: #d3cdbf;
+  color: #D3CDBF;
 }
 footer #footer_items .site-creators p a {
-  color: #d3cdbf;
+  color: #D3CDBF;
 }
 footer #footer_items .site-creators p a:hover {
   color: white;
@@ -947,10 +947,10 @@ footer #created_by {
   margin: -25px 5% 1% 0;
 }
 footer #created_by p {
-  color: #d3cdbf;
+  color: #D3CDBF;
 }
 footer #created_by p a {
-  color: #d3cdbf;
+  color: #D3CDBF;
 }
 footer #created_by p a:hover {
   color: white;
