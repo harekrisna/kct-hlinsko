@@ -41,9 +41,6 @@
                         </div>
                         <div class="logo-element">KČT<div class="small">ADMIN</div></div>
                     </li>
-                    {*<li {ifCurrent Page:form, 'welcome'} class="active"{/ifCurrent}>
-                        <a n:href="Page:form, 'welcome'" title="Vítejte"><i class="fa fa-certificate"></i><span class="nav-label">Vítejte</span></a>
-                    </li>*}
                     <li n:class="$presenter->isLinkCurrent('Noticeboard:*') ? active">
                         <a title="Nástěnka"><i class="fa fa-calendar-o"></i><span class="nav-label">Nástěnka</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -75,6 +72,30 @@
                     </li>
                     <li {ifCurrent Page:form, 'links'} class="active"{/ifCurrent}>
                         <a n:href="Page:form, 'links'" title="Odkazy"><i class="fa fa-anchor"></i><span class="nav-label">Odkazy</span></a>
+                    </li>
+                    <li {ifCurrent Page:form, 'welcome'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'welcome'" title="Vítejte"><i class="fa fa-sun-o"></i><span class="nav-label">Vítejte</span></a>
+                    </li>
+                    <li {ifCurrent Page:form, 'history'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'history'" title="Historie"><i class="fa fa-university"></i><span class="nav-label">Historie</span></a>
+                    </li>
+                    <li {ifCurrent Page:form, 'contacts'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'contacts'" title="Kontaky"><i class="fa fa-users"></i><span class="nav-label">Kontaky</span></a>
+                    </li>
+                    <li {ifCurrent Page:form, 'statute'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'statute'" title="Stanovy KČT"><i class="fa fa-flag-o"></i><span class="nav-label">Stanovy KČT</span></a>
+                    </li>
+                    <li {ifCurrent Page:form, 'download'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'download'" title="Ke stažení"><i class="fa fa-download"></i><span class="nav-label">Ke stažení</span></a>
+                    </li>
+                    <li {ifCurrent Page:form, 'member_donations'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'member_donations'" title="Členské příspěvky"><i class="fa fa-money"></i><span class="nav-label">Členské příspěvky</span></a>
+                    </li>
+                    <li {ifCurrent Page:form, 'insurance'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'insurance'" title="Členské příspěvky"><i class="fa fa-life-ring"></i><span class="nav-label">Pojištění členů</span></a>
+                    </li>
+                    <li {ifCurrent Page:form, 'meeting'} class="active"{/ifCurrent}>
+                        <a n:href="Page:form, 'meeting'" title="Členské příspěvky"><i class="fa fa-comments-o"></i><span class="nav-label">Výroční schůze KČT</span></a>
                     </li>
                 </ul>
             </div>

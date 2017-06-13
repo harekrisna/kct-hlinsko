@@ -17,6 +17,7 @@
                                 <th class="noselect th-date" data-name="date">Vytvořeno</th>
                                 <th class="noselect th-year">Rok</th>
                                 <th data-filterable="false" data-sortable="false" class="noselect">Obsah</th>
+                                <th data-filterable="false" class="noselect th-on-off-switch" data-type="html" id="column-activity">Aktivní</th>
                                 <th data-filterable="false" data-sortable="false" data-name="controls" class="controls-2"></th>
                             </tr>
                         </thead>
@@ -25,6 +26,17 @@
                                 <td data-sort-value="{$record->created}">{$record->created|date:'d.m.Y'}</td>
                                 <td data-sort-value="{$record->year}">{$record->year}</td>
                                 <td class="ellipsis">{php echo html_entity_decode($record->content|striptags)}</td>
+                                <td data-sort-value="{$record->active}" data-filter-value="{$record->active}">
+                                    <div class="switch active">
+                                        <div class="onoffswitch">
+                                            <input type="checkbox" n:attr="checked => $record->active == 1" onchange="change_activity({$record->id}, this.checked)" class="onoffswitch-checkbox" id="onoffswitch-person-{$record->id}">
+                                            <label class="onoffswitch-label" for="onoffswitch-person-{$record->id}">
+                                                <span class="onoffswitch-inner"></span>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>  
+                                </td>
                                 <td class="controls">
                                     <a class="row-edit" n:href="edit, $record->id"><span class="glyphicon glyphicon-edit"></span></a>
                                     <a class="row-delete" data-delete_name="{$record->year}" n:href="delete, $record->id"><span class="glyphicon glyphicon-remove"></span></a>
@@ -56,5 +68,10 @@
         $(document).ready(function() {
             initFooTable('#fooTable', "Plán akcí byl smazán.");
         });
+
+
+        function change_activity(record_id, active) {
+            $.get({link setActivity}, {'record_id': record_id, 'active': active})
+        }
     </script>
 {/block}

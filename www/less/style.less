@@ -249,12 +249,11 @@ body {
 		box-shadow: 0px 2px 8px -2px rgba(64,64,64,1);
 
 		.box_add_menu {
-			width: 90px;
+			width: 138px;
 			height: 19px;
 			float: left;
-			margin: 1% 0 0 10%;
+			margin: 0 0 0 10%;
 			display: block;
-
 
 			.dropMenuList {
 				ul {
@@ -269,15 +268,24 @@ body {
 					li {
 						position: relative;
 						width: 100%;
-						padding-bottom: 12px;
-					};
+						height: 35px;
+						line-height: 35px;
+
+						&:first-child {
+							padding-top: 2px;
+						}
+
+						&:last-child {
+							padding-bottom: 4px;
+						}
+					}
 
 					a {
 						width: 100%;
 						display: block;
 					    color: black;
 
-						&:hover {
+						&:hover, &.active {
 							color: @red;
 						};
 					};
@@ -302,7 +310,7 @@ body {
 						};
 
 						> ul {
-							padding-left: 3px;
+							padding-left: 10px;
 							text-align: left;
 							display: none;
 							position: absolute;
@@ -323,11 +331,6 @@ body {
 						};
 					}
 			}
-			
-			.tablet-screen({
-				margin: 1% 0 0 9%;
-			});
-
 
 			.mobile-screen({
 				display: none;
@@ -409,6 +412,11 @@ main {
 			width: 75%;
 			margin-left: 12%;
 			margin-top: 2%;
+
+			h2 {
+				font-size: 16px;
+				margin: 5px 0 5px 0;
+			}
 
 			a {
 				color: @red;
@@ -585,22 +593,25 @@ main {
 		};
 	};
 
-	table.schedule-table{
+	table.page-table{
 		border-collapse: collapse;
-		
 
 		thead{
-			background-color: #C2B291;
 			height: 20px;
+
+
+			th {
+				background-color: #f2ead5;
+			}
 		}
 
-		tr.dark{
+		tr:nth-child(even){
 			background-color: rgba(191, 69, 44, 0.05);
 			border: 1px #FCEFDE solid;
 		}	
 
 		td,th{
-			border: 1px #000000 solid;
+			border: 1px #888888 solid;
 		}
 	}
 
@@ -612,15 +623,16 @@ main {
 		width: 100%;
 		
 		a {
-			display: block;
-			color: @red;
 			width: 130px;
 			height: 30px;
+			color: @red;
 			line-height: 30px;
-			margin: 0 auto;
 			text-align: center;
 			border: 1px @red solid;
 			border-radius: 2px;
+			cursor: pointer;
+			margin: 0 auto;
+			display: block;
 			
 			&:hover {
 				text-decoration: underline;

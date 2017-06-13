@@ -1,7 +1,7 @@
-/* - - - - - - - - - - - DEFINITION  - - - - - - - - - - - */
 @import "reboot.css";
 @import "backarrow.css";
 @import "photoswipe.css";
+/* - - - - - - - - - - - DEFINITION  - - - - - - - - - - - */
 * {
   outline: 0px solid black;
 }
@@ -129,7 +129,7 @@ body {
 }
 .header ul.main-menu li a:hover,
 .header ul.main-menu li a.active {
-  color: #BF452C;
+  color: #bf452c;
 }
 .header ul.main-menu .wrapper a,
 .header ul.main-menu .wrapper a:visited,
@@ -142,7 +142,7 @@ body {
   text-decoration: none;
 }
 .header ul.main-menu .wrapper a:hover {
-  color: #BF452C;
+  color: #bf452c;
 }
 .header ul.main-menu .wrapper a.before:before,
 .header ul.main-menu .wrapper a.after:after {
@@ -162,7 +162,7 @@ body {
 .header ul.main-menu .wrapper a.after:after {
   height: 3px;
   width: 0;
-  background: #BF452C;
+  background: #bf452c;
 }
 .header ul.main-menu .wrapper a.first:after {
   left: 0;
@@ -183,7 +183,7 @@ body {
   }
 }
 .header #dashboard_panel {
-  background-color: #BF452C;
+  background-color: #bf452c;
   width: 100%;
   height: 40px;
   float: left;
@@ -192,10 +192,10 @@ body {
   box-shadow: 0px 2px 8px -2px #404040;
 }
 .header #dashboard_panel .box_add_menu {
-  width: 90px;
+  width: 138px;
   height: 19px;
   float: left;
-  margin: 1% 0 0 10%;
+  margin: 0 0 0 10%;
   display: block;
 }
 .header #dashboard_panel .box_add_menu .dropMenuList ul {
@@ -209,15 +209,23 @@ body {
 .header #dashboard_panel .box_add_menu .dropMenuList li {
   position: relative;
   width: 100%;
-  padding-bottom: 12px;
+  height: 35px;
+  line-height: 35px;
+}
+.header #dashboard_panel .box_add_menu .dropMenuList li:first-child {
+  padding-top: 2px;
+}
+.header #dashboard_panel .box_add_menu .dropMenuList li:last-child {
+  padding-bottom: 4px;
 }
 .header #dashboard_panel .box_add_menu .dropMenuList a {
   width: 100%;
   display: block;
   color: black;
 }
-.header #dashboard_panel .box_add_menu .dropMenuList a:hover {
-  color: #BF452C;
+.header #dashboard_panel .box_add_menu .dropMenuList a:hover,
+.header #dashboard_panel .box_add_menu .dropMenuList a.active {
+  color: #bf452c;
 }
 .header #dashboard_panel .box_add_menu .dropMenuList > li {
   display: inline-block;
@@ -237,7 +245,7 @@ body {
   color: white;
 }
 .header #dashboard_panel .box_add_menu .dropMenuList > li > ul {
-  padding-left: 3px;
+  padding-left: 10px;
   text-align: left;
   display: none;
   position: absolute;
@@ -255,11 +263,6 @@ body {
   left: 100%;
   top: 0;
   z-index: 9999999;
-}
-@media (min-width: 640px) and (max-width: 940px) {
-  .header #dashboard_panel .box_add_menu {
-    margin: 1% 0 0 9%;
-  }
 }
 @media (max-width: 640px) {
   .header #dashboard_panel .box_add_menu {
@@ -332,8 +335,12 @@ main article #main_content {
   margin-left: 12%;
   margin-top: 2%;
 }
+main article #main_content h2 {
+  font-size: 16px;
+  margin: 5px 0 5px 0;
+}
 main article #main_content a {
-  color: #BF452C;
+  color: #bf452c;
 }
 main article #main_content a:hover {
   text-decoration: underline;
@@ -371,7 +378,7 @@ main .main-title {
   font-family: 'Lobster', cursive;
   font-size: 2.3em;
   font-weight: normal;
-  color: #BF452C;
+  color: #bf452c;
 }
 @media (min-width: 640px) and (max-width: 940px) {
   main .main-title {
@@ -405,10 +412,10 @@ main .grid a.col-1-6 {
   line-height: 30px;
   color: black;
   font-weight: 600;
-  border: 1px solid #694F34;
+  border: 1px solid #694f34;
 }
 main .grid a.col-1-6:hover {
-  background-color: #BF452C;
+  background-color: #bf452c;
   color: white;
 }
 main .grid .col-1-4 {
@@ -423,7 +430,7 @@ main .grid .col-1-4 {
   line-height: 30px;
   color: black;
   font-weight: 600;
-  border: 1px solid #694F34;
+  border: 1px solid #694f34;
 }
 main .grid .col-1-4 .dropDownMenu ul {
   list-style: none;
@@ -443,7 +450,7 @@ main .grid .col-1-4 .dropDownMenu a {
   color: black;
 }
 main .grid .col-1-4 .dropDownMenu a:hover {
-  color: #BF452C;
+  color: #bf452c;
 }
 main .grid .col-1-4 .dropDownMenu > li {
   display: inline-block;
@@ -455,7 +462,7 @@ main .grid .col-1-4 .dropDownMenu > li:first-child {
   margin-left: 0;
 }
 main .grid .col-1-4 .dropDownMenu > li:first-child > a:hover {
-  background: #BF452C;
+  background: #bf452c;
   color: white;
 }
 main .grid .col-1-4 .dropDownMenu > li > ul {
@@ -478,20 +485,22 @@ main .grid .col-1-4 .dropDownMenu > li > ul > li > ul {
   top: 0;
   z-index: 9999999;
 }
-main table.schedule-table {
+main table.page-table {
   border-collapse: collapse;
 }
-main table.schedule-table thead {
-  background-color: #C2B291;
+main table.page-table thead {
   height: 20px;
 }
-main table.schedule-table tr.dark {
+main table.page-table thead th {
+  background-color: #f2ead5;
+}
+main table.page-table tr:nth-child(even) {
   background-color: rgba(191, 69, 44, 0.05);
   border: 1px #FCEFDE solid;
 }
-main table.schedule-table td,
-main table.schedule-table th {
-  border: 1px #000000 solid;
+main table.page-table td,
+main table.page-table th {
+  border: 1px #888888 solid;
 }
 main article.notice-block {
   min-height: inherit;
@@ -500,15 +509,16 @@ main .ajax-more {
   width: 100%;
 }
 main .ajax-more a {
-  display: block;
-  color: #BF452C;
   width: 130px;
   height: 30px;
+  color: #bf452c;
   line-height: 30px;
-  margin: 0 auto;
   text-align: center;
-  border: 1px #BF452C solid;
+  border: 1px #bf452c solid;
   border-radius: 2px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
 }
 main .ajax-more a:hover {
   text-decoration: underline;
@@ -692,10 +702,10 @@ main .grid-for-painters a.col-1-6 {
   line-height: 30px;
   color: black;
   font-weight: 600;
-  border: 1px solid #694F34;
+  border: 1px solid #694f34;
 }
 main .grid-for-painters a.col-1-6:hover {
-  background-color: #BF452C;
+  background-color: #bf452c;
   color: white;
 }
 main .grid-for-painters .col-1-4 {
@@ -710,7 +720,7 @@ main .grid-for-painters .col-1-4 {
   line-height: 30px;
   color: black;
   font-weight: 600;
-  border: 1px solid #694F34;
+  border: 1px solid #694f34;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu ul {
   list-style: none;
@@ -730,7 +740,7 @@ main .grid-for-painters .col-1-4 .dropDownMenu a {
   color: black;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu a:hover {
-  color: #BF452C;
+  color: #bf452c;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu > li {
   display: inline-block;
@@ -742,7 +752,7 @@ main .grid-for-painters .col-1-4 .dropDownMenu > li:first-child {
   margin-left: 0;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu > li:first-child > a:hover {
-  background: #BF452C;
+  background: #bf452c;
   color: white;
 }
 main .grid-for-painters .col-1-4 .dropDownMenu > li > ul {
@@ -894,7 +904,7 @@ main .www-link {
   color: black;
 }
 main .www-link:hover {
-  color: #BF452C;
+  color: #bf452c;
 }
 main .sponsor-links {
   width: 100%;
@@ -911,7 +921,7 @@ main .sponsor-links a {
   color: black;
 }
 main .sponsor-links :hover {
-  color: #BF452C;
+  color: #bf452c;
 }
 main .archiv-list {
   width: 80%;
@@ -940,7 +950,7 @@ main .archiv-list a:hover .galery-title {
   text-decoration: underline;
 }
 main .archiv-list a .galery-title {
-  color: #BF452C;
+  color: #bf452c;
 }
 main .archiv-list a .folder-detail {
   font-size: 0.9em;
@@ -953,7 +963,7 @@ footer {
   width: 100%;
   min-height: 130px;
   float: left;
-  background-color: #694F34;
+  background-color: #694f34;
   -webkit-box-shadow: 0px -4px 25px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px -4px 25px -8px rgba(0, 0, 0, 0.75);
   box-shadow: 0px -4px 25px -8px rgba(0, 0, 0, 0.75);
@@ -1001,7 +1011,7 @@ footer #footer_items .soc-sites .social-top {
 }
 footer #footer_items .soc-sites .social-top p {
   font-size: 0.9em;
-  color: #D3CDBF;
+  color: #d3cdbf;
   margin-bottom: 11px;
 }
 footer #footer_items .soc-sites .social-top li {
@@ -1009,12 +1019,12 @@ footer #footer_items .soc-sites .social-top li {
   float: left;
   width: 34px;
   height: 34px;
-  background-color: #D3CDBF;
+  background-color: #d3cdbf;
   border-radius: 150px;
 }
 footer #footer_items .soc-sites .social-top li a {
   display: block;
-  color: #694F34;
+  color: #694f34;
   font-size: 1.4em;
   font-weight: 500;
   line-height: 34px;
@@ -1037,7 +1047,7 @@ footer #footer_items .soc-sites .social-top li.google a {
   line-height: 30px;
 }
 footer #footer_items .soc-sites .social-top li :hover {
-  color: #694F34;
+  color: #694f34;
   background-color: #C1AC95;
   border-radius: 150px;
 }
@@ -1060,7 +1070,7 @@ footer #footer_items .kct-adress {
 }
 footer #footer_items .kct-adress p {
   font-size: 0.9em;
-  color: #D3CDBF;
+  color: #d3cdbf;
 }
 @media (min-width: 640px) and (max-width: 940px) {
   footer #footer_items .kct-adress {
@@ -1082,10 +1092,10 @@ footer #footer_items .site-creators {
 }
 footer #footer_items .site-creators p {
   font-size: 0.9em;
-  color: #D3CDBF;
+  color: #d3cdbf;
 }
 footer #footer_items .site-creators p a {
-  color: #D3CDBF;
+  color: #d3cdbf;
 }
 footer #footer_items .site-creators p a:hover {
   color: white;
@@ -1127,10 +1137,10 @@ footer #created_by {
   margin: -25px 5% 1% 0;
 }
 footer #created_by p {
-  color: #D3CDBF;
+  color: #d3cdbf;
 }
 footer #created_by p a {
-  color: #D3CDBF;
+  color: #d3cdbf;
 }
 footer #created_by p a:hover {
   color: white;

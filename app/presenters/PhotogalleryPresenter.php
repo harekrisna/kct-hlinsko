@@ -35,24 +35,26 @@ class PhotogalleryPresenter extends BasePresenter {
 			}
 		}
 
-		array_pop($year_groups);
-		$year_from = $year_to + 4;
-		$year_to = $year;
-		if($year_from == $year_to) {
-			$year_groups[$year] = $year;
+		if($iterator > 6) { // pokud není více roků než se vejde na první řádek
+			array_pop($year_groups);
+			$year_from = $year_to + 4;
+			$year_to = $year;
+			if($year_from == $year_to) {
+				$year_groups[$year] = $year;
+			}
+			elseif($year_from > $year_to) {
+				$year_groups[$year_from."-".$year_to] = range($year_from, $year_to);
+			}
 		}
-		elseif($year_from > $year_to) {
-			$year_groups[$year_from."-".$year_to] = range($year_from, $year_to);
-		}
-		
 		$this->template->first_line = $first_line;
 		$this->template->year_groups = $year_groups;
 	}
 
 	public function renderYear($year) {
-		$this->template->galeries = $this->galery->findBy(['year(galery_date)' => $year])
+		$this->template->galeries = $this->galery->findBy(['year(galery_date)' => $year, 'active' => TRUE])
 												 ->order('galery_date DESC');
 		$this->template->year = $year;
+		$this->template->backlink = $this->presenter->link('photogallery');
 	}	
 
 	public function renderPhotos($galery_id) {

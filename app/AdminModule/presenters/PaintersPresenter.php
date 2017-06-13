@@ -72,4 +72,11 @@ final class PaintersPresenter extends BasePresenter {
         $this->payload->success = $this->model->delete($id);
         $this->sendPayload();
     }    
+
+    public function actionSetActivity($record_id, $active) {
+        $this->model->findBy(['id' => $record_id])
+                    ->update(['active' => $active == "true" ? 1 : 0]);
+
+        $this->sendPayload();
+    }    
 }

@@ -22,8 +22,26 @@ class RouterFactory
             'action'    => 'list'
         ));
         
+        $router[] = new Route('nastenka', 'Noticeboard:noticeboard');
         $router[] = new Route('fotogalerie', 'Photogallery:photogallery');
         $router[] = new Route('plan-akci', 'EventsSchedule:schedulesList');
+        $router[] = new Route('plan-akci/aktualni/<record_id>', array(
+			'presenter' => 'EventsSchedule',
+			'action' => 'actualSchedule',
+			'record_id' => array(
+				Route::FILTER_OUT => function ($id) use($container) { return $container->getService('events_schedule')->getYearById($id);},
+				Route::FILTER_IN => function ($year) use($container) { return $container->getService('events_schedule')->getIdByYear($year);},
+			),
+		));
+
+		$router[] = new Route('plan-akci/uskutecnene/<record_id>', array(
+			'presenter' => 'EventsSchedule',
+			'action' => 'historySchedule',
+			'record_id' => array(
+				Route::FILTER_OUT => function ($id) use($container) { return $container->getService('events_schedule_history')->getYearById($id);},
+				Route::FILTER_IN => function ($year) use($container) { return $container->getService('events_schedule_history')->getIdByYear($year);},
+			),
+		));
 
         $router[] = new Route('fotogalerie/<galery_id>', array(
 			'presenter' => 'Photogallery',
@@ -34,7 +52,36 @@ class RouterFactory
 			),
 		));
 
-		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
+		$router[] = new Route('audio/rok/<year>?seskupit=<group_by>', array(
+			'presenter' => 'Audio',
+			'action' => 'year',
+			'group_by' => array(
+				Route::FILTER_TABLE => array(
+					'autoru' => 'interpret_id',
+					'temata' => 'book_id',
+				)
+			),
+		));
+
+		$router[] = new Route('<page>', array(
+			'presenter' => 'Page',
+			'action' => 'view',
+			'page' => array(
+				Route::FILTER_TABLE => array(
+					'vitejte' => 'welcome',
+					'odkazy' => 'links',
+					'historie' => 'history',
+					'kontakty' => 'contacts',
+					'stanovy-kct' => 'statute',
+					'ke-stazeni' => 'download',
+					'clenske-prispevky' => 'member_donations',
+					'pojisteni-clenu' => 'insurance',
+					'vyrocni-schuze-kct' => 'meeting',
+				)
+			),
+		));
+
+		$router[] = new Route('<presenter>/<action>[/<id>]', "Page:view");
 		return $router;
 	}
 

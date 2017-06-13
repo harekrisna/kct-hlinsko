@@ -2,11 +2,7 @@
 {block main}
 	<div class="row wrapper border-bottom white-bg page-heading">
 	    <div class="col-lg-10">
-	        <h2 n:block="title">Stránky</h2>
-            <ol class="breadcrumb">
-                <li{ifCurrent Page:form, 'welcome'} class="active"{/ifCurrent}><a n:href="Page:form, 'welcome'">Vítejte</a></li>
-                
-            </ol>
+	        <h2 n:block="title">{$page->title}</h2>
 	    </div>
 	</div>
     <div class="wrapper wrapper-content animated fadeInRight">

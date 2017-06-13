@@ -9,8 +9,8 @@ use App\Model;
 class PaintersPresenter extends BasePresenter {
 	
 	public function renderList() {
-		$this->template->painters = $this->painters->findAll()
-												  ->order('year DESC');
+		$this->template->painters = $this->painters->findBy(['active' => TRUE])
+												   ->order('year DESC');
 	}
 	
 	public function renderDetail($record_id) {

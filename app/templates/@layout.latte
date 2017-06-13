@@ -24,7 +24,7 @@
 		<nav id="menu_list">
 			<ul class="main-menu">
 				<li class="wrapper">
-					<a n:href="Homepage:default" n:class="first, after, $presenter->linkCurrent ? active" title="">domů</a>
+					<a n:href="Page:view, 'welcome'" n:class="first, after, $presenter->linkCurrent ? active" title="">domů</a>
 				</li>
 				<li class="wrapper">
 					<a n:href="Noticeboard:noticeboard" n:class="first, after, $presenter->linkCurrent ? active" title="nástěnka">nástěnka</a>
@@ -39,7 +39,7 @@
 					<a n:href="Painters:list" class="first after" title="">krajem malířů <span class="vysocina">vysočiny</span></a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Links:links" n:class="first, after, $presenter->linkCurrent ? active" title="odkazy">odkazy</a>
+					<a n:href="Page:view, 'links'" n:class="first, after, $presenter->linkCurrent ? active" title="odkazy">odkazy</a>
 				</li>
 			</ul>
 		</nav>
@@ -49,10 +49,13 @@
 					<ul class="dropMenuList">
 						<li class="wrapper-white"><a href="" class="first after">Navigace</a>
 							<ul>
-								<li><a href="">Termíny</a></li>
-				    			<li><a href="">Události</a></li>
-				    			<li><a href="">Připomínky</a></li>
-				    			<li><a href="">Kontakt</a></li>
+								<li><a n:href="Page:view, 'history'" n:class="$presenter->linkCurrent ? active">Historie</a></li>
+				    			<li><a n:href="Page:view, 'contacts'" n:class="$presenter->linkCurrent ? active">Kontakty</a></li>
+				    			<li><a n:href="Page:view, 'statute'" n:class="$presenter->linkCurrent ? active">Stanovy KČT</a></li>
+				    			<li><a n:href="Page:view, 'download'" n:class="$presenter->linkCurrent ? active">Ke stažení</a></li>
+				    			<li><a n:href="Page:view, 'member_donations'" n:class="$presenter->linkCurrent ? active">Členské příspěvky</a></li>
+				    			<li><a n:href="Page:view, 'insurance'" n:class="$presenter->linkCurrent ? active">Pojištění členů</a></li>
+				    			<li><a n:href="Page:view, 'meeting'" n:class="$presenter->linkCurrent ? active">Výroční schůze KČT</a></li>
 							</ul>
 						</li>
 					</ul>
