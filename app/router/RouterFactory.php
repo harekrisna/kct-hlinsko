@@ -62,11 +62,26 @@ class RouterFactory
 				)
 			),
 		));
+		$router[] = new Route('<page_name>', array(
+			'presenter' => 'Homepage',
+			'action' => 'view',
+			'page_name' => array(
+				Route::FILTER_TABLE => array(
+					'vitejte' => 'welcome',
+					'historie' => 'history',
+					'kontakty' => 'contacts',
+					'stanovy-kct' => 'statute',
+					'clenske-prispevky' => 'member_donations',
+					'pojisteni-clenu' => 'insurance',
+					'vyrocni-schuze-kct' => 'meeting',
+				)
+			),
+		));
 
-		$router[] = new Route('<page>', array(
+		$router[] = new Route('<page_name>', array(
 			'presenter' => 'Page',
 			'action' => 'view',
-			'page' => array(
+			'page_name' => array(
 				Route::FILTER_TABLE => array(
 					'vitejte' => 'welcome',
 					'odkazy' => 'links',
@@ -81,7 +96,7 @@ class RouterFactory
 			),
 		));
 
-		$router[] = new Route('<presenter>/<action>[/<id>]', "Page:view");
+		$router[] = new Route('<presenter>/<action>[/<id>]', "Homepage:view");
 		return $router;
 	}
 

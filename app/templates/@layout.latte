@@ -17,55 +17,71 @@
 		<a href="#" class="back-to-top">Back to Top</a>
 		<a n:if="isset($backlink)" href="{$backlink}" class="back-to-history">Back to History</a>
 	</div>
-	<header id="header" class="header"> 
+	<header id="header" n:class="header"> 
 		<div id="header_panel">
 			<img class="head" src="{$basePath}/images/layout/logo.png" alt="logo_hlinsko">
 		</div>
 		<nav id="menu_list">
 			<ul class="main-menu">
 				<li class="wrapper">
-					<a n:href="Page:view, 'welcome'" n:class="first, after, $presenter->linkCurrent ? active" title="">domů</a>
+					<a n:href="Homepage:view, 'welcome'" n:class="first, after, $presenter->linkCurrent ? active" title="">Domů</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Noticeboard:noticeboard" n:class="first, after, $presenter->linkCurrent ? active" title="nástěnka">nástěnka</a>
+					<a n:href="Noticeboard:noticeboard" n:class="first, after, $presenter->linkCurrent ? active" title="nástěnka">Nástěnka</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="EventsSchedule:schedulesList" n:class="first, after, $presenter->linkCurrent ? active" title="plán akcí">plán akcí</a>
+					<a n:href="EventsSchedule:schedulesList" n:class="first, after, $presenter->linkCurrent ? active" title="plán akcí">Plán akcí</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Photogallery:photogallery" n:class="first, after, $presenter->isLinkCurrent('Photogallery:*') ? active" title="fotogalerie">fotogalerie</a>
+					<a n:href="Photogallery:photogallery" n:class="first, after, $presenter->isLinkCurrent('Photogallery:*') ? active" title="fotogalerie">Fotogalerie</a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Painters:list" class="first after" title="">krajem malířů <span class="vysocina">vysočiny</span></a>
+					<a n:href="Painters:list" class="first after" title="">Krajem malířů <span class="vysocina">vysočiny</span></a>
 				</li>
 				<li class="wrapper">
-					<a n:href="Page:view, 'links'" n:class="first, after, $presenter->linkCurrent ? active" title="odkazy">odkazy</a>
+					<a n:href="Page:view, 'links'" n:class="first, after, $presenter->linkCurrent ? active" title="odkazy">Odkazy</a>
 				</li>
 			</ul>
 		</nav>
+		
 		<div id="dashboard_panel">
+			{*
 			<div class="box_add_menu">
 				<div class="addMenuList">
 					<ul class="dropMenuList">
-						<li class="wrapper-white"><a href="" class="first after">Navigace</a>
+						<li class="wrapper-white"><div class="first after">Navigace</div>
 							<ul>
-								<li><a n:href="Page:view, 'history'" n:class="$presenter->linkCurrent ? active">Historie</a></li>
-				    			<li><a n:href="Page:view, 'contacts'" n:class="$presenter->linkCurrent ? active">Kontakty</a></li>
-				    			<li><a n:href="Page:view, 'statute'" n:class="$presenter->linkCurrent ? active">Stanovy KČT</a></li>
-				    			<li><a n:href="Page:view, 'download'" n:class="$presenter->linkCurrent ? active">Ke stažení</a></li>
-				    			<li><a n:href="Page:view, 'member_donations'" n:class="$presenter->linkCurrent ? active">Členské příspěvky</a></li>
-				    			<li><a n:href="Page:view, 'insurance'" n:class="$presenter->linkCurrent ? active">Pojištění členů</a></li>
-				    			<li><a n:href="Page:view, 'meeting'" n:class="$presenter->linkCurrent ? active">Výroční schůze KČT</a></li>
+								<li><a n:href="Homepage:view, 'history'" n:class="$presenter->linkCurrent ? active">Historie</a></li>
+				    			<li><a n:href="Homepage:view, 'contacts'" n:class="$presenter->linkCurrent ? active">Kontakty</a></li>
+				    			<li><a n:href="Homepage:view, 'statute'" n:class="$presenter->linkCurrent ? active">Stanovy KČT</a></li>
+				    			<li><a n:href="Homepage:view, 'download'" n:class="$presenter->linkCurrent ? active">Ke stažení</a></li>
+				    			<li><a n:href="Homepage:view, 'member_donations'" n:class="$presenter->linkCurrent ? active">Členské příspěvky</a></li>
+				    			<li><a n:href="Homepage:view, 'insurance'" n:class="$presenter->linkCurrent ? active">Pojištění členů</a></li>
+				    			<li><a n:href="Homepage:view, 'meeting'" n:class="$presenter->linkCurrent ? active">Výroční schůze KČT</a></li>
 							</ul>
 						</li>
 					</ul>
 				</div>
 			</div>
+			*}
 			<p>
 				<a n:href="Dashboard:default" class="actual-dashboard">Nástěnka:</a> 
 				<a href="" class="direct-link-dashboard">lemon drops sugar plum tiramisu jelly</a>
 			</p>
 		</div>
+		{if $presenter->getName() == "Homepage"}
+		<nav class="secondary_nav">
+			<ul>
+				<li><a n:href="Page:view, 'history'" n:class="$presenter->linkCurrent ? active">Historie</a></li>
+				<li><a n:href="Page:view, 'contacts'" n:class="$presenter->linkCurrent ? active">Kontakty</a></li>
+				<li><a n:href="Page:view, 'statute'" n:class="$presenter->linkCurrent ? active">Stanovy KČT</a></li>
+				<li><a n:href="Page:view, 'download'" n:class="$presenter->linkCurrent ? active">Ke stažení</a></li>
+				<li><a n:href="Page:view, 'member_donations'" n:class="$presenter->linkCurrent ? active">Členské příspěvky</a></li>
+				<li><a n:href="Page:view, 'insurance'" n:class="$presenter->linkCurrent ? active">Pojištění členů</a></li>
+				<li><a n:href="Page:view, 'meeting'" n:class="$presenter->linkCurrent ? active">Výroční schůze KČT</a></li>
+			</ul>
+		</nav>
+		{/if}
 	</header>
 	<main>
 		{include content}
@@ -105,15 +121,17 @@
 	</footer>
 	<script type="text/javascript" src="{$basePath}/js/script.js"></script>
 	<script type="text/javascript">
-
-		$('.myMenu ul li').hover(function() {
-			$(this).children('ul').stop(true, false, true).fadeToggle(300);
+		$('.addMenuList ul li').on({
+		    mouseenter: function() {
+		        $(this).children('ul').stop(true, false, true).fadeIn(300);
+		    },
+		    mouseleave: function() {
+		        $(this).children('ul').stop(true, false, true).fadeOut(300);
+		    },
+		    click: function() {	
+		    	$(this).children('ul').stop(true, false, true).fadeIn(300);	
+		    }
 		});
-
-		$('.addMenuList ul li').hover(function() {
-			$(this).children('ul').stop(true, false, true).fadeToggle(300);
-		});
-
 	</script>
 	{block scripts}{/block}
 </body>
