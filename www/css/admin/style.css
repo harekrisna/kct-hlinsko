@@ -2,6 +2,11 @@
 .row.padding-bottom {
   padding-bottom: 30px;
 }
+@media (max-width: 768px) {
+  .row .col-lg-12 {
+    padding: 0;
+  }
+}
 .nav-header .img-circle {
   width: 85px;
   height: 85px;
@@ -65,6 +70,11 @@ ol.breadcrumb li.active {
   line-height: 0px;
   margin-top: -10px;
   visibility: hidden;
+}
+@media (max-width: 768px) {
+  .ibox-content {
+    overflow-x: scroll;
+  }
 }
 .number-integer {
   width: 30px;
@@ -328,6 +338,18 @@ textarea.form-control.import-source {
   padding: 0;
   border: 0;
 }
+.datepicker-days .highlight {
+  background-color: #fffa90;
+}
+.footable {
+  visibility: hidden;
+}
+.footable td.actual {
+  color: green;
+}
+.footable td.past {
+  color: red;
+}
 .footable td.controls a {
   font-size: 16px;
   margin-bottom: -10px;
@@ -362,9 +384,11 @@ textarea.form-control.import-source {
 }
 .footable thead th.controls {
   width: 73px;
+  min-width: 73px;
 }
 .footable thead th.controls-2 {
   width: 55px;
+  min-width: 55px;
 }
 .footable thead tr.footable-filtering .form-inline .form-group > select {
   margin-top: -5px;
@@ -394,9 +418,13 @@ textarea.form-control.import-source {
 .footable tfood th.th-on-off-switch {
   width: 85px;
 }
-.footable thead th.thin,
-.footable tfood th.thin {
+.footable thead th.th-thin,
+.footable tfood th.th-thin {
   width: 10px;
+}
+.footable thead th.th-small,
+.footable tfood th.th-small {
+  width: 115px;
 }
 .footable thead th span.footable-sort-indicator,
 .footable tfood th span.footable-sort-indicator {

@@ -9,6 +9,10 @@ $(window).scroll(function() {
 	}
 });
 
+$(".back-to-top").click(function() {
+	$("html, body").animate({ scrollTop: 0 }, "slow");
+		return false;
+});
 
 $('a.back-to-history').click(function() {
 	window.history.back();

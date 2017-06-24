@@ -118,19 +118,19 @@ body {
 			margin-bottom: 10px;
 
 			&:nth-child(1){ 
-			    width: 41px; 
+			    width: 42px; 
 			} 
 			
 			&:nth-child(2){ 
-			    width: 64px; ;
+			    width: 66px; ;
 			} 
 
 			&:nth-child(3){ 
-			    width: 64px; 
+			    width: 62px; 
 			} 
 
 			&:nth-child(4){ 
-			    width: 76px; 
+			    width: 78px; 
 			} 
 
 			&:nth-child(5){ 
@@ -159,7 +159,7 @@ body {
 			}
 
 			&:nth-child(6){ 
-			    width: 50px; 
+			    width: 51px; 
 			} 
 
 
@@ -401,7 +401,7 @@ body {
 				color: @brown;
 				transition:0.5s color ease;
 
-				&:hover {
+				&:hover, &.active {
 					color: @red;
 					transition:0.5s color ease;
 				}
@@ -647,9 +647,15 @@ main {
 		min-height: inherit;
 	}
 	
-	.ajax-more {
-		width: 100%;
-		
+	hr.noticeboard-divider {
+		width: 70%;
+	    height: 2px;
+		background-color: #000000;
+	    margin: 0 auto 20px auto;
+	    display: none;
+	}
+
+	.ajax-button {
 		a {
 			width: 130px;
 			height: 30px;
@@ -666,8 +672,18 @@ main {
 				text-decoration: underline;
 			}
 		}			
+
+		&.right-side {
+			float: right;
+			margin: -32px 25px 0 0;
+
+			.mobile-screen({
+				float: none;
+				margin: 25px 0 0 0;
+			});
+		}
 	}
-	
+
 	// ajax spinner
 @-webkit-keyframes uil-default-anim { 0% { opacity: 1} 100% {opacity: 0} }@keyframes uil-default-anim { 0% { opacity: 1} 100% {opacity: 0} }.uil-default-css > div:nth-of-type(1){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -1s;animation-delay: -1s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(2){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.9166666666666666s;animation-delay: -0.9166666666666666s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(3){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.8333333333333334s;animation-delay: -0.8333333333333334s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(4){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.75s;animation-delay: -0.75s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(5){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.6666666666666666s;animation-delay: -0.6666666666666666s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(6){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.5833333333333334s;animation-delay: -0.5833333333333334s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(7){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.5s;animation-delay: -0.5s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(8){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.4166666666666667s;animation-delay: -0.4166666666666667s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(9){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.3333333333333333s;animation-delay: -0.3333333333333333s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(10){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.25s;animation-delay: -0.25s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(11){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.16666666666666666s;animation-delay: -0.16666666666666666s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}.uil-default-css > div:nth-of-type(12){-webkit-animation: uil-default-anim 1s linear infinite;animation: uil-default-anim 1s linear infinite;-webkit-animation-delay: -0.08333333333333333s;animation-delay: -0.08333333333333333s;}.uil-default-css { position: relative;background:none;width:200px;height:200px;}
 	

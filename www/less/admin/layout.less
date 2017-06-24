@@ -1,5 +1,13 @@
-.row.padding-bottom {
-	padding-bottom: 30px;
+.row {
+	&.padding-bottom {
+		padding-bottom: 30px;
+	}
+
+	@media (max-width: 768px) {
+		.col-lg-12 {
+			padding: 0;
+		}
+	}
 }
 
 .nav-header {
@@ -63,7 +71,6 @@ ol.breadcrumb li.active {
 	width: 1000px;
 }
 
-
 .panel-body {
 	.panel-heading {
 		padding: 0;
@@ -89,6 +96,12 @@ ol.breadcrumb li.active {
 		line-height: 0px; 
 		margin-top: -10px; 
 		visibility: hidden;
+	}
+}
+
+@media (max-width: 768px) {
+	.ibox-content {
+		overflow-x: scroll;
 	}
 }
 

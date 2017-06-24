@@ -10,20 +10,18 @@ use Tracy\Debugger;
 class NoticeboardPresenter extends BasePresenter  {
 
 	public function renderNoticeboard() {
-		$this->template->block = $this->noticeboard->findAll()
-												   ->order('block_date DESC')
-												   ->limit(1)
-												   ->fetch();
+		$this->template->actual_blocks = $this->noticeboard->findBy(['actual_to >= CURDATE()', 'active' => TRUE])
+										      			   ->order('block_date DESC');
 	}
 	
-	public function renderLoadNextBlock($block_id) {
+	public function renderLoadNextBlock($offset) {
 		$this->setView('noticeBlock');
 		
-		$block = $this->noticeboard->findBy(['block_date < ?' => $this->noticeboard->get($block_id)->block_date])
+		$block = $this->noticeboard->findBy(['actual_to < CURDATE()', 'active' => TRUE])
 								   ->order('block_date DESC')
-								   ->limit(1)
+								   ->limit(1, $offset)
 								   ->fetch();
-		
+
 		if($block) {
 			$this->template->block = $block;
 		}
@@ -31,5 +29,13 @@ class NoticeboardPresenter extends BasePresenter  {
 			$this->payload->is_last = true;
 			$this->sendPayload();	
 		}
-    }	
+    }
+
+	public function renderLoadAllBlocks($offset) {
+		$this->setView('noticeBlocks');
+		Debugger::fireLog($offset);
+		$this->template->blocks = $this->noticeboard->findBy(['actual_to < CURDATE()', 'active' => TRUE])
+													->order('block_date DESC')
+													->limit(1316134911, $offset);
+    }	    
 }

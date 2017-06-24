@@ -23,10 +23,23 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
+                            {label data-actual_to, class => "col-sm-2 control-label" /}
+                            <div class="col-sm-10">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    {input data-actual_to, class => "datepicker form-control small"}
+                                </div>
+                                {if $form['data-actual_to']->error}{label data-actual_to, class => "error" }{$form['data-actual_to']->error}{/label}{/if}
+                            </div>
+                        </div>
+                        {if $presenter->getAction() == "edit"}
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
                             <div class="col-sm-12">
                                 {input data-content, class => "form-control medium"}
                             </div>
                         </div>
+                        {/if}
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
@@ -52,8 +65,10 @@
 
     <!-- Forms -->
     <script src="{$basePath}/js/forms.js"></script>
+    {if $presenter->getAction() == "edit"}
     <script src="{$basePath}/js/ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('frm-form-data-content');
     </script>
+    {/if}
 {/block}

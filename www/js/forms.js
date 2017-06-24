@@ -20,7 +20,13 @@ $(document).ready(function(){
             calendarWeeks: true,
             autoclose: true,
             language: 'cs',
-        }); 
+
+            beforeShowDay: function(date) {
+                var today = new Date().setHours(0,0,0,0);
+                if(date.getTime() == today)
+                    return {classes: 'highlight'};
+            }
+        });
     }
 
     $('input.datepicker').keydown(function(event) {

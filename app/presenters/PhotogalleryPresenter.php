@@ -58,9 +58,13 @@ class PhotogalleryPresenter extends BasePresenter {
 	}	
 
 	public function renderPhotos($galery_id) {
-		$this->template->galery = $this->galery->get($galery_id);
+		$galery = $this->galery->get($galery_id);
+
+		$this->template->galery = $galery;
 		$this->template->photos = $this->photo->findAll()
 											  ->where(["galery_id" => $galery_id])
 											  ->order("position ASC");
+
+		$this->template->backlink = $this->presenter->link('year', $galery->id);
 	}	
 }

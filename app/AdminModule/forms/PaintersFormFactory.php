@@ -46,7 +46,7 @@ class PaintersFormFactory extends Nette\Object {
 	public function formSucceeded(Form $form, $values) {
 		try {
 			if($form->isSubmitted() !== true && $form->isSubmitted()->name == "add") { 	
-					$this->model->insert($values->data);
+				$this->model->insert($values->data);
 			}
 			else { //pokud $form->isSubmitted() === true znamená to že byl formulář odeslán ukládacím tlačítkem CKFINDERu při editaci
 				$this->model->update($this->record->id, $values->data);

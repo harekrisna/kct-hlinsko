@@ -86,5 +86,5 @@ class GaleryPresenter extends BasePresenter {
                     ->update(['active' => $active == "true" ? 1 : 0]);
 
         $this->sendPayload();
-    }   	
+    }
 }

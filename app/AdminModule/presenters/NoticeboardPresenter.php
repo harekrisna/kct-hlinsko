@@ -6,6 +6,7 @@ use Nette,
 use Tracy\Debugger;
 use Nette\Application\UI\Form;
 use Nette\Utils\Image;
+use Nette\Utils\DateTime;
 use App\AdminModule\Forms\NoticeboardFormFactory;
 
 final class NoticeboardPresenter extends BasePresenter {        
@@ -48,6 +49,11 @@ final class NoticeboardPresenter extends BasePresenter {
     public function renderList() {
         $this->template->records = $this->model->findAll()
                                                ->order('block_date DESC');
+
+        $today = new DateTime();
+        $today->setTime(0, 0, 0);
+
+        $this->template->today = $today;
     }
 					
     protected function createComponentForm() {
@@ -70,6 +76,13 @@ final class NoticeboardPresenter extends BasePresenter {
     public function actionDelete($id) {
         $record = $this->model->get($id);
         $this->payload->success = $this->model->delete($id);
+        $this->sendPayload();
+    }    
+
+    public function actionSetActivity($record_id, $active) {
+        $this->model->findBy(['id' => $record_id])
+                    ->update(['active' => $active == "true" ? 1 : 0]);
+
         $this->sendPayload();
     }    
 }

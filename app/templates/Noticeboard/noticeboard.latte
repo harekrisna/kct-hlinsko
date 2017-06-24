@@ -2,10 +2,16 @@
 <article>
 	<h1 class="main-title">Nástěnka</h1>
 	<div id="main_content">
-		{include noticeBlock.latte}
+		<article n:foreach="$actual_blocks as $block" class="notice-block">
+			{$block->content|noescape}
+		</article>
+		<hr class="noticeboard-divider"/>
 	</div>
-	<div class="ajax-more">
-		<a>starší přízpěvky</a>
+	<div class="ajax-button" id="ajax_more">
+		<a>starší události</a>
+	</div>
+	<div class="ajax-button right-side" id="ajax_all">
+		<a>zobrazit vše</a>
 	</div>
 
 </article>
@@ -16,30 +22,53 @@
     
     <script>
 	    $(function() {
-		    $('.ajax-more').appear();			
-		    
+		    $('#ajax_more').appear();			
+
 		    var in_progress = false;
-		    		    
-		    $('.ajax-more').on('appear, click', function(event) {
-			    var last_block_id = $('#main_content .notice-block:last-child').data("block_id");
+		    var block_offset = 0;
+		    var ajax_button_spinner = "<div class='uil-default-css' style='transform:scale(0.12);top: -85px; left: -32px;'><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(0deg) translate(0,-60px);transform:rotate(0deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(30deg) translate(0,-60px);transform:rotate(30deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(60deg) translate(0,-60px);transform:rotate(60deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(90deg) translate(0,-60px);transform:rotate(90deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(120deg) translate(0,-60px);transform:rotate(120deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(150deg) translate(0,-60px);transform:rotate(150deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(180deg) translate(0,-60px);transform:rotate(180deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(210deg) translate(0,-60px);transform:rotate(210deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(240deg) translate(0,-60px);transform:rotate(240deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(270deg) translate(0,-60px);transform:rotate(270deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(300deg) translate(0,-60px);transform:rotate(300deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(330deg) translate(0,-60px);transform:rotate(330deg) translate(0,-60px);border-radius:10px;position:absolute;'></div></div>";
+					    		    
+		    $('#ajax_more').on('appear, click', function(event) {
 			    if(!in_progress) {
 				    in_progress = true;
-				    $('.ajax-more a').html("<div class='uil-default-css' style='transform:scale(0.12);top: -85px; left: -32px;'><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(0deg) translate(0,-60px);transform:rotate(0deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(30deg) translate(0,-60px);transform:rotate(30deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(60deg) translate(0,-60px);transform:rotate(60deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(90deg) translate(0,-60px);transform:rotate(90deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(120deg) translate(0,-60px);transform:rotate(120deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(150deg) translate(0,-60px);transform:rotate(150deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(180deg) translate(0,-60px);transform:rotate(180deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(210deg) translate(0,-60px);transform:rotate(210deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(240deg) translate(0,-60px);transform:rotate(240deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(270deg) translate(0,-60px);transform:rotate(270deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(300deg) translate(0,-60px);transform:rotate(300deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(330deg) translate(0,-60px);transform:rotate(330deg) translate(0,-60px);border-radius:10px;position:absolute;'></div></div>");
+				    $('#ajax_more a').html(ajax_button_spinner);
 
-					$.get({link loadNextBlock}, {"block_id": last_block_id}, 
+					$.get({link loadNextBlock}, {"offset": block_offset}, 
 		                function(payload) {
 			                in_progress = false;
 			                if(payload.is_last) {
-				                $('.ajax-more').remove();
+				                $('#ajax_more').remove();
+								$('#ajax_all').remove();
 			                }
 			                else {
+			                	if(block_offset == 0) {
+			                		$('.noticeboard-divider').show();
+			                	}
+
 								$('#main_content').append(payload);
-								$('.ajax-more a').html("starší přízpěvky")
+								$('#ajax_more a').html("starší události");
+								block_offset += 1;
 			                }
 		                }
 					);
 				}
 			});
+
+			$('#ajax_all').on('click', function(event) {
+			    if(!in_progress) {
+				    in_progress = true;
+				    $('#ajax_all a').html(ajax_button_spinner);
+
+					$.get({link loadAllBlocks}, {"offset": block_offset}, 
+		                function(payload) {
+		                	$('.noticeboard-divider').show();
+							$('#main_content').append(payload);
+							$('#ajax_more').remove();
+							$('#ajax_all').remove();
+		                }
+					);
+				}
+			});			
 		});
 	</script>
 {/block}

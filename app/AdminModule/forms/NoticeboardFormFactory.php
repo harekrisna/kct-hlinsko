@@ -27,7 +27,10 @@ class NoticeboardFormFactory extends Nette\Object {
 		$data = $form->addContainer('data');
 
 		$data->addDatePicker('block_date', 'Datum')
-			 ->setRequired('Zadej datum.');      	
+			 ->setRequired('Zadej datum.');
+
+		$data->addDatePicker('actual_to', 'Aktuální do')
+			 ->setRequired('Zadej aktuální do.');			 
 
       	$data->addTextArea('content', 'Obsah');
 
@@ -45,11 +48,8 @@ class NoticeboardFormFactory extends Nette\Object {
 
 	public function formSucceeded(Form $form, $values) {
 		try {
-			Debugger::fireLog($values->data);
-			Debugger::fireLog($form->isSubmitted());
-			if($form->isSubmitted()->name == "add") {
-				Debugger::fireLog("lol");
-				Debugger::fireLog($this->model->insert($values->data));
+			if($form->isSubmitted() !== true && $form->isSubmitted()->name == "add") { 	
+				$this->model->insert($values->data);
 			}
 			else {
 				$this->model->update($this->record->id, $values->data);

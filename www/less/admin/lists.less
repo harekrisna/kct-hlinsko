@@ -1,17 +1,29 @@
 .footable {
-	td.controls {
-		a {
-			font-size: 16px;
-			margin-bottom: -10px;
-			float: left;
-			color: #2F4050;
-			
-			&.row-delete {
-				font-size: 18px;
-			}
+	visibility: hidden;
 
-			&:not(:last-child) {
-				margin-right: 3px;
+	td {
+		&.actual {
+			color: green;
+		}
+
+		&.past {
+			color: red;
+		}
+
+		&.controls {
+			a {
+				font-size: 16px;
+				margin-bottom: -10px;
+				float: left;
+				color: #2F4050;
+				
+				&.row-delete {
+					font-size: 18px;
+				}
+
+				&:not(:last-child) {
+					margin-right: 3px;
+				}
 			}
 		}
 	}
@@ -44,10 +56,12 @@
 	thead {
 		th.controls {
 			width: 73px;
+			min-width: 73px;
 		}
 
 		th.controls-2 {
 			width: 55px;
+			min-width: 55px;
 		}
 
 		tr.footable-filtering .form-inline{
@@ -83,8 +97,12 @@
 			width: 85px;
 		}
 
-		th.thin {
+		th.th-thin {
 			width: 10px;
+		}
+
+		th.th-small {
+			width: 115px;
 		}
 
 		th span.footable-sort-indicator {

@@ -55,6 +55,10 @@ function initFooTable(table, success_message = "Záznam byl smazán.", error_mes
         });
     });
 
+    $(table).on("preinit.ft.state", function (e, ft, row) {
+        $(table).css("visibility", "visible");
+    });
+
     $(table).on("expand.ft.row", function (e, ft, row) {
         e.preventDefault();
         var row = $(row.$el);

@@ -18,7 +18,7 @@ class RouterFactory
 		$router = new RouteList;
 		$router[] = new Route('admin1896/<presenter>/<action>[/<id>]', array(
         	'module'    => 'Admin',
-            'presenter' => 'Galery',
+            'presenter' => 'Noticeboard',
             'action'    => 'list'
         ));
         
@@ -62,21 +62,6 @@ class RouterFactory
 				)
 			),
 		));
-		$router[] = new Route('<page_name>', array(
-			'presenter' => 'Homepage',
-			'action' => 'view',
-			'page_name' => array(
-				Route::FILTER_TABLE => array(
-					'vitejte' => 'welcome',
-					'historie' => 'history',
-					'kontakty' => 'contacts',
-					'stanovy-kct' => 'statute',
-					'clenske-prispevky' => 'member_donations',
-					'pojisteni-clenu' => 'insurance',
-					'vyrocni-schuze-kct' => 'meeting',
-				)
-			),
-		));
 
 		$router[] = new Route('<page_name>', array(
 			'presenter' => 'Page',
@@ -96,7 +81,7 @@ class RouterFactory
 			),
 		));
 
-		$router[] = new Route('<presenter>/<action>[/<id>]', "Homepage:view");
+		$router[] = new Route('<presenter>/<action>[/<id>]', "Page:view");
 		return $router;
 	}
 
