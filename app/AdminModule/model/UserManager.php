@@ -41,6 +41,8 @@ class UserManager implements Nette\Security\IAuthenticator
 	{
 		list($username, $password) = $credentials;
 
+		//echo Passwords::hash($password); exit;
+
 		$row = $this->database->table(self::TABLE_NAME)->where(self::COLUMN_NAME, $username)->fetch();
 
 		if (!$row) {
