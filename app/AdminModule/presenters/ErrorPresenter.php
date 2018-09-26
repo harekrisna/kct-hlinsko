@@ -6,8 +6,10 @@ use Nette;
 use Tracy\ILogger;
 
 
-class ErrorPresenter extends Nette\Object implements Nette\Application\IPresenter
+class ErrorPresenter implements Nette\Application\IPresenter
 {
+	use Nette\SmartObject;
+	
 	/** @var ILogger */
 	private $logger;
 
@@ -35,5 +37,4 @@ class ErrorPresenter extends Nette\Object implements Nette\Application\IPresente
 			require __DIR__ . '/templates/Error/500.phtml';
 		});
 	}
-
 }

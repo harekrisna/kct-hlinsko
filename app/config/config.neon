@@ -33,7 +33,6 @@ services:
 	- App\AdminModule\Forms\NoticeboardFormFactory
 	router: App\RouterFactory::createRouter
 
-	filters: App\AdminModule\Templates\Filters
 	galery: App\Model\Galery
 	photo: App\Model\Photo
 	page: App\Model\Page

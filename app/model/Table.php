@@ -7,8 +7,8 @@ use Tracy\Debugger;
 /**
  * Reprezentuje repozit?? pro datab?zovou tabulku
  */
-abstract class Table extends Nette\Object
-{
+abstract class Table {
+    use Nette\SmartObject;
 
     /** @var Nette\Database\Connection */
     public $connection;

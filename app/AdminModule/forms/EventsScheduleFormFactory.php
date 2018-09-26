@@ -7,7 +7,9 @@ use Nette\Application\UI\Form;
 use Nette\Utils\Strings;
 use Tracy\Debugger;
 
-class EventsScheduleFormFactory extends Nette\Object {
+class EventsScheduleFormFactory {
+	use Nette\SmartObject;
+	
 	/** @var FormFactory */
 	private $factory;
 	/** @var EventsSchedule */

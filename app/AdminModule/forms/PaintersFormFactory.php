@@ -7,7 +7,9 @@ use Nette\Application\UI\Form;
 use Nette\Utils\Strings;
 use Tracy\Debugger;
 
-class PaintersFormFactory extends Nette\Object {
+class PaintersFormFactory {
+	use Nette\SmartObject;
+	
 	/** @var FormFactory */
 	private $factory;
 	/** @var Painters */

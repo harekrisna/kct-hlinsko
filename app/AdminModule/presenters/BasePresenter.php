@@ -47,6 +47,11 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 		\Forms\DatePicker\DatePicker::register();
 	}
 
+    public function beforeRender() {
+        parent::beforeRender();
+        $this->template->addFilter(null, 'Filters::initialize');
+    }
+
 	public function flashMessage($message, $type = 'info') {
 		if ($this->isAjax()) {
 			$this->payload->messages[] = ['message' => $message,

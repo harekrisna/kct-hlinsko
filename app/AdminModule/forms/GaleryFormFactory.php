@@ -7,7 +7,9 @@ use Nette\Application\UI\Form;
 use Nette\Utils\Strings;
 use Tracy\Debugger;
 
-class GaleryFormFactory extends Nette\Object {
+class GaleryFormFactory {
+	use Nette\SmartObject;
+	
 	/** @var FormFactory */
 	private $factory;
 	/** @var Galery */

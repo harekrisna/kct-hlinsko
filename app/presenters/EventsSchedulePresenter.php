@@ -17,11 +17,11 @@ class EventsSchedulePresenter extends BasePresenter {
 
 	public function renderActualSchedule($record_id) {
 		$this->template->schedule = $this->events_schedule->get($record_id);
-		$this->template->backlink = $this->link('plansList');
+		$this->template->backlink = $this->link('schedulesList');
 	}
 
 	public function renderHistorySchedule($record_id) {
 		$this->template->schedule = $this->events_schedule_history->get($record_id);
-		$this->template->backlink = $this->link('plansList');
+		$this->template->backlink = $this->link('schedulesList');
 	}
 }

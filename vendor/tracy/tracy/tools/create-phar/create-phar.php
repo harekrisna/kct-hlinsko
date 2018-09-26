@@ -10,7 +10,7 @@ if (!class_exists('Phar') || ini_get('phar.readonly')) {
 function compressJs($s)
 {
 	if (function_exists('curl_init')) {
-		$curl = curl_init('http://closure-compiler.appspot.com/compile');
+		$curl = curl_init('https://closure-compiler.appspot.com/compile');
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, 'output_info=compiled_code&js_code=' . urlencode($s));
@@ -45,7 +45,7 @@ foreach ($iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterato
 	echo "adding: {$iterator->getSubPathname()}\n";
 
 	$s = file_get_contents($file->getPathname());
-	if (strpos($s, '@tracySkipLocation') === FALSE) {
+	if (strpos($s, '@tracySkipLocation') === false) {
 		$s = php_strip_whitespace($file->getPathname());
 	}
 
@@ -59,7 +59,7 @@ foreach ($iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterato
 		$s = preg_replace_callback('#(<(script|style).*(?<![?=])>)(.*)(</)#Uis', function ($m) {
 			list(, $begin, $type, $s, $end) = $m;
 
-			if ($s === '' || strpos($s, '<?') !== FALSE) {
+			if ($s === '' || strpos($s, '<?') !== false) {
 				return $m[0];
 
 			} elseif ($type === 'script') {

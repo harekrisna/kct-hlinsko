@@ -7,19 +7,17 @@
 
 namespace Tester\Runner;
 
-use Tester;
-
 
 /**
  * Runner output.
  */
 interface OutputHandler
 {
-
 	function begin();
 
-	function result($testName, $result, $message);
+	function prepare(Test $test);
+
+	function finish(Test $test);
 
 	function end();
-
 }

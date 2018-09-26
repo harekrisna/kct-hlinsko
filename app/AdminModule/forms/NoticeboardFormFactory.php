@@ -7,7 +7,9 @@ use Nette\Application\UI\Form;
 use Nette\Utils\Strings;
 use Tracy\Debugger;
 
-class NoticeboardFormFactory extends Nette\Object {
+class NoticeboardFormFactory {
+	use Nette\SmartObject;
+	
 	/** @var FormFactory */
 	private $factory;
 	/** @var Noticeboard */
