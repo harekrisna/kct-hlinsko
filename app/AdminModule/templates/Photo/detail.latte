@@ -97,6 +97,7 @@
     			'queueID'          : 'queue',
     			'buttonText' : '<span class="glyphicon glyphicon-picture" style="margin-right: 10px !important"></span> VYBRAT FOTKY',
     			'uploadScript'     : {link uploadFile!, $galery->id},
+                'simUploadLimit': 1,
     			'onUploadComplete' : function(file, payload) { onUploadComplete(file, payload); }
     		});
     	});

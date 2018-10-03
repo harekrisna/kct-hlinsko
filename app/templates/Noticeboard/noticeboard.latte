@@ -22,33 +22,32 @@
     
     <script>
 	    $(function() {
-		    $('#ajax_more').appear();			
-
 		    var in_progress = false;
 		    var block_offset = 0;
 		    var ajax_button_spinner = "<div class='uil-default-css' style='transform:scale(0.12);top: -85px; left: -32px;'><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(0deg) translate(0,-60px);transform:rotate(0deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(30deg) translate(0,-60px);transform:rotate(30deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(60deg) translate(0,-60px);transform:rotate(60deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(90deg) translate(0,-60px);transform:rotate(90deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(120deg) translate(0,-60px);transform:rotate(120deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(150deg) translate(0,-60px);transform:rotate(150deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(180deg) translate(0,-60px);transform:rotate(180deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(210deg) translate(0,-60px);transform:rotate(210deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(240deg) translate(0,-60px);transform:rotate(240deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(270deg) translate(0,-60px);transform:rotate(270deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(300deg) translate(0,-60px);transform:rotate(300deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#ff3700;-webkit-transform:rotate(330deg) translate(0,-60px);transform:rotate(330deg) translate(0,-60px);border-radius:10px;position:absolute;'></div></div>";
 					    		    
-		    $('#ajax_more').on('appear, click', function(event) {
+		    $('#ajax_more').on('click', function(event) {
 			    if(!in_progress) {
 				    in_progress = true;
 				    $('#ajax_more a').html(ajax_button_spinner);
 
 					$.get({link loadNextBlock}, {"offset": block_offset}, 
 		                function(payload) {
-			                in_progress = false;
-			                if(payload.is_last) {
-				                $('#ajax_more').remove();
-								$('#ajax_all').remove();
-			                }
-			                else {
-			                	if(block_offset == 0) {
-			                		$('.noticeboard-divider').show();
-			                	}
+		                	if(block_offset == 0) {
+		                		$('.noticeboard-divider').show();
+		                	}
 
-								$('#main_content').append(payload);
-								$('#ajax_more a').html("starší události");
-								block_offset += 1;
-			                }
+							$('#main_content').append(payload);
+							$('#ajax_more a').html("starší události");
+							block_offset += {$ajax_blocks_count};
+							console.log(block_offset);
+							console.log({$total_records_count});
+							if(block_offset >= {$total_records_count}) {
+								$('#ajax_more').remove();
+								$('#ajax_all').remove();
+							}
+
+							in_progress = false;
 		                }
 					);
 				}

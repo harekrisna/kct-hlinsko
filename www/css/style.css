@@ -400,7 +400,7 @@ main article #main_content img {
   }
 }
 main .main-title {
-  height: 39px;
+  width: 80%;
   background-repeat: no-repeat;
   background-position: left;
   background-size: contain;

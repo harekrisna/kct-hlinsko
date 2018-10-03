@@ -5,7 +5,7 @@ namespace App\Presenters;
 use Nette;
 use App\Model;
 use Tracy\Debugger;
-
+use Nette\Utils\Finder;
 
 class PhotogalleryPresenter extends BasePresenter {
 	
@@ -50,6 +50,28 @@ class PhotogalleryPresenter extends BasePresenter {
 		$this->template->year_groups = $year_groups;
 	}
 
+	public function renderImport() {
+		$years_dir = "./images/orig_photos";
+        
+ 		$search  = array('\x9e');
+		$replace = array('ž');
+
+        foreach (Finder::findDirectories('*')->in($years_dir) as $year_dir) {
+		    foreach (Finder::findDirectories('*')->in($year_dir) as $gallery_dir) {
+		    	if(file_exists($gallery_dir."/popis/nazev.txt")) {
+		    		$description = file_get_contents($gallery_dir."/popis/nazev.txt");
+		    		$description = iconv('windows-1250', 'UTF-8', $description);
+		    		//$this->galery->insert(['title' => mb_convert_encoding($description, "UTF-8"), 'photos_folder' => "lol", 'url' => "lol"]);
+		    		break;
+		    	}
+		    }
+		}
+        
+        $blocks = [];
+
+    	$this->template->blocks = $blocks;
+    }
+
 	public function renderYear($year) {
 		$this->template->galeries = $this->galery->findBy(['year(galery_date)' => $year, 'active' => TRUE])
 												 ->order('galery_date DESC');
@@ -64,7 +86,7 @@ class PhotogalleryPresenter extends BasePresenter {
 		$this->template->photos = $this->photo->findAll()
 											  ->where(["galery_id" => $galery_id])
 											  ->order("position ASC");
-
-		$this->template->backlink = $this->presenter->link('year', $galery->id);
+											  						  
+		$this->template->backlink = $this->presenter->link('year', $galery->galery_date->format('Y'));
 	}	
 }

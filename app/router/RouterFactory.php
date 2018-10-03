@@ -16,7 +16,7 @@ class RouterFactory
 	public static function createRouter(Nette\DI\Container $container)
 	{
 		$router = new RouteList;
-		$router[] = new Route('admin1896/<presenter>/<action>[/<id>]', array(
+		$router[] = new Route('admin1953/<presenter>/<action>[/<id>]', array(
         	'module'    => 'Admin',
             'presenter' => 'Noticeboard',
             'action'    => 'list'

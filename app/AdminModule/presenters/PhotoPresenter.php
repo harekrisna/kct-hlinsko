@@ -18,7 +18,7 @@ final class PhotoPresenter extends BasePresenter {
 
      /** @var object */
     private $model;   	    
-    
+
     protected function startup()  {
         parent::startup();
 		$this->model = $this->photo;
@@ -142,7 +142,7 @@ final class PhotoPresenter extends BasePresenter {
 
 	function actionGeneratePhotos($galery_id) {
 		$galery = $this->galery->get($galery_id);
-		$photos_dir = $this->photos_dir."/".$galery->photos_folder;
+		$photos_dir = GALERIES_FOLDER."/".$galery->photos_folder;
 		$galery->related("photo", "galery_id")->delete();
 
 		foreach (Finder::findFiles('*.jpg', '*.jpeg', '*.png', '*.gif')->in($photos_dir."/previews") as $file_path => $file) {
