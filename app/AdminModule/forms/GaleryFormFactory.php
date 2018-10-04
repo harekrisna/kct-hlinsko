@@ -36,8 +36,10 @@ class GaleryFormFactory {
       	
       	$data->addTextArea('description', 'Popis:', 40);
 
-		$data->addDatePicker('galery_date', 'Datum')
+		$data->addDatePicker('date_from', 'Datum od')
 			 ->setRequired('Zadej datum galerie.');
+
+		$data->addDatePicker('date_to', 'Datum do');
 
 	    $form->addSubmit('add', 'Přidat galerii');
 	    $form->addSubmit('edit', 'Uložit změny');

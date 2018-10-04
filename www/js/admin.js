@@ -87,3 +87,56 @@ function initFooTable(table, success_message = "Záznam byl smazán.", error_mes
         }
     });
 }
+
+function initDateIntervalPicker(input_from, input_to) {
+    var from = $(input_from);
+    var to = $(input_to); 
+
+    from.datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true,
+        language: 'cs',
+
+        beforeShowDay: function(date) {
+            var today = new Date().setHours(0,0,0,0);
+            if(date.getTime() == today)
+                return { classes: 'highlight'};
+        }
+    })
+
+    .on('changeDate',function(event){
+        var date_from = from.data('datepicker').getDate();
+        var date_to = to.data('datepicker').getDate();
+
+        if(date_from > date_to) {
+            to.datepicker('setDate', date_from);
+        }               
+    });
+
+    to.datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true,
+        language: 'cs',
+
+        beforeShowDay: function(date) {
+            var today = new Date().setHours(0,0,0,0);
+            if(date.getTime() == today)
+                return { classes: 'highlight'};
+        }
+    })
+
+    .on('changeDate',function(event){
+        var date_to = to.data('datepicker').getDate();
+        var date_from = from.data('datepicker').getDate();
+
+        if(date_to < date_from) {
+            from.datepicker('setDate', date_to);
+        }               
+    });
+}

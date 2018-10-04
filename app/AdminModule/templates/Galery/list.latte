@@ -22,7 +22,13 @@
                         </thead>
                         <tbody>
                             <tr n:foreach="$records as $record" data-id="{$record->id}">
-                                <td data-sort-value="{$record->galery_date}">{$record->galery_date|date:'d.m.Y'}</td>
+                                <td data-sort-value="{$record->date_from}">
+                                    {if $record->date_from == $record->date_to}
+                                        {$record->date_from|date:'d.m.Y'}
+                                    {else}
+                                        {$record->date_from|date:'d.m.Y'} - {$record->date_to|date:'d.m.Y'}
+                                    {/if}
+                                </td>
                                 <td data-sort-value="{$record->title|webalize}">{$record->title}</td>
                                 <td data-sort-value="{$record->active}" data-filter-value="{$record->active}">
                                     <div class="switch active">
