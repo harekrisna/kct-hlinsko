@@ -3,7 +3,19 @@
 	<div class="main-title">Rok {$year}</div>
 	<section class="archiv-list">
 		<ul n:inner-foreach="$galeries as $galery">
-			<li><a n:href="photos, $galery->id"><span class="galery-title">{$galery->galery_date|date:'d.m.Y'} {$galery->title}</span><span n:if="$galery->description != ''" class="folder-detail"> - {$galery->description}</span></a></li>
+			<li>
+                <a n:href="photos, $galery->id">
+                    <span class="galery-title">
+                        {if $galery->date_from == $galery->date_to}
+                            {$galery->date_from|date:'d.m.Y'}
+                        {else}
+                            {$galery->date_from|date:'d.m.Y'} - {$galery->date_to|date:'d.m.Y'}
+                        {/if}
+                        {$galery->title}
+                    </span>
+                    <span n:if="$galery->description != ''" class="folder-detail"> - {$galery->description}</span>
+                </a>
+            </li>
 		</ul>
 	</section>
 {/block}

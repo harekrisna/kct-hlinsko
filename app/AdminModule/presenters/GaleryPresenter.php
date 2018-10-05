@@ -44,7 +44,8 @@ class GaleryPresenter extends BasePresenter {
 	}
 
 	public function renderList() {
-        $this->template->records = $this->model->findAll();
+        $this->template->records = $this->model->findAll()
+                                               ->order('date_from DESC');
         $this->template->years = $this->model->findYears();
 
         if($this->isAjax()) {

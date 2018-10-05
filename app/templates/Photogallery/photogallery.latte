@@ -1,18 +1,25 @@
 {block title}Fotogalerie{/block}
 {block content}
-	<h1 class="main-title">Archiv fotografií</h1>
+	<div class="main-title">Rok {$actual_year}</div>
+	<section class="archiv-list">
+		<ul n:inner-foreach="$galeries as $galery">
+			<li>
+                <a n:href="photos, $galery->id">
+                    <span class="galery-title">
+                        {if $galery->date_from == $galery->date_to}
+                            {$galery->date_from|date:'d.m.Y'}
+                        {else}
+                            {$galery->date_from|date:'d.m.Y'} - {$galery->date_to|date:'d.m.Y'}
+                        {/if}
+                        {$galery->title}
+                    </span>
+                    <span n:if="$galery->description != ''" class="folder-detail"> - {$galery->description}</span>
+                </a>
+            </li>
+		</ul>
+	</section>
+	<h1 class="main-title">Archiv fotogalerií</h1>
 	<div class="grid">
-		<a n:foreach="$first_line as $year" n:href="Photogallery:year, $year" class="col-1-6">{$year}</a>
-		<div n:foreach="$year_groups as $year_title => $group" class="col-1-4">
-			<div class="myMenu">
-				<ul class="dropDownMenu">
-					<li><a href="">{$year_title}</a>
-						<ul>
-			    			<li n:foreach="$group as $year"><a n:href="Photogallery:year, $year">{$year}</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
+		<a n:foreach="$years as $year" n:href="Photogallery:year, $year" class="col-1-6">{$year}</a>
 	</div>
 {/block}

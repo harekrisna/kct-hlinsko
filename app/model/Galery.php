@@ -9,7 +9,7 @@ class Galery extends TableExtended {
 	protected $tableName = 'galery';
 
    	public function findYears() {
-        $selection_years = $this->findAll()->select('DISTINCT YEAR(galery_date) AS year')
+        $selection_years = $this->findAll()->select('DISTINCT YEAR(date_from) AS year')
         								   ->where(['active' => TRUE])
 										   ->order('year DESC');
 

@@ -76,10 +76,11 @@
     <!-- Forms -->
     <script src="{$basePath}/js/forms.js"></script>
     <script>
+        {if $presenter->getAction() == "add"}
         $("input[name='data[title]']").keyup(function() {
             $("input[name='data[url]']").val(webalize(this.value));
         });
-
+        {/if}
         $("input[name='data[url]']").change(function() {
             $(this).val(webalize(this.value));
         });

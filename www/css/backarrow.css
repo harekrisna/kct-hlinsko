@@ -2,6 +2,7 @@
 	position: fixed;
 	left: 15px;
 	bottom: 15px;
+	z-index: 10;
 }
 
 a.back-to-top {
@@ -33,6 +34,7 @@ a.back-to-history {
 	border-radius: 4px;
 }
 
+/*
 @media (min-width: 640px) and (max-width: 940px) {
 	a.back-to-top { display: none !important}
 	a.back-to-history { display: none}
@@ -42,4 +44,4 @@ a.back-to-history {
     a.back-to-top { display: none !important}
     a.back-to-history { display: none}
 }
-	
+*/
