@@ -20,6 +20,9 @@
 	</section>
 	<h1 class="main-title">Archiv fotogalerií</h1>
 	<div class="grid">
-		<a n:foreach="$years as $year" n:href="Photogallery:year, $year" class="col-1-6">{$year}</a>
+        {foreach $years as $year}
+            {continueIf $iterator->first}
+		    <a n:href="Photogallery:year, $year" class="col-1-6">{$year}</a>
+        {/foreach}
 	</div>
 {/block}

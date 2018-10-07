@@ -22,7 +22,7 @@ class PhotogalleryPresenter extends BasePresenter {
 
 	public function renderImport() {
 		$years_dir = "../../kct/fotogalerie";
-		$year_dir = "../../kct/fotogalerie/2012";
+		$year_dir = "../../kct/fotogalerie/2018";
         //foreach (Finder::findDirectories('*')->in($years_dir) as $year_dir) {
 		    foreach (Finder::findDirectories('*')->in($year_dir) as $gallery_dir) {
 		    	if(file_exists($gallery_dir."/popis/nazev.txt")) {
